@@ -29,7 +29,7 @@ public class SearchController {
 		DBController db = new DBController();
 		ArrayList<University> Us = db.getUniversities();
 		ArrayList<Tuple<University,Integer>> distances = new ArrayList<Tuple<University,Integer>>();//always in sorted order
-		for(int i = 0,i < Us.size();i++){
+		for(int i = 0;i < Us.size();i++){
 			University temp = Us.get(i);
 			int dist = distance(university, temp);
 			if(distances.size() == 0){
@@ -45,7 +45,7 @@ public class SearchController {
 		}
 		ArrayList<University> relatedUs = new ArrayList<University>();
 		for(int i = 0;i < n;i++){
-			relatedUs.add(distances.get(i).i);
+			relatedUs.add(distances.get(i).university);
 		}
 		return relatedUs;
 	}
@@ -72,7 +72,7 @@ public class SearchController {
 		distance+=Math.abs(u.getPercentEnrolled() - c.getPercentEnrolled())/(100-0);
 		distance+=Math.abs(u.getAcademicScale() - c.getSocialScale())/(5-0);
 		distance+=Math.abs(u.getSocialScale() - c.getSocialScale())/(5-0);
-		if(!u.getEmphasis).equals(c.getEmphasis())){
+		if(!u.getEmphasis().equals(c.getEmphasis())){
 			distance+=1;
 		}
 		return distance;
@@ -132,7 +132,7 @@ public class SearchController {
 														if(percentEnrolled == null && percentEnrolled2 == null || percentEnrolled == null && u.getPercentEnrolled() <= percentEnrolled2 || percentEnrolled2 == null && u.getPercentEnrolled() >= percentEnrolled || u.getPercentEnrolled() >= percentEnrolled && u.getPercentEnrolled() <= percentEnrolled2){
 															if(academicScale == null && academicScale2 == null || academicScale == null && u.getAcademicScale() <= academicScale2 || academicScale2 == null && u.getAcademicScale() >= academicScale || u.getAcademicScale() >= academicScale && u.getAcademicScale() <= academicScale2){
 																if(socialScale == null && socialScale2 == null || socialScale == null && u.getSocialScale() <= socialScale2 || socialScale2 == null && u.getSocialScale() >= socialScale || u.getSocialScale() >= socialScale && u.getSocialScale() <= socialScale2){
-																	if(emphases == null || u.getEmphasis().contains(emphasis)){
+																	if(emphasis == null || u.getEmphasis().contains(emphasis)){
 																		Us.add(u);
 																	}
 																}

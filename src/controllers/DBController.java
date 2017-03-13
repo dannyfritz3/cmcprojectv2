@@ -3,6 +3,12 @@
  *
  */
 package controllers;
+
+import java.util.ArrayList;
+
+import baseclasses.Account;
+import baseclasses.University;
+
 /**
  * This is a class that controls the database functions
  * 
