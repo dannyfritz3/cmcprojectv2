@@ -4,6 +4,11 @@
  */
 
 package controllers;
+
+import java.util.ArrayList;
+
+import baseclasses.Account;
+
 /**
  * This is a class that controls the account functions
  * 
@@ -23,17 +28,15 @@ public class AccountController{
    * @param type the new account type, null if to be unchanged
    * @param status the new account status, null if to be unchanged
    */
-  public void editUserInfo(Account account, String firstname, String lastname, String password, Char type, Char status){
+  public void editUserInfo(Account account, String firstname, String lastname, String password, char type, char status){
 	  if(firstname!=null)
 		  account.setFirstName(firstname);
 	  if(lastname!=null)
 		  account.setLastName(lastname);
 	  if(password!=null)
 		  account.setPassword(password);
-	  if(type!=null)
-		  account.setType(type);
-	  if(status!=null)
-		  account.setStatus(status);
+	  account.setType(type);
+	  account.setStatus(status);
 	  
 	  database.updateUser(account);
   }
@@ -49,9 +52,9 @@ public class AccountController{
    * @param status the account status of the user represented by the account
    * @returns true if account added successfully, otherwise false
    */
-  public boolean addAccount(String firstname, String lastname, String username, String password, Char type, Char status){
+  public boolean addAccount(String firstname, String lastname, String username, String password, char type, char status){
 	  Account acc = new Account(firstname,lastname,username,password,type,status);
-	  return acccontrol.addAccount(acc); 
+	  return database.addAccount(acc); 
   }
   /**
    * This method returns a set of all the accounts in the system
@@ -59,7 +62,7 @@ public class AccountController{
    * @returns an ArrayList of accounts in the system
    */
   public ArrayList<Account> getAccounts(){
-	  ArrayList<Account> accounts= new acccontrol.getAccounts();
+	  ArrayList<Account> accounts= database.getAccounts();
 	  return accounts;
   }
     /**
