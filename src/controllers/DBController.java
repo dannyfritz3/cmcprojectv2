@@ -4,10 +4,12 @@
  */
 package controllers;
 
+
 import java.util.ArrayList;
 
 import baseclasses.Account;
 import baseclasses.University;
+
 
 /**
  * This is a class that controls the database functions
@@ -70,7 +72,7 @@ public class DBController{
    * @param a the account to be updated
    */
   public void updateUser(Account a){
-    return null
+    
   }
   
   /**
@@ -79,7 +81,7 @@ public class DBController{
    * @returns a set of accounts in the database
    */
   public ArrayList<Account> getAccounts(){
-    return null
+    return null;
   } 
     /**
    * This method adds an account to the system
