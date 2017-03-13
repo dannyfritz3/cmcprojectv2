@@ -18,7 +18,7 @@ public class University
     percentEnrolled, academicScale, socialScale;
   
   /**
-   * A contructor that creates a university object with the minimum requirements being just the name
+   * A constructor that creates a university object with the minimum requirements being just the name
    * 
    * @param the name of the university
    */
@@ -33,7 +33,7 @@ public class University
    * @param name of the university
    * @param state in which university is located
    * @param type of location university is located (urban, rural, suburban, etc.)
-   * @param subjects that are emhasized at the university
+   * @param subjects that are emphasized at the university
    * @param number of students at the university
    * @param percent of female students at the university
    * @param average SAT Verbal score for enrolled students
@@ -50,11 +50,11 @@ public class University
    */
   public University(String name, String state, String location, int numberOfStudents,
 		  			int percentFemale, int satVerbal, int satMath,
-                    int expenses, int percentFinancialAid, int numberOfapplicants,
+                    int expenses, int percentFinancialAid, int numberOfApplicants,
                     int percentAdmitted, int percentEnrolled, int academicScale,
-                    int socialScale, String emphasis,) throws IllegalArgumentException
+                    int socialScale, String emphasis) throws IllegalArgumentException
   {
-	  if((academicScale < 1 || acdemicScale > 5))
+	  if((academicScale < 1 || academicScale > 5))
 	  {
 		  throw new IllegalArgumentException("Parameter for 'Academic Scale' is not a valid number. Must be an integer 1 - 5");
 	  }
@@ -112,7 +112,7 @@ public class University
   }
   
   /**
-   * A method that gets the number of studnets at the University
+   * A method that gets the number of students at the University
    * 
    * @returns the number of students at the University
    */
