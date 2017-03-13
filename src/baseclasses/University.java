@@ -34,6 +34,7 @@ public class University
    * @param state in which university is located
    * @param type of location university is located (urban, rural, suburban, etc.)
    * @param subjects that are emphasized at the university
+   * @param control of the university (public or private)
    * @param number of students at the university
    * @param percent of female students at the university
    * @param average SAT Verbal score for enrolled students
@@ -44,7 +45,8 @@ public class University
    * @param percent of students admitted to university
    * @param percent of students that decide to enroll at university
    * @param academic scale indicating the academic scale at university (1-5)
-   * @param social scale indicating quality of life at university (1-5)
+   * @param social scale indicating social life at university (1-5)
+   * @param quality of life scale indicating the quality of life at university (1-5)
    * @throws IllegalArgumentsException if the academicScale parameter is not between 1 and 5
    * @throws IllegalArgumentsException if the socialScale parameter is not between 1 and 5
    */
