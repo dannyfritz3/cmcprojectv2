@@ -4,6 +4,11 @@
  */
 package controllers;
 
+import java.util.ArrayList;
+
+import baseclasses.Account;
+import baseclasses.University;
+
 /**
  * This is a class that controls the admin functions
  * 
@@ -19,6 +24,7 @@ public class AdminFuncController{
   * This method adds a university to the system
   * 
   * @param name of university
+  * @param state of university
   * @param location of university
   * @param numberOfStudents at the university
   * @param percentFemale students at the university
@@ -34,8 +40,8 @@ public class AdminFuncController{
   * @param empases of the university
   * @return true if univerity added successfully
   */
- public boolean addUniversity(String name, String location, int numberOfStudents, int percentFemale, int SATVerbal, int SATMath, int expense, int percentFinancialAid, int numberOfApplicants, int perecentAdmitted, int percentEnrolled, int academicScale, int socialScale, String emphasis){
-	 University uni = new University(name,location,numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,emphasis);
+ public boolean addUniversity(String name, String state, String location, int numberOfStudents, int percentFemale, int SATVerbal, int SATMath, int expense, int percentFinancialAid, int numberOfApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, String emphasis){
+	 University uni = new University(name,state,location,numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,emphasis);
 	 return database.addUniversity(uni);
  }
   /**
@@ -44,7 +50,7 @@ public class AdminFuncController{
    * @returns a set of all university objects in the database
    */
   public ArrayList<University> viewAllUniversities(University university){
-	  ArrayList<University> universities = new database.getUniveristies();
+	  ArrayList<University> universities = database.getUniversities();
 	  return universities;
   }
 	  
@@ -73,9 +79,9 @@ public class AdminFuncController{
    * @param username the username of the account to be deactivated
    */
   public void deactivate(String username){
-	  Account acc = new database.getAccount(username);
+	  Account acc = database.getAccount(username);
 	  acc.setType('N');
-	  acccontrol.updateUser(acc);
+	  database.updateUser(acc);
   }
   
   
@@ -90,7 +96,7 @@ public class AdminFuncController{
    * @param status the account status of the user represented by the account
    * @returns true if account added successfully, otherwise false
    */
-  public boolean addUser(String firstname, String lastname, String username, String password, Char type, Char status){
+  public boolean addUser(String firstname, String lastname, String username, String password, char type, char status){
 	  return acccontrol.addAccount(firstname,lastname,username,password,type,status);
  	}
   
@@ -100,7 +106,7 @@ public class AdminFuncController{
    * @returns an Arraylist set of accounts
    */
   public ArrayList<Account> manageUsers(){
-	  ArrayList<Account> accounts= new acccontrol.getAccounts();
+	  ArrayList<Account> accounts= acccontrol.getAccounts();
 	  return accounts;
   }
 }
