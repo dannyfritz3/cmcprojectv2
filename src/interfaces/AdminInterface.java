@@ -1,9 +1,15 @@
 /**
  * File: AdminInterface.java
  */
-
 package interfaces;
 
+
+import controllers.AdminFuncController;
+import controllers.AccountController;
+import baseclasses.University;
+import baseclasses.Account;
+
+import java.util.ArrayList;
 /*
  *This is a class that is an interface for the admin
  *
@@ -13,7 +19,8 @@ package interfaces;
 
 
 public class AdminInterface{
-	
+	private AdminFuncController afc = new AdminFuncController();
+	private AccountController ac = new AccountController();
 	/*
  	* 
  	* This method is to view all schools
@@ -21,15 +28,7 @@ public class AdminInterface{
  	* @returns an array of universities
  	*/ 
 	public ArrayList<University> viewAllSchools(){
-		return null;
-	}
-
-	/*
- 	* This method manages universities
- 	*
- 	*/
-	public void manageUniversities(){
-
+		return afc.viewAllUniversities();
 	}
 	/*
  	* This is a method to deactivate an account
@@ -37,7 +36,7 @@ public class AdminInterface{
  	* @param the account that is being deactivated
 	*/
 	public void deactivate(Account a){
-
+		afc.deactivate(a.getUsername());
 	}
 	/*
  	 * This is a method to add a user
@@ -45,26 +44,25 @@ public class AdminInterface{
  	 * @param an account object of the user being added
  	 */ 
 	public void addUser(Account a){
-	
+		afc.addUser(a.getFirstName(), a.getLastName(), a.getUsername(), a.getPassword(), a.getType(), a.getStatus());
 	}
 
 	/*
  	* This is a method to edit a university
 	* 
-	* @param the string title of the university
+	* @param the university object
 	*/ 
-	public void editUniversity(String university){
-
+	public void editUniversity(University university){
+		afc.editUniversity(university); 
 	}
 	
 	/*
 	 * This is a method to edit a profile
 	 *
 	 * @param the account being edited
-	 * @returns a boolean for a succesful edit or not
  	*/
-	public boolean editProfile(Account a){
-		return false;
+	public void editProfile(Account a){
+		ac.editUserInfo(a, a.getFirstName(), a.getLastName(), a.getUsername(), a.getType(), a.getStatus());
 	}
 	
 	/*
@@ -88,7 +86,7 @@ public class AdminInterface{
  	* @returns an array of universities that meet the criteria
  	*/
 	public boolean addUniversity(String name, String state, String location, int numberOfStudents, int percentFemale, int SATVerbal, int SATMath, int expenses, int percentFinancialAid, int numberOfApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, String emphases){
-		return false;
+		return afc.addUniversity(name,state,location,numberOfStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,emphases);
 	}
 	
 	/*
@@ -99,6 +97,6 @@ public class AdminInterface{
  	 */   
 
 	public Account viewUser(String username){
-		return null;
+		return afc.viewUser(username);
 	}
 }
