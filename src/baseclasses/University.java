@@ -89,6 +89,7 @@ public class University
 	    this.emphasis = emphasis;
 	  }
   }
+  
   /**
    * A method that gets the name of the University
    * 
@@ -128,6 +129,7 @@ public class University
   {
 	  return this.control;
   }
+  
   /**
    * A method that gets the number of students at the University
    * 
@@ -247,6 +249,7 @@ public class University
   {
 	  return this.qualityOfLifeScale;
   }
+  
   /**
    * A method that gets the emphasis from the University
    * 
