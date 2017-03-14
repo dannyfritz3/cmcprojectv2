@@ -21,7 +21,7 @@ public abstract class AccountInterface{
  	*/
 
 	public void logout(){
-
+		
 	}
 	
 	/*

@@ -1,7 +1,11 @@
 /**
  * File: UserInterface.java
  */
- packages interfaces;
+ package interfaces;
+ 
+ import java.util.*;
+ import baseclasses.*;
+ import controllers.*;
  /* 
  *This is a class that is an interface for the user
  *
@@ -9,7 +13,7 @@
  * @version 0.1
  */
 
-publsme: String, lastName: String): booleanc class UserInterface{
+public class UserInterface{
 	
 	/*
  	o* This is a method to view saved schools
@@ -29,13 +33,13 @@ publsme: String, lastName: String): booleanc class UserInterface{
  	* @param SATVerbal the average SAT verbal score for enrolled students
  	* @param SATMath the average SAT math score for enrolled students
  	* @param expenses annual expenses or tuition to attend the schools
- 	* @param percentFinancialAid %  of enrolled students recieveing financial aid
+ 	* @param percentFinancialAid %  of enrolled students receiving financial aid
  	* @param numberOfApplicants # of people who apply each year
  	* @param percentAdmitted % of applicants admitted
  	* @param percentEnrolled percent of applicants that decide to enroll
  	* @param academicScale scale 1-5 of academic scale of school
- 	* @param socialScale scale 1-5 idicating quality of life at school
- 	* @param emphases up to five areas of study (all strings) in which the school excells
+ 	* @param socialScale scale 1-5 indicating quality of life at school
+ 	* @param emphases up to five areas of study (all strings) in which the school excels
  	*
  	* @returns an array of universities that meet the criteria
  	*/
@@ -44,7 +48,7 @@ publsme: String, lastName: String): booleanc class UserInterface{
 	}
 
 	/*
- 	 *  This is a method that lets the user view their profilee
+ 	 *  This is a method that lets the user view their profile
  	 *  
  	 *  @returns String
  	 */ 	 
@@ -72,7 +76,7 @@ publsme: String, lastName: String): booleanc class UserInterface{
 	/* This is a method that edits a profile
  	 *
  	 * @param An account of the profile being edited
- 	 * @throws IllegalArgumentException if acc has a different username
+ 	 * @throws IllegalArgumentException if account has a different username
  	 */ 
 	public boolean editProfile(Account acc){
 		return false;
