@@ -114,7 +114,7 @@ public class SearchController {
 	 * @param emphasis of the university
 	 * @return the condition attached to whether or not any matches were found to the search
 	 */
-	public boolean search(String name, String state, String location, int numberOfStudents, int numberOfStudents2, int percentFemale, int percentFemale2, int SATVerbal, int SATVerbal2, int SATMath, int SATMath2, int expense, int expense2, int percentFinancialAid, int percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, int percentAdmitted, int percentAdmitted2, int percentEnrolled, int percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, String emphasis){
+	public boolean search(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, int percentFemale, int percentFemale2, int SATVerbal, int SATVerbal2, int SATMath, int SATMath2, int expense, int expense2, int percentFinancialAid, int percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, int percentAdmitted, int percentAdmitted2, int percentEnrolled, int percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, String emphasis){
 		DBController db = new DBController();
 		ArrayList<University> Us = db.getUniversities();
 		for(int i = 0;i < Us.size();i++){
