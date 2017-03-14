@@ -239,6 +239,15 @@ public class University
   }
   
   /**
+   * A method that gets the quality of life scale from the University
+   * 
+   * @returns the quality of life scale from the University
+   */
+  public int getQualityOfLifeScale()
+  {
+	  return this.qualityOfLifeScale;
+  }
+  /**
    * A method that gets the emphasis from the University
    * 
    * @returns the emphasis from the University
@@ -441,6 +450,78 @@ public class University
    */
   public int compareto(Object o)
   {
-    return 0;
+	University uni = (University) o;
+    int comparisons = 0;
+    
+    if(this.name.equals(uni.getName()))
+    {
+    	comparisons += 1;
+    }
+    if(this.state.equals(uni.getState()))
+    {
+    	comparisons += 1;
+    }
+    if(this.location.equals(uni.getLocation()))
+    {
+    	comparisons += 1;
+    }
+    if(this.control.equals(uni.getControl()))
+    {
+    	comparisons += 1;
+    }
+    if(this.numberOfStudents == uni.getNumberOfStudents())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentFemale == uni.getPercentFemale())
+    {
+    	comparisons += 1;
+    }
+    if(this.satVerbal == uni.getSATVerbal())
+    {
+    	comparisons += 1;
+    }
+    if(this.satMath == uni.getSATMath())
+    {
+    	comparisons += 1;
+    }
+    if(this.expenses == uni.getExpenses())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentFinancialAid == uni.getPercentFinancialAid())
+    {
+    	comparisons += 1;
+    }
+    if(this.numberOfApplicants == uni.getNumberOfApplicants())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentAdmitted == uni.getPercentAdmitted())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentEnrolled == uni.getPercentEnrolled())
+    {
+    	comparisons += 1;
+    }
+    if(this.academicScale == uni.getAcademicScale())
+    {
+    	comparisons += 1;
+    }
+    if(this.socialScale == uni.getSocialScale())
+    {
+    	comparisons += 1;
+    }
+    if(this.qualityOfLifeScale == uni.getQualityOfLifeScale())
+    {
+    	comparisons += 1;
+    }
+    if(this.emphasis == uni.getEmphasis())
+    {
+    	comparisons += 1;
+    }
+    
+    return comparisons;
   }
 }

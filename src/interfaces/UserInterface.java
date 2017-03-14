@@ -16,7 +16,7 @@
 public class UserInterface{
 	
 	/*
- 	o* This is a method to view saved schools
+ 	* This is a method to view saved schools
  	* 
  	*/
 	public ArrayList<University> viewSavedSchools(){
@@ -28,6 +28,7 @@ public class UserInterface{
  	* @param name of school
  	* @param state schools is located
  	* @param locaiton of school (urban, rural...)
+ 	* @param control of the university (public or private)
  	* @param numberOfStudents currently attending the school
  	* @param percentFemale percentage of females attending the school
  	* @param SATVerbal the average SAT verbal score for enrolled students
@@ -38,12 +39,13 @@ public class UserInterface{
  	* @param percentAdmitted % of applicants admitted
  	* @param percentEnrolled percent of applicants that decide to enroll
  	* @param academicScale scale 1-5 of academic scale of school
- 	* @param socialScale scale 1-5 indicating quality of life at school
+ 	* @param socialScale scale 1-5 indicating the social life at school
+ 	* @param qualityOfLifeScale scale 1-5 indicating the quality of life at school
  	* @param emphases up to five areas of study (all strings) in which the school excels
  	*
  	* @returns an array of universities that meet the criteria
  	*/
-	public ArrayList<University> searchSchools(String name, String state, String location, int numberOfStudents, int percentFemale, int SATVerbal, int SATMath, int expenses, int percentFinancialAid, int numberOfApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, String emphases){
+	public ArrayList<University> searchSchools(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expenses, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLifeScale, String emphases){
 		return null;
 	}
 
@@ -67,7 +69,7 @@ public class UserInterface{
 	/*
  	 * This method views the searches (??)
  	 *
- 	 * @returns an array of University objects 	 *
+ 	 * @returns an array of University objects
  	 */ 
 	public ArrayList<University> viewSearches(){
 		return null;
@@ -88,6 +90,6 @@ public class UserInterface{
  	 * @param An account of the user being logged out
  	 */ 
 	public void logout(Account a){
-
+		
 	}
 }
