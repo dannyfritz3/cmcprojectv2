@@ -4,6 +4,8 @@
 
 package baseclasses;
 
+import java.util.ArrayList;
+
 /**
  * This is the User base class
  * 
@@ -18,8 +20,8 @@ public class User extends Account{
 	/**
 	 * This creates a new User and fills the fields required for all acocunts
 	 */
-	public User(String username, Strin firstName, String lastName, String password, char type, char status){
-		super(username,firstname,lastname,password,type,status);
+	public User(String username, String firstName, String lastName, String password, char type, char status){
+		super(username,firstName,lastName,password,type,status);
 	}
 	/**
 	 * This method gets a list of this users saved universities
@@ -37,7 +39,7 @@ public class User extends Account{
 	 * @return whether or not the university could be added
 	 */
 	public boolean addUniversities(University u) {
-		
+		return false;
 	}
 	
 	/**

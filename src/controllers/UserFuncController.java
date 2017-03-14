@@ -3,6 +3,11 @@
  */
 
 package controllers;
+
+import baseclasses.Account;
+import baseclasses.University;
+import baseclasses.User;
+
 /**
  * This is a class that holds all the functionalities of a User
  * 
