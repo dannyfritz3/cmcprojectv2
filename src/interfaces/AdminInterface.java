@@ -85,8 +85,8 @@ public class AdminInterface{
  	* @param emphases up to five areas of study (all strings) in which the school excells
  	* @returns an array of universities that meet the criteria
  	*/
-	public boolean addUniversity(String name, String state, String location, int numberOfStudents, int percentFemale, int SATVerbal, int SATMath, int expenses, int percentFinancialAid, int numberOfApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, String emphases){
-		return afc.addUniversity(name,state,location,numberOfStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,emphases);
+	public boolean addUniversity(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expense, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale,int qualityOfLifeScale, String emphasis){
+		return afc.addUniversity(name,state,location,control, numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,qualityOfLifeScale,emphasis);
 	}
 	
 	/**
