@@ -13,7 +13,7 @@ package interfaces;
  */
 
 
-public abstract class AccontInterface{
+public abstract class AccountInterface{
 	
 	/*
  	* This is a method to logout
@@ -21,7 +21,7 @@ public abstract class AccontInterface{
  	*/
 
 	public void logout(){
-
+		
 	}
 	
 	/*

@@ -12,10 +12,10 @@ package baseclasses;
  */
 public class University
 {
-  private String name, state, location, emphasis;
-  private int numberOfStudents, percentFemale, satVerbal, satMath,
-    expenses, percentFinancialAid, numberOfApplicants, percentAdmitted,
-    percentEnrolled, academicScale, socialScale;
+  private String name, state, location, emphasis, control;
+  private int numberOfStudents, numberOfApplicants, academicScale, socialScale, qualityOfLifeScale;
+  private double percentFemale, satVerbal, satMath, expenses, percentFinancialAid, percentAdmitted,
+  	percentEnrolled;
   
   /**
    * A constructor that creates a university object with the minimum requirements being just the name
@@ -34,6 +34,7 @@ public class University
    * @param state in which university is located
    * @param type of location university is located (urban, rural, suburban, etc.)
    * @param subjects that are emphasized at the university
+   * @param control of the university (public or private)
    * @param number of students at the university
    * @param percent of female students at the university
    * @param average SAT Verbal score for enrolled students
@@ -44,15 +45,16 @@ public class University
    * @param percent of students admitted to university
    * @param percent of students that decide to enroll at university
    * @param academic scale indicating the academic scale at university (1-5)
-   * @param social scale indicating quality of life at university (1-5)
+   * @param social scale indicating social life at university (1-5)
+   * @param quality of life scale indicating the quality of life at university (1-5)
    * @throws IllegalArgumentsException if the academicScale parameter is not between 1 and 5
    * @throws IllegalArgumentsException if the socialScale parameter is not between 1 and 5
    */
-  public University(String name, String state, String location, int numberOfStudents,
-		  			int percentFemale, int satVerbal, int satMath,
-                    int expenses, int percentFinancialAid, int numberOfApplicants,
-                    int percentAdmitted, int percentEnrolled, int academicScale,
-                    int socialScale, String emphasis) throws IllegalArgumentException
+  public University(String name, String state, String location, String control, int numberOfStudents,
+		  			double percentFemale, double satVerbal, double satMath,
+                    double expenses, double percentFinancialAid, int numberOfApplicants,
+                    double percentAdmitted, double percentEnrolled, int academicScale,
+                    int socialScale, int qualityOfLifeScale, String emphasis) throws IllegalArgumentException
   {
 	  if((academicScale < 1 || academicScale > 5))
 	  {
@@ -62,11 +64,16 @@ public class University
 	  {
 		  throw new IllegalArgumentException("Parameter for 'Social Scale' is not a valid number. Must be an integer 1 - 5");
 	  }
-	  else
+	  else if((qualityOfLifeScale < 1 || qualityOfLifeScale > 5))
+	  {
+		  throw new IllegalArgumentException("Parameter for 'Quality Of Life Scale' is not a valid number. Must be an integer 1 - 5");
+	  }
+	  else//think about throwing exceptions for all variables
 	  {
 	    this.name = name;
 	    this.state = state;
 	    this.location = location;
+	    this.control = control;
 	    this.numberOfStudents = numberOfStudents;
 	    this.percentFemale = percentFemale;
 	    this.satVerbal = satVerbal;
@@ -78,9 +85,11 @@ public class University
 	    this.percentEnrolled = percentEnrolled;
 	    this.academicScale = academicScale;
 	    this.socialScale = socialScale;
+	    this.qualityOfLifeScale = qualityOfLifeScale;
 	    this.emphasis = emphasis;
 	  }
   }
+  
   /**
    * A method that gets the name of the University
    * 
@@ -112,6 +121,16 @@ public class University
   }
   
   /**
+   * A method that gets the control of the University
+   * 
+   * @returns the control of the University
+   */
+  public String getControl()
+  {
+	  return this.control;
+  }
+  
+  /**
    * A method that gets the number of students at the University
    * 
    * @returns the number of students at the University
@@ -126,7 +145,7 @@ public class University
    * 
    * @returns the percentage of female students in the University
    */
-  public int getPercentFemale()
+  public double getPercentFemale()
   {
     return this.percentFemale;
   }
@@ -136,7 +155,7 @@ public class University
    * 
    * @returns the SAT Verbal of the University
    */
-  public int getSATVerbal()
+  public double getSATVerbal()
   {
     return this.satVerbal;
   }
@@ -146,7 +165,7 @@ public class University
    * 
    * @returns the SAT Math of the University
    */
-  public int getSATMath()
+  public double getSATMath()
   {
     return this.satMath;
   }
@@ -156,7 +175,7 @@ public class University
    * 
    * @returns the expenses of the University
    */
-  public int getExpenses()
+  public double getExpenses()
   {
     return this.expenses;
   }
@@ -166,7 +185,7 @@ public class University
    * 
    * @returns the percent of financial aid from the University
    */
-  public int getPercentFinancialAid()
+  public double getPercentFinancialAid()
   {
     return this.percentFinancialAid;
   }
@@ -186,7 +205,7 @@ public class University
    * 
    * @returns the percent admitted from the University
    */
-  public int getPercentAdmitted()
+  public double getPercentAdmitted()
   {
     return this.percentAdmitted;
   }
@@ -196,7 +215,7 @@ public class University
    * 
    * @returns the percent enrolled from the University
    */
-  public int getPercentEnrolled()
+  public double getPercentEnrolled()
   {
     return this.percentEnrolled;
   }
@@ -222,6 +241,16 @@ public class University
   }
   
   /**
+   * A method that gets the quality of life scale from the University
+   * 
+   * @returns the quality of life scale from the University
+   */
+  public int getQualityOfLifeScale()
+  {
+	  return this.qualityOfLifeScale;
+  }
+  
+  /**
    * A method that gets the emphasis from the University
    * 
    * @returns the emphasis from the University
@@ -238,12 +267,12 @@ public class University
    */
   public String getInformation()
   {
-    return "Name: " + name + "\nState: " + state + "\nLocation: " + location
+    return "Name: " + name + "\nState: " + state + "\nLocation: " + location + "\nControl: " + control
       + "\nNumber of Students: " + numberOfStudents + "\nPercent Female: " + percentFemale
       + "\nSAT Verbal: " + satVerbal + "\nSAT Math: " + satMath + "\nExpenses: " + expenses
       + "\nPercent FinancialAid: " + percentFinancialAid + "\nNumber of Applicants: " + numberOfApplicants
       + "\nPercent Enrolled: " + percentEnrolled + "Academic Scale: " + academicScale + "\nSocial Scale: " + socialScale
-      + "\nEmphasis: " + emphasis;
+      + "\nQuality of Life Scale: " + qualityOfLifeScale + "\nEmphasis: " + emphasis;
   }
   
   /**
@@ -277,6 +306,16 @@ public class University
   }
   
   /**
+   * A method that sets the control of the University
+   * 
+   * @param the control of University
+   */
+  public void setControl(String s)
+  {
+	  this.control = s;
+  }
+  
+  /**
    * A method that sets the number of students at the University
    * 
    * @param the number of students at the University
@@ -291,7 +330,7 @@ public class University
    * 
    * @param the percent of female students at the University
    */
-  public void setPercentFemale(int i)
+  public void setPercentFemale(double i)
   {
     this.percentFemale = i;
   }
@@ -301,7 +340,7 @@ public class University
    * 
    * @param the SAT Verbal at the University
    */
-  public void setSATVerbal(int i)
+  public void setSATVerbal(double i)
   {
     this.satVerbal = i;
   }
@@ -311,7 +350,7 @@ public class University
    * 
    * @param the SAT Math at the University
    */
-  public void setSATMath(int i)
+  public void setSATMath(double i)
   {
     this.satMath = i;
   }
@@ -321,7 +360,7 @@ public class University
    * 
    * @param the expenses of the University
    */
-  public void setExpenses(int i)
+  public void setExpenses(double i)
   {
     this.expenses = i;
   }
@@ -331,7 +370,7 @@ public class University
    * 
    * @param the percent financial aid of the University
    */
-  public void setPercentFinancialAid(int i)
+  public void setPercentFinancialAid(double i)
   {
     this.percentFinancialAid = i;
   }
@@ -351,7 +390,7 @@ public class University
    * 
    * @param the percent admitted at the University
    */
-  public void setPercentAdmitted(int i)
+  public void setPercentAdmitted(double i)
   {
     this.percentAdmitted = i;
   }
@@ -361,7 +400,7 @@ public class University
    * 
    * @param the percent enrolled at the University
    */
-  public void setPercentEnrolled(int i)
+  public void setPercentEnrolled(double i)
   {
     this.percentEnrolled = i;
   }
@@ -387,6 +426,16 @@ public class University
   }
   
   /**
+   * A method that sets the quality of life scale of the University
+   * 
+   * @param the quality of life scale of the University
+   */
+  public void setQualityOfLifeScale(int i)
+  {
+	  this.qualityOfLifeScale = i;
+  }
+  
+  /**
    * A method that sets the emphasis of the University
    * 
    * @param the emphasis of the University
@@ -404,6 +453,78 @@ public class University
    */
   public int compareto(Object o)
   {
-    return 0;
+	University uni = (University) o;
+    int comparisons = 0;
+    
+    if(this.name.equals(uni.getName()))
+    {
+    	comparisons += 1;
+    }
+    if(this.state.equals(uni.getState()))
+    {
+    	comparisons += 1;
+    }
+    if(this.location.equals(uni.getLocation()))
+    {
+    	comparisons += 1;
+    }
+    if(this.control.equals(uni.getControl()))
+    {
+    	comparisons += 1;
+    }
+    if(this.numberOfStudents == uni.getNumberOfStudents())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentFemale == uni.getPercentFemale())
+    {
+    	comparisons += 1;
+    }
+    if(this.satVerbal == uni.getSATVerbal())
+    {
+    	comparisons += 1;
+    }
+    if(this.satMath == uni.getSATMath())
+    {
+    	comparisons += 1;
+    }
+    if(this.expenses == uni.getExpenses())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentFinancialAid == uni.getPercentFinancialAid())
+    {
+    	comparisons += 1;
+    }
+    if(this.numberOfApplicants == uni.getNumberOfApplicants())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentAdmitted == uni.getPercentAdmitted())
+    {
+    	comparisons += 1;
+    }
+    if(this.percentEnrolled == uni.getPercentEnrolled())
+    {
+    	comparisons += 1;
+    }
+    if(this.academicScale == uni.getAcademicScale())
+    {
+    	comparisons += 1;
+    }
+    if(this.socialScale == uni.getSocialScale())
+    {
+    	comparisons += 1;
+    }
+    if(this.qualityOfLifeScale == uni.getQualityOfLifeScale())
+    {
+    	comparisons += 1;
+    }
+    if(this.emphasis == uni.getEmphasis())
+    {
+    	comparisons += 1;
+    }
+    
+    return comparisons;
   }
 }
