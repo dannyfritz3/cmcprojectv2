@@ -29,37 +29,47 @@ public class SearchController {
 	public ArrayList<University> findRelatedUniversities(University university, int n){
 		DBController db = new DBController();
 		ArrayList<University> Us = db.getUniversities();
-		ArrayList<Tuple<University,Integer>> distances = new ArrayList<Tuple<University,Integer>>();//always in sorted order
+		ArrayList<Tuple<University,Double>> distances = new ArrayList<Tuple<University,Double>>();//always in sorted order
 		for(int i = 0;i < Us.size();i++){
 			University temp = Us.get(i);
-			int dist = distance(university, temp);
+			double dist = distance(university, temp);
 			if(distances.size() == 0){
-				distances.add(new Tuple<University,Integer>(temp,dist));
+				distances.add(new Tuple<University,Double>(temp,dist));
 			} else {
 				for(int j = 0;j < distances.size();j++){
 					if(distances.get(j).i > dist){
-						distances.add(j, new Tuple<University,Integer>(temp,dist));
+						distances.add(j, new Tuple<University,Double>(temp,dist));
 						j = distances.size();
 					}
 				}
 			}
 		}
 		ArrayList<University> relatedUs = new ArrayList<University>();
-		for(int i = 0;i < n;i++){
+		for(int i = 0;i < n;i++){//could possibly cause problems with recommending the same university
 			relatedUs.add(distances.get(i).university);
 		}
 		return relatedUs;
 	}
 	
-	private int distance(University u, University c){
-		int distance = 0;
+	/**
+	 * helper function to find the distances between two universities
+	 * 
+	 * @param u university to be compared to
+	 * @param c university to compare to u
+	 * @return the distance between the two
+	 */
+	private double distance(University u, University c){
+		double distance = 0;
 		if(!u.getState().equals(c.getState())){
 			distance+=1;
 		}
 		if(!u.getLocation().equals(c.getLocation())){
 			distance+=1;
 		}
-		//numgber of students
+		if(!u.getControl().equals(c.getControl())){
+			distance+=1;
+		}
+		//number of students
 		distance+=Math.abs(u.getNumberOfStudents() - c.getNumberOfStudents())/(Integer.MAX_VALUE - 0);
 		distance+=Math.abs(u.getPercentFemale() - c.getPercentFemale())/(100-0);
 		distance+=Math.abs(u.getSATVerbal() - c.getSATVerbal())/(800-200);
@@ -71,8 +81,9 @@ public class SearchController {
 		distance+=Math.abs(u.getNumberOfApplicants() - c.getNumberOfApplicants())/(Integer.MAX_VALUE - 0);
 		distance+=Math.abs(u.getPercentAdmitted() - c.getPercentAdmitted())/(100-0);
 		distance+=Math.abs(u.getPercentEnrolled() - c.getPercentEnrolled())/(100-0);
-		distance+=Math.abs(u.getAcademicScale() - c.getSocialScale())/(5-0);
-		distance+=Math.abs(u.getSocialScale() - c.getSocialScale())/(5-0);
+		distance+=Math.abs(u.getAcademicScale() - c.getSocialScale())/(5-1);
+		distance+=Math.abs(u.getSocialScale() - c.getSocialScale())/(5-1);
+		distance+=Math.abs(u.getQualityOfLifeScale() - c.getQualityOfLifeScale())/(5-1);
 		if(!u.getEmphasis().equals(c.getEmphasis())){
 			distance+=1;
 		}
@@ -168,6 +179,14 @@ public class SearchController {
 		}
 	}
 	
+	/**
+	 * Tuple helper class
+	 * 
+	 * @author mjzent
+	 *
+	 * @param <X> is a University object
+	 * @param <Y> is a distance
+	 */
 	private class Tuple<X, Y> { 
 		  public final X university; 
 		  public final Y i; 
