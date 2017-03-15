@@ -104,7 +104,7 @@ public class SearchController {
 		return this.searchedUniversities;
 	}
 	/**
-	 * This method talks to the dbcontroller to search the database based on given conditions, it will put all searches in searchedUniversities
+	 * This method talks to the DBcontroller to search the database based on given conditions, it will put all searches in searchedUniversities
 	 * 
 	 * @param name of university
 	 * @param state of university
