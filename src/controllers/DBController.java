@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import baseclasses.Account;
 import baseclasses.University;
+import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 /**
@@ -19,7 +20,8 @@ import baseclasses.University;
  */
 public class DBController{
   
-  private String dbServer, dbName, dbUser, dbPass;
+  private UniversityDBLibrary lib = new UniversityDBLibrary("nullpm", "nullpm", "csci230");
+  
   /**
    * This is a method that returns a university object from info from the database
    * 
@@ -37,7 +39,7 @@ public class DBController{
    * @returns true if addition is successful
    */
   public boolean addUniversity(University university){
-    return false;
+    return lib.university_addUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
   }
   /**
    * This is a method that edits a university's information in the database
@@ -46,7 +48,7 @@ public class DBController{
    * @returns true if university is updated successfully
    */
   public boolean editUniversity(University university){
-    return false;
+	  return lib.university_editUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
   }
   
   /**
@@ -63,8 +65,8 @@ public class DBController{
    * 
    * @returns a set of all university objects in the database
    */
-  public ArrayList<University> getUniversities(){
-    return null;
+  public String[][] getUniversities(){
+    return lib.university_getUniversities();
   }
   /**
    * This method updates a user's information in the database
