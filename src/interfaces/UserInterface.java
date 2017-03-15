@@ -26,7 +26,7 @@ public class UserInterface extends AccountInterface{
 	public ArrayList<University> viewSavedSchools(){
 		return this.ufc.getSavedSchools();
 	}
-	/**
+	/**account
  	* This is a method to search for schools
  	*
  	* @param name of school
