@@ -4,6 +4,8 @@
 
 package interfaces;
 
+import baseclasses.*;
+import controllers.*;
 /**
  * This is an abstract class that is interface for accounts
  *
@@ -15,13 +17,15 @@ package interfaces;
 
 public abstract class AccountInterface{
 	
+	private AccountController ac;
+	private LogonController lc;
+	
 	/*
  	* This is a method to logout
  	*
  	*/
-
-	public void logout(){
-		
+	public void logout(Account a){
+		this.lc.logout(a);
 	}
 	
 	/*
@@ -30,10 +34,14 @@ public abstract class AccountInterface{
  	* @param username the username of the account logging in
  	* @param password the password of the account logging in
 	*/ 
-
 	public void login(String username, String password){
-
+		if(this.ac.login(username, password) == false)
+		{
+			System.err.println("Either your userame or password did not match or the user does not exist");
+		}
+		else
+		{
+			this.ac.login(username, password);
+		}
 	}
-
-
 }

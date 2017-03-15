@@ -15,12 +15,16 @@
 
 public class UserInterface{
 	
+	private UserFuncController ufc;
+	private SearchController sc;
+	private LogonController lc;
+	
 	/*
  	* This is a method to view saved schools
  	* 
  	*/
 	public ArrayList<University> viewSavedSchools(){
-		return null;
+		return this.ufc.getSavedSchools();
 	}
 	/*
  	* This is a method to search for schools
@@ -45,8 +49,9 @@ public class UserInterface{
  	*
  	* @returns an array of universities that meet the criteria
  	*/
-	public ArrayList<University> searchSchools(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expenses, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLifeScale, String emphases){
-		return null;
+	public ArrayList<University> searchSchools(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expenses, double expenses2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, String emphasis){
+		this.sc.search(name, state, location, control, numberOfStudents, numberOfStudents2, percentFemale, percentFemale2, SATVerbal, SATVerbal2, SATMath, SATMath2, expenses, expenses2, percentFinancialAid, percentFinancialAid2, numberOfApplicants, numberOfApplicants2, percentAdmitted, percentAdmitted2, percentEnrolled, percentEnrolled2, academicScale, academicScale2, socialScale, socialScale2, qualityOfLifeScale, qualityOfLifeScale2, emphasis);
+		return this.sc.getSearchedUniversities();
 	}
 
 	/*
@@ -55,7 +60,7 @@ public class UserInterface{
  	 *  @returns String
  	 */ 	 
 	public String viewProfile(){
-		return null;
+		return this.ufc.viewProfile();
 	}
 
 	/* 
@@ -64,7 +69,7 @@ public class UserInterface{
  	 * @param University a university object
  	 */
 	public void saveSchool(University uni){
-
+		this.ufc.saveSchool(uni);
 	}
 	/*
  	 * This method views the searches (??)
@@ -72,7 +77,7 @@ public class UserInterface{
  	 * @returns an array of University objects
  	 */ 
 	public ArrayList<University> viewSearches(){
-		return null;
+		return this.sc.getSearchedUniversities();
 	}
 
 	/* This is a method that edits a profile
@@ -81,15 +86,39 @@ public class UserInterface{
  	 * @throws IllegalArgumentException if account has a different username
  	 */ 
 	public boolean editProfile(Account acc){
-		return false;
+		return this.ufc.editProfile(acc);
 	}
 
+	/*
+	 * A method that views the school's information
+	 * 
+	 * @returns all of the schools information
+	 */
+	public String viewSchool(University uni)
+	{
+		return ufc.viewSchool(uni);
+	}
+	
+	public String viewSchoolWRec(University u)
+	{
+		return this.ufc.viewSchoolWRec(u);
+	}
+	/*
+	 * A method that removes a university
+	 * 
+	 * returns true if the university was removed successfully
+	 */
+	public boolean removeSchool(University uni)
+	{
+		return this.ufc.removeSchool(uni);
+	}
+	
 	/*
  	 *This is a method that logs out the user
  	 *
  	 * @param An account of the user being logged out
  	 */ 
 	public void logout(Account a){
-		
+		this.lc.logout(a);
 	}
 }
