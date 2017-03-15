@@ -13,11 +13,11 @@
  * @version 0.1
  */
 
-public class UserInterface{
+public class UserInterface extends AccountInterface{
 	
-	private UserFuncController ufc;
-	private SearchController sc;
-	private LogonController lc;
+	private UserFuncController ufc = new UserFuncController((User)this.account);
+	private SearchController sc = new SearchController();
+	private LogonController lc = new LogonController();
 	
 	/**
  	* This is a method to view saved schools
@@ -118,12 +118,5 @@ public class UserInterface{
 		return this.ufc.removeSchool(uni);
 	}
 	
-	/**
- 	 *This is a method that logs out the user
- 	 *
- 	 * @param An account of the user being logged out
- 	 */ 
-	public void logout(Account a){
-		this.lc.logout(a);
-	}
+
 }

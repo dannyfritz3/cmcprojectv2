@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import baseclasses.Account;
 import baseclasses.University;
+import baseclasses.User;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
 
@@ -100,7 +101,7 @@ public class DBController{
    * @param username the username of the account to be retrieved
    * @returns the account object that matches the specified unsername
    */
-  public Account getAccount(String username){
+  public User getAccount(String username){
     return null;
   }
   

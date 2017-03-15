@@ -26,6 +26,10 @@ public abstract class AccountInterface{
 	 */
 	private LogonController lc = new LogonController();
 	
+	private DBController db = new DBController();
+	
+	protected Account account;
+	
 	/**
  	* This is a method to logout
  	*
@@ -49,6 +53,7 @@ public abstract class AccountInterface{
 		else
 		{
 			this.ac.login(username, password);
+			account = db.getAccount(username);
 		}
 	}
 }
