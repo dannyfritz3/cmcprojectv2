@@ -17,7 +17,6 @@ public class UserInterface extends AccountInterface{
 	
 	private UserFuncController ufc = new UserFuncController((User)this.account);
 	private SearchController sc = new SearchController();
-	private LogonController lc = new LogonController();
 	
 	/**
  	* This is a method to view saved schools

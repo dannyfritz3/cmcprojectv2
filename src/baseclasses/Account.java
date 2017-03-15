@@ -7,7 +7,7 @@ package baseclasses;
 /**
  * A class that defines the attributes and functionalities of an account
  * 
- * @authors Danny Fritz, Matt Zent, Ethan Ferry, and Kyle Becker
+ * @authors Danny Fritz
  * @version 0.1
  */
 public class Account
