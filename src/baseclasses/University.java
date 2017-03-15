@@ -49,6 +49,7 @@ public class University
    * @param quality of life scale indicating the quality of life at university (1-5)
    * @throws IllegalArgumentsException if the academicScale parameter is not between 1 and 5
    * @throws IllegalArgumentsException if the socialScale parameter is not between 1 and 5
+   * @throws IllegalArgumentsException if the qualityOfLifeScale parameter is not between 1 and 5
    */
   public University(String name, String state, String location, String control, int numberOfStudents,
 		  			double percentFemale, double satVerbal, double satMath,

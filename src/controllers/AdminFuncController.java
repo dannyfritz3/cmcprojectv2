@@ -16,8 +16,13 @@ import baseclasses.University;
  * @version 0.1.1
  */
 public class AdminFuncController{
-	
+	/**
+	 * creates an account controller for this class to use
+	 */
 	private AccountController acccontrol = new AccountController();
+	/**
+	 * creates a database controller for this class to use
+	 */
 	private DBController database = new DBController();
   
  /**
@@ -40,8 +45,8 @@ public class AdminFuncController{
   * @param empases of the university
   * @return true if univerity added successfully
   */
- public boolean addUniversity(String name, String state, String location, int numberOfStudents, int percentFemale, int SATVerbal, int SATMath, int expense, int percentFinancialAid, int numberOfApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, String emphasis){
-	 University uni = new University(name,state,location,numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,emphasis);
+ public boolean addUniversity(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expense, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale,int qualityOfLifeScale, String emphasis){
+	 University uni = new University(name,state,location,control,numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,qualityOfLifeScale,emphasis);
 	 return database.addUniversity(uni);
  }
   /**
