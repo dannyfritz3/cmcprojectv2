@@ -17,7 +17,10 @@ import baseclasses.Account;
  */
 public class AccountController{
   
-	private DBController database = new DBController();
+  /**
+   * holds the database controller to be used within this controller
+   */
+  private DBController database = new DBController();
   /**
    * This method updates account info
    * 
