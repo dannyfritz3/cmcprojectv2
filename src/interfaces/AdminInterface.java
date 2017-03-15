@@ -10,7 +10,7 @@ import baseclasses.University;
 import baseclasses.Account;
 
 import java.util.ArrayList;
-/*
+/**
  *This is a class that is an interface for the admin
  *
  *@author Ethan Ferry
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class AdminInterface{
 	private AdminFuncController afc = new AdminFuncController();
 	private AccountController ac = new AccountController();
-	/*
+	/**
  	* 
  	* This method is to view all schools
  	*
@@ -30,7 +30,7 @@ public class AdminInterface{
 	public ArrayList<University> viewAllSchools(){
 		return afc.viewAllUniversities();
 	}
-	/*
+	/**
  	* This is a method to deactivate an account
  	*
  	* @param the account that is being deactivated
@@ -38,7 +38,7 @@ public class AdminInterface{
 	public void deactivate(Account a){
 		afc.deactivate(a.getUsername());
 	}
-	/*
+	/**
  	 * This is a method to add a user
  	 *
  	 * @param an account object of the user being added
@@ -47,7 +47,7 @@ public class AdminInterface{
 		afc.addUser(a.getFirstName(), a.getLastName(), a.getUsername(), a.getPassword(), a.getType(), a.getStatus());
 	}
 
-	/*
+	/**
  	* This is a method to edit a university
 	* 
 	* @param the university object
@@ -56,7 +56,7 @@ public class AdminInterface{
 		afc.editUniversity(university); 
 	}
 	
-	/*
+	/**
 	 * This is a method to edit a profile
 	 *
 	 * @param the account being edited
@@ -65,7 +65,7 @@ public class AdminInterface{
 		ac.editUserInfo(a, a.getFirstName(), a.getLastName(), a.getUsername(), a.getType(), a.getStatus());
 	}
 	
-	/*
+	/**
    	* This is a method to search for schools
   	*
   	* @param name of school
@@ -89,7 +89,7 @@ public class AdminInterface{
 		return afc.addUniversity(name,state,location,numberOfStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,emphases);
 	}
 	
-	/*
+	/**
  	 * This is a method to view a user
  	 * 
  	 * @param username the username of the user

@@ -6,7 +6,7 @@
  import java.util.*;
  import baseclasses.*;
  import controllers.*;
- /* 
+ /**
  *This is a class that is an interface for the user
  *
  * @author Ethan Ferry
@@ -19,14 +19,14 @@ public class UserInterface{
 	private SearchController sc;
 	private LogonController lc;
 	
-	/*
+	/**
  	* This is a method to view saved schools
  	* 
  	*/
 	public ArrayList<University> viewSavedSchools(){
 		return this.ufc.getSavedSchools();
 	}
-	/*
+	/**
  	* This is a method to search for schools
  	*
  	* @param name of school
@@ -54,7 +54,7 @@ public class UserInterface{
 		return this.sc.getSearchedUniversities();
 	}
 
-	/*
+	/**
  	 *  This is a method that lets the user view their profile
  	 *  
  	 *  @returns String
@@ -63,7 +63,7 @@ public class UserInterface{
 		return this.ufc.viewProfile();
 	}
 
-	/* 
+	/** 
  	 * This is a method that lets users save universities to a list   
  	 * 
  	 * @param University a university object
@@ -71,7 +71,7 @@ public class UserInterface{
 	public void saveSchool(University uni){
 		this.ufc.saveSchool(uni);
 	}
-	/*
+	/**
  	 * This method views the searches (??)
  	 *
  	 * @returns an array of University objects
@@ -80,7 +80,8 @@ public class UserInterface{
 		return this.sc.getSearchedUniversities();
 	}
 
-	/* This is a method that edits a profile
+	/**
+	 * This is a method that edits a profile
  	 *
  	 * @param An account of the profile being edited
  	 * @throws IllegalArgumentException if account has a different username
@@ -89,7 +90,7 @@ public class UserInterface{
 		return this.ufc.editProfile(acc);
 	}
 
-	/*
+	/**
 	 * A method that views the school's information
 	 * 
 	 * @returns all of the schools information
@@ -98,12 +99,16 @@ public class UserInterface{
 	{
 		return ufc.viewSchool(uni);
 	}
-	
+	/**
+	 * A method that views the school and the recommended school's information
+	 * 
+	 * @returns all of the schools information
+	 */
 	public String viewSchoolWRec(University u)
 	{
 		return this.ufc.viewSchoolWRec(u);
 	}
-	/*
+	/**
 	 * A method that removes a university
 	 * 
 	 * returns true if the university was removed successfully
@@ -113,7 +118,7 @@ public class UserInterface{
 		return this.ufc.removeSchool(uni);
 	}
 	
-	/*
+	/**
  	 *This is a method that logs out the user
  	 *
  	 * @param An account of the user being logged out
