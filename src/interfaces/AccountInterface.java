@@ -17,18 +17,29 @@ import controllers.*;
 
 public abstract class AccountInterface{
 	
-	private AccountController ac;
-	private LogonController lc;
+	/**
+	 * Creates an account controller for this class to use
+	 */
+	private AccountController ac = new AccountController();
+	/**
+	 * Creates a logon controller for this class to use
+	 */
+	private LogonController lc = new LogonController();
 	
-	/*
+	private DBController db = new DBController();
+	
+	protected Account account;
+	
+	/**
  	* This is a method to logout
  	*
+ 	* @param a is the account to be logged out
  	*/
 	public void logout(Account a){
 		this.lc.logout(a);
 	}
 	
-	/*
+	/**
  	* This is a method to log in
  	*
  	* @param username the username of the account logging in
@@ -42,6 +53,7 @@ public abstract class AccountInterface{
 		else
 		{
 			this.ac.login(username, password);
+			account = db.getAccount(username);
 		}
 	}
 }
