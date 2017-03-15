@@ -6,6 +6,8 @@ package baseclasses;
 
 import java.util.ArrayList;
 
+import controllers.SearchController;
+
 /**
  * This is the User base class
  * 
@@ -14,7 +16,9 @@ import java.util.ArrayList;
  */
 public class User extends Account{
 	
-	
+	/**
+	 * savedUniversities is an arraylist of saved universities
+	 */
 	private ArrayList<University> savedUniversities;
 
 	/**
@@ -39,7 +43,11 @@ public class User extends Account{
 	 * @return whether or not the university could be added
 	 */
 	public boolean addUniversities(University u) {
-		return false;
+		if(savedUniversities.contains(u)){
+			return false;
+		}
+		savedUniversities.add(u);
+		return true;
 	}
 	
 	/**
@@ -49,6 +57,10 @@ public class User extends Account{
 	 * @return whether the remove was successful
 	 */
 	public boolean removeSchool(University u){
+		if(savedUniversities.contains(u)){
+			savedUniversities.remove(u);
+			return true;
+		}
 		return false;
 	}
 	
@@ -59,7 +71,7 @@ public class User extends Account{
 	 * @return a string representation of university details
 	 */
 	public String viewSchool(University u){
-		return null;
+		return u.getInformation();
 	}
 	/**
 	 * This method views the details of a university as well as the details of similar universities
@@ -69,6 +81,12 @@ public class User extends Account{
 	 */
 	
 	public String viewSchoolWRec(University u){
-		return null;
+		String ret = u.getInformation();
+		SearchController search = new SearchController();
+		ArrayList<University> recs = search.findRelatedUniversities(u, 5);
+		for(int i = 0;i < 5;i++){
+			ret = ret + "/n" + recs.get(i).getInformation();
+		}
+		return ret;
 	}
 }

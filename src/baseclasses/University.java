@@ -68,7 +68,7 @@ public class University
 	  {
 		  throw new IllegalArgumentException("Parameter for 'Quality Of Life Scale' is not a valid number. Must be an integer 1 - 5");
 	  }
-	  else
+	  else//think about throwing exceptions for all variables
 	  {
 	    this.name = name;
 	    this.state = state;
