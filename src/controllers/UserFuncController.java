@@ -4,6 +4,8 @@
 
 package controllers;
 
+import java.util.*;
+
 import baseclasses.Account;
 import baseclasses.University;
 import baseclasses.User;
@@ -17,6 +19,7 @@ import baseclasses.User;
 public class UserFuncController {
 	
 	private User user;
+	private ArrayList<University> savedSchools;
 	/**
 	 * This creates a new UserFuncController with the parameter of the user using it
 	 */
@@ -63,6 +66,15 @@ public class UserFuncController {
 		return false;
 	}
 	
+	/**
+	 * This method views all the saved schools that are saved by the user
+	 * 
+	 * @return an array list of universities saved by the user
+	 */
+	public ArrayList<University> getSavedSchools()
+	{
+		return savedSchools;
+	}
 	/**
 	 * This method talks to the User class and gets the details of that user
 	 * 
