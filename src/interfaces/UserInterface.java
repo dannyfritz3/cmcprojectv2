@@ -15,7 +15,13 @@
 
 public class UserInterface extends AccountInterface{
 	
+	/**
+	 * UserFuncController object so that we can work with the user
+	 */
 	private UserFuncController ufc = new UserFuncController((User)this.account);
+	/**
+	 * SearchController object so that we can work with the search function
+	 */
 	private SearchController sc = new SearchController();
 	
 	/**

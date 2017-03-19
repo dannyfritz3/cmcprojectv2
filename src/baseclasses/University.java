@@ -12,8 +12,21 @@ package baseclasses;
  */
 public class University
 {
+	/**
+	 * name of the university, state of the university, location of the university, emphasis of study at university,
+	 * control over university (public, private)
+	 */
   private String name, state, location, emphasis, control;
+  /**
+   * number of students attending a university, number of applicants at a unviersity, academic scale of a university (1-5),
+   * social scale at a university (1-5), quality of life scale at a university (1-5)
+   */
   private int numberOfStudents, numberOfApplicants, academicScale, socialScale, qualityOfLifeScale;
+  /**
+   * percent of students that are female at a university, SAT Verbal average at a university, SAT Math average at a university,
+   * expenses to attend a university, percent of financial aid at a university, percent admitted to a university, 
+   * percent of students who applied that are enrolled in a university
+   */
   private double percentFemale, satVerbal, satMath, expenses, percentFinancialAid, percentAdmitted,
   	percentEnrolled;
   

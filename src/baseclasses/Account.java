@@ -12,8 +12,17 @@ package baseclasses;
  */
 public class Account
 {
+	/**
+	 * username of the account, firstName of the account, lastName of the account, password of the account
+	 */
   private String username, firstName, lastName, password;
+  /**
+   * type of account (admin or user), status of the account (activated, deactivated)
+   */
   private char type, status;
+  /**
+   * loggedIn tells if the account is loggedIn or not
+   */
   private boolean loggedIn;
   
   /**

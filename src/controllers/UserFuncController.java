@@ -18,8 +18,17 @@ import baseclasses.User;
  */
 public class UserFuncController {
 	
+	/**
+	 * User object
+	 */
 	private User user;
+	/**
+	 * ArrayList to store saved schools
+	 */
 	private ArrayList<University> savedSchools;
+	/**
+	DBController object to work with the database
+	*/
 	private DBController db = new DBController();
 	/**
 	 * This creates a new UserFuncController with the parameter of the user using it
