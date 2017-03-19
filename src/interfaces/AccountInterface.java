@@ -17,16 +17,8 @@ import controllers.*;
 
 public abstract class AccountInterface{
 	
-	/**
-	 * Creates an account controller for this class to use
-	 */
-	private AccountController ac = new AccountController();
-	/**
-	 * Creates a logon controller for this class to use
-	 */
-	private LogonController lc = new LogonController();
-	
-	private DBController db = new DBController();
+
+
 	
 	protected Account account;
 	
@@ -36,7 +28,7 @@ public abstract class AccountInterface{
  	* @param a is the account to be logged out
  	*/
 	public void logout(Account a){
-		this.lc.logout(a);
+		LogonController.logout(a);
 	}
 	
 	/**
@@ -46,14 +38,14 @@ public abstract class AccountInterface{
  	* @param password the password of the account logging in
 	*/ 
 	public void login(String username, String password){
-		if(this.ac.login(username, password) == false)
+		if(AccountController.login(username, password) == false)
 		{
 			System.err.println("Either your userame or password did not match or the user does not exist");
 		}
 		else
 		{
-			this.ac.login(username, password);
-			account = db.getAccount(username);
+			AccountController.login(username, password);
+			account = DBController.getAccount(username);
 		}
 	}
 }

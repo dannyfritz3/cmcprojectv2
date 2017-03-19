@@ -19,8 +19,6 @@ import java.util.ArrayList;
 
 
 public class AdminInterface{
-	private AdminFuncController afc = new AdminFuncController();
-	private AccountController ac = new AccountController();
 	/**
  	* 
  	* This method is to view all schools
@@ -28,7 +26,7 @@ public class AdminInterface{
  	* @returns an array of universities
  	*/ 
 	public ArrayList<University> viewAllSchools(){
-		return afc.viewAllUniversities();
+		return AdminFuncController.viewAllUniversities();
 	}
 	/**
  	* This is a method to deactivate an account
@@ -36,7 +34,7 @@ public class AdminInterface{
  	* @param the account that is being deactivated
 	*/
 	public void deactivate(Account a){
-		afc.deactivate(a.getUsername());
+		AdminFuncController.deactivate(a.getUsername());
 	}
 	/**
  	 * This is a method to add a user
@@ -44,7 +42,7 @@ public class AdminInterface{
  	 * @param an account object of the user being added
  	 */ 
 	public void addUser(Account a){
-		afc.addUser(a.getFirstName(), a.getLastName(), a.getUsername(), a.getPassword(), a.getType(), a.getStatus());
+		AdminFuncController.addUser(a.getFirstName(), a.getLastName(), a.getUsername(), a.getPassword(), a.getType(), a.getStatus());
 	}
 
 	/**
@@ -53,7 +51,7 @@ public class AdminInterface{
 	* @param the university object
 	*/ 
 	public void editUniversity(University university){
-		afc.editUniversity(university); 
+		AdminFuncController.editUniversity(university); 
 	}
 	
 	/**
@@ -62,7 +60,7 @@ public class AdminInterface{
 	 * @param the account being edited
  	*/
 	public void editProfile(Account a){
-		ac.editUserInfo(a, a.getFirstName(), a.getLastName(), a.getUsername(), a.getType(), a.getStatus());
+		AccountController.editUserInfo(a, a.getFirstName(), a.getLastName(), a.getUsername(), a.getType(), a.getStatus());
 	}
 	
 	/**
@@ -86,7 +84,7 @@ public class AdminInterface{
  	* @returns an array of universities that meet the criteria
  	*/
 	public boolean addUniversity(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expense, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale,int qualityOfLifeScale, String emphasis){
-		return afc.addUniversity(name,state,location,control, numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,qualityOfLifeScale,emphasis);
+		return AdminFuncController.addUniversity(name,state,location,control, numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,qualityOfLifeScale,emphasis);
 	}
 	
 	/**
@@ -97,6 +95,6 @@ public class AdminInterface{
  	 */   
 
 	public Account viewUser(String username){
-		return afc.viewUser(username);
+		return AdminFuncController.viewUser(username);
 	}
 }

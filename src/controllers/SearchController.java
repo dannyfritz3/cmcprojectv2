@@ -27,8 +27,7 @@ public class SearchController {
 	 * @return an array of size n holding the most closely related universities
 	 */
 	public ArrayList<University> findRelatedUniversities(University university, int n){
-		DBController db = new DBController();
-		ArrayList<University> Us = db.getUniversities();
+		ArrayList<University> Us = DBController.getUniversities();
 		ArrayList<Tuple<University,Double>> distances = new ArrayList<Tuple<University,Double>>();//always in sorted order
 		for(int i = 0;i < Us.size();i++){
 			University temp = Us.get(i);
@@ -135,8 +134,7 @@ public class SearchController {
 	 * @return the condition attached to whether or not any matches were found to the search
 	 */
 	public boolean search(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expense, double expense2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, String emphasis){
-		DBController db = new DBController();
-		ArrayList<University> Us = db.getUniversities();
+		ArrayList<University> Us = DBController.getUniversities();
 		for(int i = 0;i < Us.size();i++){
 			University u = Us.get(i);
 			if(name == null || u.getName().contains(name)){

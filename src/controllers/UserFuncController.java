@@ -27,9 +27,9 @@ public class UserFuncController {
 	 */
 	private ArrayList<University> savedSchools;
 	/**
-	DBController object to work with the database
-	*/
-	private DBController db = new DBController();
+	 * SearchController object to search 
+	 */
+	private SearchController sc = new SearchController();
 	/**
 	 * This creates a new UserFuncController with the parameter of the user using it
 	 */
@@ -44,7 +44,7 @@ public class UserFuncController {
 	 */
 	public boolean removeSchool(University u){
 		boolean temp = user.removeSchool(u);
-		this.db.updateUser(user);
+		DBController.updateUser(user);
 		return temp;
 	}
 	
@@ -55,7 +55,7 @@ public class UserFuncController {
 	 * @return a string representation of university details
 	 */
 	public String viewSchool(University u){
-		String information = db.getUniversity(u.getName()).getInformation();
+		String information = DBController.getUniversity(u.getName()).getInformation();
 		return information;
 	}
 	/**
@@ -66,7 +66,7 @@ public class UserFuncController {
 	 */
 	
 	public String viewSchoolWRec(University u){
-		ArrayList<University> unis = db.getUniversityRecomendations(u);
+		ArrayList<University> unis = sc.findRelatedUniversities(u,5);
 		return unis.get(0).getInformation();
 	}
 	
@@ -78,7 +78,7 @@ public class UserFuncController {
 	 */
 	public boolean saveSchool(University u){
 		boolean temp = user.addUniversities(u);
-		this.db.updateUser(user);
+		DBController.updateUser(user);
 		return temp;
 	}
 	

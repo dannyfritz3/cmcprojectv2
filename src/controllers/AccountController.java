@@ -18,10 +18,6 @@ import baseclasses.Account;
 public class AccountController{
   
   /**
-   * holds the database controller to be used within this controller
-   */
-  private DBController database = new DBController();
-  /**
    * This method updates account info
    * 
    * @param account the updated account that should be changed in our database
@@ -31,7 +27,7 @@ public class AccountController{
    * @param type the new account type, null if to be unchanged
    * @param status the new account status, null if to be unchanged
    */
-  public void editUserInfo(Account account, String firstname, String lastname, String password, char type, char status){
+  public static void editUserInfo(Account account, String firstname, String lastname, String password, char type, char status){
 	  if(firstname!=null)
 		  account.setFirstName(firstname);
 	  if(lastname!=null)
@@ -41,7 +37,7 @@ public class AccountController{
 	  account.setType(type);
 	  account.setStatus(status);
 	  
-	  database.updateUser(account);
+	  DBController.updateUser(account);
   }
   
   /**
@@ -55,17 +51,17 @@ public class AccountController{
    * @param status the account status of the user represented by the account
    * @returns true if account added successfully, otherwise false
    */
-  public boolean addAccount(String firstname, String lastname, String username, String password, char type, char status){
+  public static boolean addAccount(String firstname, String lastname, String username, String password, char type, char status){
 	  Account acc = new Account(firstname,lastname,username,password,type,status);
-	  return database.addAccount(acc); 
+	  return DBController.addAccount(acc); 
   }
   /**
    * This method returns a set of all the accounts in the system
    * 
    * @returns an ArrayList of accounts in the system
    */
-  public ArrayList<Account> getAccounts(){
-	  ArrayList<Account> accounts= database.getAccounts();
+  public static ArrayList<Account> getAccounts(){
+	  ArrayList<Account> accounts= DBController.getAccounts();
 	  return accounts;
   }
     /**
@@ -75,9 +71,8 @@ public class AccountController{
    * @param Password of the user
    * @returns true if the login is completed
    */
-  public boolean login(String username, String password){
-	  LogonController lg = new LogonController();
-	  return lg.login(username,password);
+  public static boolean login(String username, String password){
+	  return LogonController.login(username,password);
   }
   
 }

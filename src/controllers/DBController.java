@@ -6,8 +6,6 @@ package controllers;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import baseclasses.Account;
 import baseclasses.University;
 import baseclasses.User;
@@ -22,7 +20,7 @@ import dblibrary.project.csci230.UniversityDBLibrary;
  */
 public class DBController{
   
-  private UniversityDBLibrary lib = new UniversityDBLibrary("nullpm", "nullpm", "csci230");
+  private static UniversityDBLibrary lib = new UniversityDBLibrary("nullpm", "nullpm", "csci230");
   
   /**
    * This is a method that returns a university object from info from the database
@@ -30,7 +28,7 @@ public class DBController{
    * @param name name of the university
    * @returns univeristy object of university with specified name
    */
-  public University getUniversity(String name){
+  public static University getUniversity(String name){
 	  String[][] unis = lib.university_getUniversities();
 	  for(String[] info : unis){
 		  if(info[0].equals(name)){
@@ -48,7 +46,7 @@ public class DBController{
    * @param university the university object to be added
    * @returns true if addition is successful
    */
-  public boolean addUniversity(University university){
+  public static boolean addUniversity(University university){
     return lib.university_addUniversity(university.getName(), university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
   }
   /**
@@ -57,7 +55,7 @@ public class DBController{
    * @param university the edited university object
    * @returns true if university is updated successfully
    */
-  public boolean editUniversity(University university){
+  public static boolean editUniversity(University university){
 	  return lib.university_editUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
   }
 
@@ -66,7 +64,7 @@ public class DBController{
    * 
    * @returns a set of all university objects in the database
    */
-  public ArrayList<University> getUniversities(){
+  public static ArrayList<University> getUniversities(){
 	  ArrayList<University> retlist = new ArrayList<University>();
 	  String[][] unis = lib.university_getUniversities();
 	  for(String[] info : unis){
@@ -79,7 +77,7 @@ public class DBController{
    * 
    * @param a the account to be updated
    */
-  public boolean updateUser(Account account){
+  public static boolean updateUser(Account account){
 	  return lib.user_editUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus()) != -1;
   }
   
@@ -88,7 +86,7 @@ public class DBController{
    * 
    * @returns a set of accounts in the database
    */
-  public ArrayList<Account> getAccounts(){
+  public static ArrayList<Account> getAccounts(){
     ArrayList<Account> retlist = new ArrayList<Account>();
 	String[][] users = lib.user_getUsers();
 	  for(String[] info : users){
@@ -102,7 +100,7 @@ public class DBController{
    * @param account the account to be added to the database
    * @returns true if account added successfully, otherwise false
    */
-  public boolean addAccount(Account account){
+  public static boolean addAccount(Account account){
     return lib.user_addUser(account.getFirstName(), account.getLastName(), account.getUsername(), account.getPassword(), account.getType()) != -1;
   }
   /**
@@ -111,7 +109,7 @@ public class DBController{
    * @param username the username of the account to be retrieved
    * @returns the account object that matches the specified unsername
    */
-  public User getAccount(String username){
+  public static User getAccount(String username){
 	  String[][] users = lib.user_getUsers();
 	  for(String[] info : users){
 		  if(info[2].equals(username)){
