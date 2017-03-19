@@ -6,6 +6,7 @@ package controllers;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import baseclasses.Account;
 import baseclasses.University;
@@ -29,7 +30,15 @@ public class DBController{
    * @returns univeristy object of university with specified name
    */
   public University getUniversity(String name){
-    return null;
+	  String[][] unis = lib.university_getUniversities();
+	  for(String[] info : unis){
+		  if(info[0].equals(name)){
+			  System.out.println(Arrays.toString(info));
+		  }
+		  
+	  }
+	  return null;
+    
   }
   
     /**
@@ -39,7 +48,7 @@ public class DBController{
    * @returns true if addition is successful
    */
   public boolean addUniversity(University university){
-    return lib.university_addUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
+    return lib.university_addUniversity(university.getName(), university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
   }
   /**
    * This is a method that edits a university's information in the database
@@ -50,16 +59,7 @@ public class DBController{
   public boolean editUniversity(University university){
 	  return lib.university_editUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
   }
-  
-  /**
-   * This is a method that returns a list of universities related to the specified one
-   * 
-   * @param univeristy the university object of the university that reccomendtions should be found for
-   * @returns a set of university objects that are similar to the specified one
-   */
-  public ArrayList<University> getUniversityRecomendations(University university){
-    return null;
-  }
+
   /**
    * This is a method that returns a list of universities in the database
    * 
@@ -73,8 +73,8 @@ public class DBController{
    * 
    * @param a the account to be updated
    */
-  public void updateUser(Account a){
-    
+  public boolean updateUser(Account account){
+	  return lib.user_editUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus()) != -1;
   }
   
   /**
@@ -91,8 +91,8 @@ public class DBController{
    * @param account the account to be added to the database
    * @returns true if account added successfully, otherwise false
    */
-  public boolean addAccount(Account accout){
-    return true;
+  public boolean addAccount(Account account){
+    return lib.user_addUser(account.getFirstName(), account.getLastName(), account.getUsername(), account.getPassword(), account.getType()) != -1;
   }
   /**
    * This method gets an account that matches the specified username
