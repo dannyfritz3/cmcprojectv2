@@ -34,7 +34,7 @@ public class DBController{
 	  String[][] unis = lib.university_getUniversities();
 	  for(String[] info : unis){
 		  if(info[0].equals(name)){
-			  System.out.println(Arrays.toString(info));
+			  return new University(info[0], info[1], info[2], info[3], Integer.parseInt(info[4]), Double.parseDouble(info[5]), Double.parseDouble(info[6]), Double.parseDouble(info[7]), Double.parseDouble(info[8]), Double.parseDouble(info[9]), Integer.parseInt(info[10]), Double.parseDouble(info[11]), Double.parseDouble(info[12]),Integer.parseInt(info[13]),Integer.parseInt(info[14]),Integer.parseInt(info[15]), null);
 		  }
 		  
 	  }
@@ -66,8 +66,13 @@ public class DBController{
    * 
    * @returns a set of all university objects in the database
    */
-  public String[][] getUniversities(){
-    return lib.university_getUniversities();
+  public ArrayList<University> getUniversities(){
+	  ArrayList<University> retlist = new ArrayList<University>();
+	  String[][] unis = lib.university_getUniversities();
+	  for(String[] info : unis){
+			  retlist.add(new University(info[0], info[1], info[2], info[3], Integer.parseInt(info[4]), Double.parseDouble(info[5]), Double.parseDouble(info[6]), Double.parseDouble(info[7]), Double.parseDouble(info[8]), Double.parseDouble(info[9]), Integer.parseInt(info[10]), Double.parseDouble(info[11]), Double.parseDouble(info[12]),Integer.parseInt(info[13]),Integer.parseInt(info[14]),Integer.parseInt(info[15]), null));
+		  }
+	  return retlist;
   }
   /**
    * This method updates a user's information in the database
@@ -84,7 +89,12 @@ public class DBController{
    * @returns a set of accounts in the database
    */
   public ArrayList<Account> getAccounts(){
-    return null;
+    ArrayList<Account> retlist = new ArrayList<Account>();
+	String[][] users = lib.user_getUsers();
+	  for(String[] info : users){
+			  retlist.add(new User(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0)));		  
+	  }
+	  return retlist;
   } 
     /**
    * This method adds an account to the system
@@ -102,7 +112,14 @@ public class DBController{
    * @returns the account object that matches the specified unsername
    */
   public User getAccount(String username){
-    return null;
+	  String[][] users = lib.user_getUsers();
+	  for(String[] info : users){
+		  if(info[2].equals(username)){
+			  return new User(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0));
+		  }
+		  
+	  }
+	  return null;
   }
   
  
