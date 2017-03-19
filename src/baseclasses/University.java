@@ -285,7 +285,7 @@ public class University
       + "\nNumber of Students: " + numberOfStudents + "\nPercent Female: " + percentFemale
       + "\nSAT Verbal: " + satVerbal + "\nSAT Math: " + satMath + "\nExpenses: " + expenses
       + "\nPercent FinancialAid: " + percentFinancialAid + "\nNumber of Applicants: " + numberOfApplicants
-      + "\nPercent Enrolled: " + percentEnrolled + "Academic Scale: " + academicScale + "\nSocial Scale: " + socialScale
+      + "\nPercent Enrolled: " + percentEnrolled + "\nAcademic Scale: " + academicScale + "\nSocial Scale: " + socialScale
       + "\nQuality of Life Scale: " + qualityOfLifeScale + "\nEmphasis: " + emphasis;
   }
   
