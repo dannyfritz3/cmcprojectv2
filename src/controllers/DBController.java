@@ -78,6 +78,7 @@ public class DBController{
    * @param a the account to be updated
    */
   public static boolean updateUser(Account account){
+	  
 	  return lib.user_editUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus()) != -1;
   }
   
@@ -90,7 +91,7 @@ public class DBController{
     ArrayList<Account> retlist = new ArrayList<Account>();
 	String[][] users = lib.user_getUsers();
 	  for(String[] info : users){
-			  retlist.add(new User(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0)));		  
+			  retlist.add(new Account(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0)));		  
 	  }
 	  return retlist;
   } 
@@ -104,7 +105,7 @@ public class DBController{
     return lib.user_addUser(account.getFirstName(), account.getLastName(), account.getUsername(), account.getPassword(), account.getType()) != -1;
   }
   /**
-   * This method gets an account that matches the specified username
+   * This method gets an account that matches the specified username, sets users saved schools
    * 
    * @param username the username of the account to be retrieved
    * @returns the account object that matches the specified unsername
@@ -113,11 +114,37 @@ public class DBController{
 	  String[][] users = lib.user_getUsers();
 	  for(String[] info : users){
 		  if(info[2].equals(username)){
-			  return new User(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0));
-		  }
-		  
+			  String[][] schools = lib.user_getUsernamesWithSavedSchools();
+			  ArrayList<University> unis = new ArrayList<University>();
+			  for(String[] user: schools){
+				  	if(user[0].equals(username)){
+				  		for(int i = 1; i < user.length; i++) unis.add(getUniversity(info[i]));
+			  	}
+			  }
+			  return new User(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0), unis);
+		  }  
 	  }
 	  return null;
+  }
+  /**
+   * Removes saved school from the user in the database
+   * 
+   * @param name of the user
+   * @param school name of school to be removed
+   * @return true if successfully removed
+   */
+  public static boolean removeSchool(String name, String school){
+	  return lib.user_removeSchool(name, school) != -1;
+  }  
+  /**
+   * Adds saved school from the user in the database
+   * 
+   * @param name of the user
+   * @param school name of school to be added
+   * @return true if successfully added
+   */
+  public static boolean saveSchool(String name, String school){
+	  return lib.user_saveSchool(name, school) != -1;
   }
   
  

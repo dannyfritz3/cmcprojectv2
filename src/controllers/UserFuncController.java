@@ -44,7 +44,7 @@ public class UserFuncController {
 	 */
 	public boolean removeSchool(University u){
 		boolean temp = user.removeSchool(u);
-		DBController.updateUser(user);
+		if(temp) DBController.removeSchool(user.getUsername(), u.getName());
 		return temp;
 	}
 	
@@ -78,7 +78,7 @@ public class UserFuncController {
 	 */
 	public boolean saveSchool(University u){
 		boolean temp = user.addUniversities(u);
-		DBController.updateUser(user);
+		if(temp) DBController.saveSchool(user.getUsername(), u.getName());
 		return temp;
 	}
 	

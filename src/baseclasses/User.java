@@ -24,8 +24,9 @@ public class User extends Account{
 	/**
 	 * This creates a new User and fills the fields required for all accounts
 	 */
-	public User(String username, String firstName, String lastName, String password, char type, char status){
+	public User(String username, String firstName, String lastName, String password, char type, char status, ArrayList<University> schools){
 		super(username,firstName,lastName,password,type,status);
+		savedUniversities = schools;
 	}
 	/**
 	 * This method gets a list of this users saved universities
