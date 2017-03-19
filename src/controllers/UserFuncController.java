@@ -20,6 +20,7 @@ public class UserFuncController {
 	
 	private User user;
 	private ArrayList<University> savedSchools;
+	private DBController db = new DBController();
 	/**
 	 * This creates a new UserFuncController with the parameter of the user using it
 	 */
@@ -33,7 +34,9 @@ public class UserFuncController {
 	 * @return whether the remove was successful
 	 */
 	public boolean removeSchool(University u){
-		return false;
+		boolean temp = user.removeSchool(u);
+		this.db.updateUser(user);
+		return temp;
 	}
 	
 	/**
@@ -43,7 +46,8 @@ public class UserFuncController {
 	 * @return a string representation of university details
 	 */
 	public String viewSchool(University u){
-		return null;
+		String information = db.getUniversity(u.getName()).getInformation();
+		return information;
 	}
 	/**
 	 * This method talks to the User class and views the details of a university as well as the details of similar universities
@@ -53,7 +57,8 @@ public class UserFuncController {
 	 */
 	
 	public String viewSchoolWRec(University u){
-		return null;
+		ArrayList<University> unis = db.getUniversityRecomendations(u);
+		return unis.get(0).getInformation();
 	}
 	
 	/**
@@ -63,7 +68,9 @@ public class UserFuncController {
 	 * @return whether or not the university could be saved
 	 */
 	public boolean saveSchool(University u){
-		return false;
+		boolean temp = user.addUniversities(u);
+		this.db.updateUser(user);
+		return temp;
 	}
 	
 	/**
@@ -73,7 +80,7 @@ public class UserFuncController {
 	 */
 	public ArrayList<University> getSavedSchools()
 	{
-		return savedSchools;
+		return user.getSavedUniversities();
 	}
 	/**
 	 * This method talks to the User class and gets the details of that user
@@ -81,7 +88,7 @@ public class UserFuncController {
 	 * @return a string representation of the users account details
 	 */
 	public String viewProfile(){
-		return null;
+		return "\nFirst Name: " + user.getFirstName() + "\nLast Name: " + user.getLastName() + "\nType: " + user.getType() + "\nStatus: " + user.getStatus();
 	}
 	
 	/**
@@ -91,7 +98,11 @@ public class UserFuncController {
 	 * @throws IllegalArgumentException if the new account has a different username that old account details
 	 * @return
 	 */
-	public boolean editProfile(Account a) throws IllegalArgumentException{
-		return false;
+	public boolean editProfile(Account a){
+		this.user.setFirstName(a.getFirstName());
+		this.user.setLastName(a.getLastName());
+		this.user.setPassword(a.getPassword());
+		
+		return true;
 	}
 }

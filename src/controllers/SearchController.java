@@ -142,19 +142,23 @@ public class SearchController {
 			if(name == null || u.getName().contains(name)){
 				if(state == null || u.getState().contains(state)){
 					if(location == null || u.getLocation().equals(location)){
-						if(numberOfStudents == -1 && numberOfStudents2 == -1 || numberOfStudents == -1 && u.getNumberOfStudents() <= numberOfStudents2 || numberOfStudents2 == -1 && u.getNumberOfStudents() >= numberOfStudents || u.getNumberOfStudents() >= numberOfStudents && u.getNumberOfStudents() <= numberOfStudents2){
-							if(percentFemale == -1 && percentFemale2 == -1 || percentFemale == -1 && u.getPercentFemale() <= percentFemale2 || percentFemale2 == -1 && u.getPercentFemale() >= percentFemale || u.getPercentFemale() >= percentFemale && u.getPercentFemale() <= percentFemale2){
-								if(SATVerbal == -1 && SATVerbal2 == -1 || SATVerbal == -1 && u.getSATVerbal() <= SATVerbal2 || SATVerbal2 == -1 && u.getSATVerbal() >= SATVerbal || u.getSATVerbal() >= SATVerbal && u.getSATVerbal() <= SATVerbal2){
-									if(SATMath == -1 && SATMath2 == -1 || SATMath == -1 && u.getSATMath() <= SATMath2 || SATMath2 == -1 && u.getSATMath() >= SATMath || u.getSATMath() >= SATMath && u.getSATMath() <= SATMath2){
-										if(expense == -1 && expense2 == -1 || expense == -1 && u.getExpenses() <= expense2 || expense2 == -1 && u.getExpenses() >= expense || u.getExpenses() >= expense && u.getExpenses() <= expense2){
-											if(percentFinancialAid == -1 && percentFinancialAid2 == -1 || percentFinancialAid == -1 && u.getPercentFinancialAid() <= percentFinancialAid2 || percentFinancialAid2 == -1 && u.getPercentFinancialAid() >= percentFinancialAid || u.getPercentFinancialAid() >= percentFinancialAid && u.getPercentFinancialAid() <= percentFinancialAid2){
-												if(numberOfApplicants == -1 && numberOfApplicants2 == -1 || numberOfApplicants == -1 && u.getNumberOfApplicants() <= numberOfApplicants2 || numberOfApplicants2 == -1 && u.getNumberOfApplicants() >= numberOfApplicants || u.getNumberOfApplicants() >= numberOfApplicants && u.getNumberOfApplicants() <= numberOfApplicants2){
-													if(percentAdmitted == -1 && percentAdmitted2 == -1 || percentAdmitted == -1 && u.getPercentAdmitted() <= percentAdmitted2 || percentAdmitted2 == -1 && u.getPercentAdmitted() >= percentAdmitted || u.getPercentAdmitted() >= percentAdmitted && u.getPercentAdmitted() <= percentAdmitted2){
-														if(percentEnrolled == -1 && percentEnrolled2 == -1 || percentEnrolled == -1 && u.getPercentEnrolled() <= percentEnrolled2 || percentEnrolled2 == -1 && u.getPercentEnrolled() >= percentEnrolled || u.getPercentEnrolled() >= percentEnrolled && u.getPercentEnrolled() <= percentEnrolled2){
-															if(academicScale == -1 && academicScale2 == -1 || academicScale == -1 && u.getAcademicScale() <= academicScale2 || academicScale2 == -1 && u.getAcademicScale() >= academicScale || u.getAcademicScale() >= academicScale && u.getAcademicScale() <= academicScale2){
-																if(socialScale == -1 && socialScale2 == -1 || socialScale == -1 && u.getSocialScale() <= socialScale2 || socialScale2 == -1 && u.getSocialScale() >= socialScale || u.getSocialScale() >= socialScale && u.getSocialScale() <= socialScale2){
-																	if(emphasis == null || u.getEmphasis().contains(emphasis)){
-																		Us.add(u);
+						if(control == null || u.getControl().equals(control)){
+							if(numberOfStudents == -1 && numberOfStudents2 == -1 || numberOfStudents == -1 && u.getNumberOfStudents() <= numberOfStudents2 || numberOfStudents2 == -1 && u.getNumberOfStudents() >= numberOfStudents || u.getNumberOfStudents() >= numberOfStudents && u.getNumberOfStudents() <= numberOfStudents2){
+								if(percentFemale == -1 && percentFemale2 == -1 || percentFemale == -1 && u.getPercentFemale() <= percentFemale2 || percentFemale2 == -1 && u.getPercentFemale() >= percentFemale || u.getPercentFemale() >= percentFemale && u.getPercentFemale() <= percentFemale2){
+									if(SATVerbal == -1 && SATVerbal2 == -1 || SATVerbal == -1 && u.getSATVerbal() <= SATVerbal2 || SATVerbal2 == -1 && u.getSATVerbal() >= SATVerbal || u.getSATVerbal() >= SATVerbal && u.getSATVerbal() <= SATVerbal2){
+										if(SATMath == -1 && SATMath2 == -1 || SATMath == -1 && u.getSATMath() <= SATMath2 || SATMath2 == -1 && u.getSATMath() >= SATMath || u.getSATMath() >= SATMath && u.getSATMath() <= SATMath2){
+											if(expense == -1 && expense2 == -1 || expense == -1 && u.getExpenses() <= expense2 || expense2 == -1 && u.getExpenses() >= expense || u.getExpenses() >= expense && u.getExpenses() <= expense2){
+												if(percentFinancialAid == -1 && percentFinancialAid2 == -1 || percentFinancialAid == -1 && u.getPercentFinancialAid() <= percentFinancialAid2 || percentFinancialAid2 == -1 && u.getPercentFinancialAid() >= percentFinancialAid || u.getPercentFinancialAid() >= percentFinancialAid && u.getPercentFinancialAid() <= percentFinancialAid2){
+													if(numberOfApplicants == -1 && numberOfApplicants2 == -1 || numberOfApplicants == -1 && u.getNumberOfApplicants() <= numberOfApplicants2 || numberOfApplicants2 == -1 && u.getNumberOfApplicants() >= numberOfApplicants || u.getNumberOfApplicants() >= numberOfApplicants && u.getNumberOfApplicants() <= numberOfApplicants2){
+														if(percentAdmitted == -1 && percentAdmitted2 == -1 || percentAdmitted == -1 && u.getPercentAdmitted() <= percentAdmitted2 || percentAdmitted2 == -1 && u.getPercentAdmitted() >= percentAdmitted || u.getPercentAdmitted() >= percentAdmitted && u.getPercentAdmitted() <= percentAdmitted2){
+															if(percentEnrolled == -1 && percentEnrolled2 == -1 || percentEnrolled == -1 && u.getPercentEnrolled() <= percentEnrolled2 || percentEnrolled2 == -1 && u.getPercentEnrolled() >= percentEnrolled || u.getPercentEnrolled() >= percentEnrolled && u.getPercentEnrolled() <= percentEnrolled2){
+																if(academicScale == -1 && academicScale2 == -1 || academicScale == -1 && u.getAcademicScale() <= academicScale2 || academicScale2 == -1 && u.getAcademicScale() >= academicScale || u.getAcademicScale() >= academicScale && u.getAcademicScale() <= academicScale2){
+																	if(socialScale == -1 && socialScale2 == -1 || socialScale == -1 && u.getSocialScale() <= socialScale2 || socialScale2 == -1 && u.getSocialScale() >= socialScale || u.getSocialScale() >= socialScale && u.getSocialScale() <= socialScale2){
+																		if(qualityOfLifeScale == -1 && qualityOfLifeScale2 == -1 || qualityOfLifeScale == -1 && u.getQualityOfLifeScale() <= qualityOfLifeScale2 || qualityOfLifeScale2 == -1 && u.getQualityOfLifeScale() >= qualityOfLifeScale || u.getQualityOfLifeScale() >= qualityOfLifeScale && u.getQualityOfLifeScale() <= qualityOfLifeScale){
+																			if(emphasis == null || u.getEmphasis().contains(emphasis)){
+																				Us.add(u);
+																			}
+																		}
 																	}
 																}
 															}
