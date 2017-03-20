@@ -41,8 +41,8 @@ public class AdminInterface{
  	 *
  	 * @param an account object of the user being added
  	 */ 
-	public void addUser(Account a){
-		AdminFuncController.addUser(a.getFirstName(), a.getLastName(), a.getUsername(), a.getPassword(), a.getType(), a.getStatus());
+	public boolean addUser(Account a){
+		return (AdminFuncController.addUser(a.getFirstName(), a.getLastName(), a.getUsername(), a.getPassword(), a.getType(), a.getStatus()));
 	}
 
 	/**

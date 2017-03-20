@@ -35,7 +35,7 @@ public class Account
    * @param type of account the account
    * @param status of the account
    */
-  public Account(String username, String firstName, String lastName, String password,
+  public Account(String firstName, String lastName, String username, String password,
                  char type, char status)
   {
     this.username = username;
