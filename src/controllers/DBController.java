@@ -110,18 +110,25 @@ public class DBController{
    * @param username the username of the account to be retrieved
    * @returns the account object that matches the specified unsername
    */
-  public static User getAccount(String username){
+  public static Account getAccount(String username){
 	  String[][] users = lib.user_getUsers();
+	  ArrayList<University> unis = new ArrayList<University>();
 	  for(String[] info : users){
 		  if(info[2].equals(username)){
 			  String[][] schools = lib.user_getUsernamesWithSavedSchools();
-			  ArrayList<University> unis = new ArrayList<University>();
-			  for(String[] user: schools){
+			  if(schools != null){
+				  for(String[] user: schools){
 				  	if(user[0].equals(username)){
 				  		for(int i = 1; i < user.length; i++) unis.add(getUniversity(info[i]));
-			  	}
+				  	}
+				  }
 			  }
-			  return new User(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0), unis);
+			  if(info[4].charAt(0) == 'a'){
+				  return new Account(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0));
+			  } else {
+				  return new User(info[2], info[0], info[1], info[3], info[4].charAt(0), info[5].charAt(0), unis);
+			  }
+			 
 		  }  
 	  }
 	  return null;
