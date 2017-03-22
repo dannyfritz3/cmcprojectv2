@@ -70,15 +70,15 @@ public class University
                     double percentAdmitted, double percentEnrolled, int academicScale,
                     int socialScale, int qualityOfLifeScale, String emphasis) throws IllegalArgumentException
   {
-	  if((academicScale < 1 || academicScale > 5))
+	  if((academicScale < 1 && academicScale != -1) || academicScale > 5)
 	  {
 		  throw new IllegalArgumentException("Parameter for 'Academic Scale' is not a valid number. Must be an integer 1 - 5");
 	  }
-	  else if((socialScale < 1 || socialScale > 5))
+	  else if((socialScale < 1 && socialScale != -1) || socialScale > 5)
 	  {
 		  throw new IllegalArgumentException("Parameter for 'Social Scale' is not a valid number. Must be an integer 1 - 5");
 	  }
-	  else if((qualityOfLifeScale < 1 || qualityOfLifeScale > 5))
+	  else if((qualityOfLifeScale < 1 && qualityOfLifeScale != -1) || qualityOfLifeScale > 5)
 	  {
 		  throw new IllegalArgumentException("Parameter for 'Quality Of Life Scale' is not a valid number. Must be an integer 1 - 5");
 	  }

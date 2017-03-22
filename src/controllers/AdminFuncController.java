@@ -77,7 +77,7 @@ public class AdminFuncController{
    */
   public static void deactivate(String username){
 	  Account acc = DBController.getAccount(username);
-	  acc.setType('N');
+	  acc.setStatus('N');
 	  DBController.updateUser(acc);
   }
   
