@@ -27,7 +27,7 @@ public class LogonController{
     if(user == null){
     	return false;
     } else {
-    	if(user.getPassword() != password){
+    	if(!user.getPassword().equals(password)){
     		return false;
     	} else {
     		user.login();

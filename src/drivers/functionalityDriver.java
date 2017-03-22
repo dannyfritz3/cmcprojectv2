@@ -13,8 +13,10 @@ public class functionalityDriver {
 		
 		System.out.println("Login: ");
 		UserInterface UI = new UserInterface();
-		UI.login("Matthew", "Rocks21");
-
+		if(UI.login("Matthew", "Rocks21"))System.out.println("Successful");		
+		if(UI.getAccount().getLoggedIn())System.out.println(UI.getAccount().getUsername() + " is logged in");
+		System.out.println("Logout: ");
+		if(UI.logout())System.out.println("Successful");
 		
 	}
 }

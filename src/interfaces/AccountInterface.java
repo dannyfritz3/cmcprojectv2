@@ -27,8 +27,10 @@ public abstract class AccountInterface{
  	*
  	* @param a is the account to be logged out
  	*/
-	public void logout(Account a){
-		LogonController.logout(a);
+	public boolean logout(){
+		if(account == null) return false;
+		LogonController.logout(account);
+		return true;
 	}
 	
 	/**
@@ -37,15 +39,21 @@ public abstract class AccountInterface{
  	* @param username the username of the account logging in
  	* @param password the password of the account logging in
 	*/ 
-	public void login(String username, String password){
+	public boolean login(String username, String password){
 		if(AccountController.login(username, password) == false)
 		{
 			System.err.println("Either your userame or password did not match or the user does not exist");
+			return false;
 		}
 		else
 		{
-			AccountController.login(username, password);
+			//AccountController.login(username, password);
 			account = DBController.getAccount(username);
+			return true;
 		}
+	}
+	
+	public Account getAccount(){
+		return account;
 	}
 }
