@@ -40,7 +40,8 @@ public abstract class AccountInterface{
  	* @param password the password of the account logging in
 	*/ 
 	public boolean login(String username, String password){
-		if(AccountController.login(username, password) == false)
+		Account temp = AccountController.login(username, password);
+		if(temp == null)
 		{
 			System.err.println("Either your userame or password did not match or the user does not exist");
 			return false;
@@ -48,7 +49,7 @@ public abstract class AccountInterface{
 		else
 		{
 			//AccountController.login(username, password);
-			account = DBController.getAccount(username);
+			account = temp;
 			return true;
 		}
 	}

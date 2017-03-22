@@ -22,16 +22,16 @@ public class LogonController{
    * @param Password of the user
    * @returns true if the login is completed
    */
-  public static boolean login(String username, String password){
+  public static Account login(String username, String password){
     Account user = DBController.getAccount(username);
     if(user == null){
-    	return false;
+    	return null;
     } else {
     	if(!user.getPassword().equals(password)){
-    		return false;
+    		return null;
     	} else {
     		user.login();
-    		return true;
+    		return user;
     	}
     }
   }

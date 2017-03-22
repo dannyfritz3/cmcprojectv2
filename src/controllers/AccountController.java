@@ -71,7 +71,7 @@ public class AccountController{
    * @param Password of the user
    * @returns true if the login is completed
    */
-  public static boolean login(String username, String password){
+  public static Account login(String username, String password){
 	  return LogonController.login(username,password);
   }
   
