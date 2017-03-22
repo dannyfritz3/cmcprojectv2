@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 
 
-public class AdminInterface{
+public class AdminInterface extends AccountInterface{
 	/**
  	* 
  	* This method is to view all schools
