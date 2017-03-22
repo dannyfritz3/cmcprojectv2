@@ -3,6 +3,7 @@ package drivers;
 import java.util.ArrayList;
 
 import baseclasses.*;
+import controllers.DBController;
 import interfaces.*;
 
 public class functionalityDriver {
@@ -25,8 +26,11 @@ public class functionalityDriver {
 		System.out.println("\nTesting UC14:Logout ");
 		if(UI.logout())System.out.println("Logout successful");
 		if(!UI.getAccount().getLoggedIn())System.out.println(UI.getAccount().getUsername() + " is logged out");
-		System.out.println("\nUsing Account: " + AI.viewUser("Johnnie").getUsername());
+		System.out.println("\nUsing Account: " + AI.viewUser("Avgjohnnie").getUsername());
 		UI.login("Avgjohnnie", "TommiesSuck");
+		System.out.println("\nTesting UC8:Save University ");
+		UI.saveSchool(DBController.getUniversity("COLUMBIA"));
+		System.out.println("COLUMBIA added");
 		System.out.println("\nTesting UC2:View Saved Schools ");
 		System.out.print("Saved Schools: ");
 		ArrayList<University> savedSchools = UI.viewSavedSchools();
