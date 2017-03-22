@@ -61,7 +61,7 @@ public class UserInterface extends AccountInterface{
 	
 	public boolean login(String username, String password){
 		boolean ret = super.login(username, password);
-		new UserFuncController((User)this.account);
+		ufc = new UserFuncController((User)this.account);
 		return ret;
 	}
 	
