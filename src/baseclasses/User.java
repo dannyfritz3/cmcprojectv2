@@ -47,7 +47,11 @@ public class User extends Account{
 		if(savedUniversities.contains(u)){
 			return false;
 		}
+		if(savedUniversities.get(0) == null){
+			savedUniversities.remove(null);
+		}
 		savedUniversities.add(u);
+		
 		return true;
 	}
 	

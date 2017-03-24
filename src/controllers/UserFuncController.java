@@ -22,10 +22,7 @@ public class UserFuncController {
 	 * User object
 	 */
 	private User user;
-	/**
-	 * ArrayList to store saved schools
-	 */
-	private ArrayList<University> savedSchools;
+
 	/**
 	 * SearchController object to search 
 	 */
