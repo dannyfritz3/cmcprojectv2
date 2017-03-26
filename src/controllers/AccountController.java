@@ -64,7 +64,7 @@ public class AccountController{
 	  ArrayList<Account> accounts= DBController.getAccounts();
 	  return accounts;
   }
-    /**
+  /**
    * This is a method that logs in the user
    * 
    * @param Username of the user

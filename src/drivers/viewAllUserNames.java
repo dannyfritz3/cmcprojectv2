@@ -10,6 +10,8 @@ public class viewAllUserNames {
 	ArrayList<Account> x = AccountController.getAccounts();
 	for(Account a : x){
 		System.out.println(a.getUsername());
+		System.out.println(a.getPassword());
+		System.out.println(a.getType());
 		}
 	}
 }
