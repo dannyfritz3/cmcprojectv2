@@ -18,14 +18,14 @@ public class functionalityDriver {
 		
 		UserInterface UI = new UserInterface();
 		System.out.println("\nTesting UC1(Alt1):Login ");
-		if(!UI.login("Matthew", "password"))System.out.println("Login Failed");
+		if(!AI.login("Matthew", "password"))System.out.println("Login Failed");
 		
 		System.out.println("\nTesting UC1:Login ");
-		if(UI.login("Matthew", "Rocks21"))System.out.println("Login successful");		
-		if(UI.getAccount().getLoggedIn())System.out.println(UI.getAccount().getUsername() + " is logged in");
+		if(AI.login("Matthew", "Rocks21"))System.out.println("Login successful");		
+		if(AI.getAccount().getLoggedIn())System.out.println(AI.getAccount().getUsername() + " is logged in");
 		System.out.println("\nTesting UC14:Logout ");
-		if(UI.logout())System.out.println("Logout successful");
-		if(!UI.getAccount().getLoggedIn())System.out.println(UI.getAccount().getUsername() + " is logged out");
+		if(AI.logout())System.out.println("Logout successful");
+		if(!AI.getAccount().getLoggedIn())System.out.println(AI.getAccount().getUsername() + " is logged out");
 		System.out.println("\nUsing Account: " + AI.viewUser("Avgjohnnie").getUsername());
 		UI.login("Avgjohnnie", "TommiesSuck");
 		System.out.println("\nTesting UC8:Save University ");

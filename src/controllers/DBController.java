@@ -21,6 +21,86 @@ import dblibrary.project.csci230.UniversityDBLibrary;
 public class DBController{
   
   private static UniversityDBLibrary lib = new UniversityDBLibrary("nullpm", "nullpm", "csci230");
+  private static double[][] maxMinValues;//[0]=min,[1]=max{numberOfStudents,numberOfApplicants,academicScale,socialScale,qualityOfLifeScale,percentFemale,satVerbal,satMath,expenses,percentFinancialAid,percentAdmitted,percentEnrolled}
+  
+  
+  /**
+   * this method gets the private variable MaxMinValues, if not already initialized it sets them
+   * 
+   * @return an array of all max and min values of all universities in the database
+   */
+  public static double[][] getMaxMinValues(){
+	  if(maxMinValues == null){
+		  maxMinValues = new double[2][12];
+		  ArrayList<University> us = getUniversities();
+		  for(University u : us){
+			  if(u.getNumberOfStudents()<maxMinValues[0][0]){
+				  maxMinValues[0][0] = u.getNumberOfStudents();
+			  } else if(u.getNumberOfStudents()>maxMinValues[1][0]){
+				  maxMinValues[1][0] = u.getNumberOfStudents();
+			  }
+			  if(u.getNumberOfApplicants()<maxMinValues[0][1]){
+				  maxMinValues[0][1] = u.getNumberOfApplicants();
+			  } else if(u.getNumberOfApplicants()>maxMinValues[1][1]){
+				  maxMinValues[1][1] = u.getNumberOfApplicants();
+			  }
+			  if(u.getAcademicScale()<maxMinValues[0][2]){
+				  maxMinValues[0][2] = u.getAcademicScale();
+			  } else if(u.getAcademicScale()>maxMinValues[1][2]){
+				  maxMinValues[1][2] = u.getAcademicScale();
+			  }
+			  if(u.getSocialScale()<maxMinValues[0][3]){
+				  maxMinValues[0][3] = u.getSocialScale();
+			  } else if(u.getSocialScale()>maxMinValues[1][3]){
+				  maxMinValues[1][3] = u.getSocialScale();
+			  }
+			  if(u.getQualityOfLifeScale()<maxMinValues[0][4]){
+				  maxMinValues[0][4] = u.getQualityOfLifeScale();
+			  } else if(u.getQualityOfLifeScale()>maxMinValues[1][4]){
+				  maxMinValues[1][4] = u.getQualityOfLifeScale();
+			  }
+			  if(u.getPercentFemale()<maxMinValues[0][5]){
+				  maxMinValues[0][5] = u.getPercentFemale();
+			  } else if(u.getPercentFemale()>maxMinValues[1][5]){
+				  maxMinValues[1][5] = u.getPercentFemale();
+			  }
+			  if(u.getSATVerbal()<maxMinValues[0][6]){
+				  maxMinValues[0][6] = u.getSATVerbal();
+			  } else if(u.getSATVerbal()>maxMinValues[1][6]){
+				  maxMinValues[1][6] = u.getSATVerbal();
+			  }
+			  if(u.getSATMath()<maxMinValues[0][7]){
+				  maxMinValues[0][7] = u.getSATMath();
+			  } else if(u.getSATMath()>maxMinValues[1][7]){
+				  maxMinValues[1][7] = u.getSATMath();
+			  }
+			  if(u.getExpenses()<maxMinValues[0][8]){
+				  maxMinValues[0][8] = u.getExpenses();
+			  } else if(u.getExpenses()>maxMinValues[1][8]){
+				  maxMinValues[1][8] = u.getExpenses();
+			  }
+			  if(u.getPercentFinancialAid()<maxMinValues[0][9]){
+				  maxMinValues[0][9] = u.getPercentFinancialAid();
+			  } else if(u.getPercentFinancialAid()>maxMinValues[1][9]){
+				  maxMinValues[1][9] = u.getPercentFinancialAid();
+			  }
+			  if(u.getPercentAdmitted()<maxMinValues[0][10]){
+				  maxMinValues[0][10] = u.getPercentAdmitted();
+			  } else if(u.getPercentAdmitted()>maxMinValues[1][10]){
+				  maxMinValues[1][10] = u.getPercentAdmitted();
+			  }
+			  if(u.getPercentEnrolled()<maxMinValues[0][11]){
+				  maxMinValues[0][11] = u.getPercentEnrolled();
+			  } else if(u.getPercentEnrolled()>maxMinValues[1][11]){
+				  maxMinValues[1][11] = u.getPercentEnrolled();
+			  }
+		  }
+	  }
+	  return maxMinValues;
+	  
+  }
+  
+  
   
   /**
    * This is a method that returns a university object from info from the database
@@ -43,11 +123,71 @@ public class DBController{
     /**
    * This is a method the adds a university to the database
    * 
-   * @param university the university object to be added
+   * @param u the university object to be added
    * @returns true if addition is successful
    */
-  public static boolean addUniversity(University university){
-    return lib.university_addUniversity(university.getName(), university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
+  public static boolean addUniversity(University u){
+	  if(u.getNumberOfStudents()<maxMinValues[0][0]){
+		  maxMinValues[0][0] = u.getNumberOfStudents();
+	  } else if(u.getNumberOfStudents()>maxMinValues[1][0]){
+		  maxMinValues[1][0] = u.getNumberOfStudents();
+	  }
+	  if(u.getNumberOfApplicants()<maxMinValues[0][1]){
+		  maxMinValues[0][1] = u.getNumberOfApplicants();
+	  } else if(u.getNumberOfApplicants()>maxMinValues[1][1]){
+		  maxMinValues[1][1] = u.getNumberOfApplicants();
+	  }
+	  if(u.getAcademicScale()<maxMinValues[0][2]){
+		  maxMinValues[0][2] = u.getAcademicScale();
+	  } else if(u.getAcademicScale()>maxMinValues[1][2]){
+		  maxMinValues[1][2] = u.getAcademicScale();
+	  }
+	  if(u.getSocialScale()<maxMinValues[0][3]){
+		  maxMinValues[0][3] = u.getSocialScale();
+	  } else if(u.getSocialScale()>maxMinValues[1][3]){
+		  maxMinValues[1][3] = u.getSocialScale();
+	  }
+	  if(u.getQualityOfLifeScale()<maxMinValues[0][4]){
+		  maxMinValues[0][4] = u.getQualityOfLifeScale();
+	  } else if(u.getQualityOfLifeScale()>maxMinValues[1][4]){
+		  maxMinValues[1][4] = u.getQualityOfLifeScale();
+	  }
+	  if(u.getPercentFemale()<maxMinValues[0][5]){
+		  maxMinValues[0][5] = u.getPercentFemale();
+	  } else if(u.getPercentFemale()>maxMinValues[1][5]){
+		  maxMinValues[1][5] = u.getPercentFemale();
+	  }
+	  if(u.getSATVerbal()<maxMinValues[0][6]){
+		  maxMinValues[0][6] = u.getSATVerbal();
+	  } else if(u.getSATVerbal()>maxMinValues[1][6]){
+		  maxMinValues[1][6] = u.getSATVerbal();
+	  }
+	  if(u.getSATMath()<maxMinValues[0][7]){
+		  maxMinValues[0][7] = u.getSATMath();
+	  } else if(u.getSATMath()>maxMinValues[1][7]){
+		  maxMinValues[1][7] = u.getSATMath();
+	  }
+	  if(u.getExpenses()<maxMinValues[0][8]){
+		  maxMinValues[0][8] = u.getExpenses();
+	  } else if(u.getExpenses()>maxMinValues[1][8]){
+		  maxMinValues[1][8] = u.getExpenses();
+	  }
+	  if(u.getPercentFinancialAid()<maxMinValues[0][9]){
+		  maxMinValues[0][9] = u.getPercentFinancialAid();
+	  } else if(u.getPercentFinancialAid()>maxMinValues[1][9]){
+		  maxMinValues[1][9] = u.getPercentFinancialAid();
+	  }
+	  if(u.getPercentAdmitted()<maxMinValues[0][10]){
+		  maxMinValues[0][10] = u.getPercentAdmitted();
+	  } else if(u.getPercentAdmitted()>maxMinValues[1][10]){
+		  maxMinValues[1][10] = u.getPercentAdmitted();
+	  }
+	  if(u.getPercentEnrolled()<maxMinValues[0][11]){
+		  maxMinValues[0][11] = u.getPercentEnrolled();
+	  } else if(u.getPercentEnrolled()>maxMinValues[1][11]){
+		  maxMinValues[1][11] = u.getPercentEnrolled();
+	  }
+	  return lib.university_addUniversity(u.getName(), u.getState(), u.getLocation(), u.getControl(), u.getNumberOfStudents(), u.getPercentFemale(), u.getSATVerbal(), u.getSATMath(), u.getExpenses(), u.getPercentFinancialAid(), u.getNumberOfApplicants(), u.getPercentAdmitted(), u.getPercentEnrolled(), u.getAcademicScale(), u.getSocialScale(), u.getQualityOfLifeScale()) != -1;
   }
   /**
    * This is a method that edits a university's information in the database

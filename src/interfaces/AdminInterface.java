@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 
 
-public class AdminInterface{
+public class AdminInterface extends AccountInterface{
 	/**
  	* 
  	* This method is to view all schools
@@ -60,7 +60,7 @@ public class AdminInterface{
 	 * @param the account being edited
  	*/
 	public void editProfile(Account a){
-		AccountController.editUserInfo(a, a.getFirstName(), a.getLastName(), a.getUsername(), a.getType(), a.getStatus());
+		AccountController.editUserInfo(a, a.getFirstName(), a.getLastName(), a.getUsername(),a.getPassword(), a.getType(), a.getStatus());
 	}
 	
 	/**

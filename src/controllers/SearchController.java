@@ -28,10 +28,11 @@ public class SearchController {
 	 */
 	public ArrayList<University> findRelatedUniversities(University university, int n){
 		ArrayList<University> Us = DBController.getUniversities();
+		double[][] maxMin = DBController.getMaxMinValues();
 		ArrayList<Tuple<University,Double>> distances = new ArrayList<Tuple<University,Double>>();//always in sorted order
 		for(int i = 0;i < Us.size();i++){
 			University temp = Us.get(i);
-			double dist = distance(university, temp);
+			double dist = distance(university, temp, maxMin);
 			if(distances.size() == 0){
 				distances.add(new Tuple<University,Double>(temp,dist));
 			} else {
@@ -57,7 +58,7 @@ public class SearchController {
 	 * @param c university to compare to u
 	 * @return the distance between the two
 	 */
-	private double distance(University u, University c){
+	private double distance(University u, University c,double[][] maxMin){
 		double distance = 0;
 		if(!u.getState().equals(c.getState())){
 			distance+=1;
@@ -69,14 +70,15 @@ public class SearchController {
 			distance+=1;
 		}
 		//number of students
-		distance+=Math.abs(u.getNumberOfStudents() - c.getNumberOfStudents())/(Integer.MAX_VALUE - 0);
-		distance+=Math.abs(u.getPercentFemale() - c.getPercentFemale())/(100-0);
-		distance+=Math.abs(u.getSATVerbal() - c.getSATVerbal())/(800-200);
-		distance+=Math.abs(u.getSATMath() - c.getSATMath())/(800-200);
+		distance+=Math.abs(u.getNumberOfStudents() - c.getNumberOfStudents())/(maxMin[1][0] - maxMin[0][0]);
+		distance+=Math.abs(u.getPercentFemale() - c.getPercentFemale())/(maxMin[1][5] - maxMin[0][5]);
+		distance+=Math.abs(u.getSATVerbal() - c.getSATVerbal())/(maxMin[1][6] - maxMin[0][6]);
+		distance+=Math.abs(u.getSATMath() - c.getSATMath())/(maxMin[1][7] - maxMin[0][7]);
 		//expenses
-		distance+=Math.abs(u.getExpenses() - c.getExpenses())/(Integer.MAX_VALUE - 0);
-		distance+=Math.abs(u.getPercentFinancialAid() - c.getPercentFinancialAid())/(100-0);
+		distance+=Math.abs(u.getExpenses() - c.getExpenses())/(maxMin[1][8] - maxMin[0][8]);
+		distance+=Math.abs(u.getPercentFinancialAid() - c.getPercentFinancialAid())/(maxMin[1][9] - maxMin[0][9]);
 		//number of applicants
+<<<<<<< HEAD
 		distance+=Math.abs(u.getNumberOfApplicants() - c.getNumberOfApplicants())/(Integer.MAX_VALUE - 0);
 		distance+=Math.abs(u.getPercentAdmitted() - c.getPercentAdmitted())/(100-0);
 		distance+=Math.abs(u.getPercentEnrolled() - c.getPercentEnrolled())/(100-0);
@@ -86,6 +88,17 @@ public class SearchController {
 		//if(!u.getEmphasis().equals(c.getEmphasis())){
 		//	distance+=1;
 		//}
+=======
+		distance+=Math.abs(u.getNumberOfApplicants() - c.getNumberOfApplicants())/(maxMin[1][1] - maxMin[0][1]);
+		distance+=Math.abs(u.getPercentAdmitted() - c.getPercentAdmitted())/(maxMin[1][10] - maxMin[0][10]);
+		distance+=Math.abs(u.getPercentEnrolled() - c.getPercentEnrolled())/(maxMin[1][11] - maxMin[0][11]);
+		distance+=Math.abs(u.getAcademicScale() - c.getAcademicScale())/(maxMin[1][2] - maxMin[0][2]);
+		distance+=Math.abs(u.getSocialScale() - c.getSocialScale())/(maxMin[1][3] - maxMin[0][3]);
+		distance+=Math.abs(u.getQualityOfLifeScale() - c.getQualityOfLifeScale())/(maxMin[1][4] - maxMin[0][4]);
+		if(!u.getEmphasis().equals(c.getEmphasis())){
+			distance+=1;
+		}
+>>>>>>> branch 'master' of https://github.com/nullpm/cmcprojectv2.git
 		return distance;
 	}
 	
