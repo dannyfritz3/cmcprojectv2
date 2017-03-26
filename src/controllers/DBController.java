@@ -259,7 +259,7 @@ public class DBController{
 			  if(schools != null){
 				  for(String[] user: schools){
 				  	if(user[0].equals(username)){
-				  		for(int i = 1; i < user.length; i++) unis.add(getUniversity(info[i]));
+				  		for(int i = 1; i < user.length; i++) unis.add(getUniversity(user[i]));
 				  	}
 				  }
 			  }
