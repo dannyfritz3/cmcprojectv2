@@ -78,6 +78,7 @@ public class SearchController {
 		distance+=Math.abs(u.getExpenses() - c.getExpenses())/(maxMin[1][8] - maxMin[0][8]);
 		distance+=Math.abs(u.getPercentFinancialAid() - c.getPercentFinancialAid())/(maxMin[1][9] - maxMin[0][9]);
 		//number of applicants
+
 		distance+=Math.abs(u.getNumberOfApplicants() - c.getNumberOfApplicants())/(maxMin[1][1] - maxMin[0][1]);
 		distance+=Math.abs(u.getPercentAdmitted() - c.getPercentAdmitted())/(maxMin[1][10] - maxMin[0][10]);
 		distance+=Math.abs(u.getPercentEnrolled() - c.getPercentEnrolled())/(maxMin[1][11] - maxMin[0][11]);
@@ -87,6 +88,7 @@ public class SearchController {
 		if(!u.getEmphasis().equals(c.getEmphasis())){
 			distance+=1;
 		}
+
 		return distance;
 	}
 	
@@ -135,6 +137,7 @@ public class SearchController {
 	 * @return the condition attached to whether or not any matches were found to the search
 	 */
 	public boolean search(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expense, double expense2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, String emphasis){
+		searchedUniversities = new ArrayList<University>();
 		ArrayList<University> Us = DBController.getUniversities();
 		for(int i = 0;i < Us.size();i++){
 			University u = Us.get(i);
@@ -153,7 +156,7 @@ public class SearchController {
 															if(academicScale == -1 && academicScale2 == -1 || academicScale == -1 && u.getAcademicScale() <= academicScale2 || academicScale2 == -1 && u.getAcademicScale() >= academicScale || u.getAcademicScale() >= academicScale && u.getAcademicScale() <= academicScale2){
 																if(socialScale == -1 && socialScale2 == -1 || socialScale == -1 && u.getSocialScale() <= socialScale2 || socialScale2 == -1 && u.getSocialScale() >= socialScale || u.getSocialScale() >= socialScale && u.getSocialScale() <= socialScale2){
 																	if(emphasis == null || u.getEmphasis().contains(emphasis)){
-																		Us.add(u);
+																		searchedUniversities.add(u);
 																	}
 																}
 															}
@@ -171,7 +174,7 @@ public class SearchController {
 			}
 		}
 		
-		if(Us.isEmpty()){
+		if(searchedUniversities.isEmpty()){
 			return false;
 		} else {
 			return true;

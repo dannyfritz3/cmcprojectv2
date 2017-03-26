@@ -1,6 +1,8 @@
 package drivers;
 
 import interfaces.AdminInterface;
+import interfaces.UserInterface;
+
 import java.util.ArrayList;
 
 import baseclasses.*;
@@ -11,6 +13,7 @@ public class adminFunctionalityDriver {
 	
 	public static void main(String args[]){
 		AdminInterface AI = new AdminInterface();
+		UserInterface UI = new UserInterface();
 		UniversityDBLibrary DB = new UniversityDBLibrary("nullpm", "nullpm", "csci230");
 		DBController DBC = new DBController();
 		System.out.println("Testing UC 18: View All Schools");
@@ -39,5 +42,21 @@ public class adminFunctionalityDriver {
 		System.out.println("\n Testing UC 17: View User");
 		Account a = AI.viewUser("Avgjohnnie");
 		System.out.println("Username: " + a.getUsername() + '\n' + "Firstname: " + a.getFirstName() + '\n' + "Lastname: " + a.getLastName() + '\n' + "Password: " + a.getPassword() + '\n' + "Type: " + a.getType() + '\n' + "Status: " + a.getStatus() + '\n');
+	
+		System.out.println("\n Testing UC 4 View University");
+		System.out.println(UI.viewSchool(uni));
+		
+		System.out.println("\n Testing UC 5 Search Schools, Testing UC6 View Search Results");
+		
+		UI.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		
+		for(University school : UI.viewSearches()){
+			System.out.println(school.getName());
+		}
+		
+		System.out.println("\n Testing UC 7 View University with recmonendations");
+		for(University school : UI.viewSchoolWRec(uni)){
+			System.out.println(school.getName());
+		}
 	}
 }

@@ -23,20 +23,31 @@ public class functionalityDriver {
 		System.out.println("\nTesting UC1:Login ");
 		if(AI.login("Matthew", "Rocks21"))System.out.println("Login successful");		
 		if(AI.getAccount().getLoggedIn())System.out.println(AI.getAccount().getUsername() + " is logged in");
-		System.out.println("\nTesting UC14:Logout ");
-		if(AI.logout())System.out.println("Logout successful");
-		if(!AI.getAccount().getLoggedIn())System.out.println(AI.getAccount().getUsername() + " is logged out");
+		
 		System.out.println("\nUsing Account: " + AI.viewUser("Avgjohnnie").getUsername());
 		UI.login("Avgjohnnie", "TommiesSuck");
 		System.out.println("\nTesting UC8:Save University ");
-		UI.saveSchool(DBController.getUniversity("COLUMBIA"));
-		System.out.println("COLUMBIA added");
+		if(UI.saveSchool(DBController.getUniversity("COLUMBIA")))System.out.println("COLUMBIA added");
 		System.out.println("\nTesting UC2:View Saved Schools ");
 		System.out.print("Saved Schools: ");
 		ArrayList<University> savedSchools = UI.viewSavedSchools();
 		for(University u : savedSchools){
 			System.out.print(u.getName() + " ");
 		}
+		System.out.println("\n\nTesting UC3:Remove School ");
+		System.out.print("Saved Schools: ");
+		if(UI.removeSchool(DBController.getUniversity("COLUMBIA")))System.out.println("COLUMBIA removed");
+		savedSchools = UI.viewSavedSchools();
+		for(University u : savedSchools){
+			System.out.print(u.getName() + " ");
+		}
+		System.out.println("\n\nTesting UC4:View University");
+		System.out.println("Viewing COLUMBIA\n");
+		System.out.println(UI.viewSchool(DBController.getUniversity("COLUMBIA")));
 		
+		
+		System.out.println("\nTesting UC14:Logout ");
+		if(AI.logout())System.out.println("Logout successful");
+		if(!AI.getAccount().getLoggedIn())System.out.println(AI.getAccount().getUsername() + " is logged out");
 	}
 }

@@ -44,12 +44,7 @@ public class User extends Account{
 	 * @return whether or not the university could be added
 	 */
 	public boolean addUniversities(University u) {
-		if(savedUniversities.contains(u)){
-			return false;
-		}
-		if(savedUniversities.get(0) == null){
-			savedUniversities.remove(null);
-		}
+
 		savedUniversities.add(u);
 		
 		return true;
@@ -62,9 +57,11 @@ public class User extends Account{
 	 * @return whether the remove was successful
 	 */
 	public boolean removeSchool(University u){
-		if(savedUniversities.contains(u)){
-			savedUniversities.remove(u);
-			return true;
+		for(University u2 : savedUniversities){
+			if(u2.getName().equals(u.getName())){
+				savedUniversities.remove(u2);
+				return true;
+			}
 		}
 		return false;
 	}
