@@ -73,9 +73,11 @@ public class UserFuncController {
 	 * @return whether or not the university could be saved
 	 */
 	public boolean saveSchool(University u){
+		if(!user.getSavedUniversities().contains(u)){
 		boolean temp = user.addUniversities(u);
 		if(temp) DBController.saveSchool(user.getUsername(), u.getName());
-		return temp;
+		return temp;}
+		return false;
 	}
 	
 	/**
