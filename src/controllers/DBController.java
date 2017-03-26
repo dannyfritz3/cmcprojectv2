@@ -293,6 +293,14 @@ public class DBController{
   public static boolean saveSchool(String name, String school){
 	  return lib.user_saveSchool(name, school) != -1;
   }
-  
+  /**
+   * Removes a user from the user in the database
+   * 
+   * @param name of the user
+   * @return true if successfully removed
+   */
+  public static boolean removeUser(String name){
+	  return lib.user_deleteUser(name) != -1;
+  }  
  
 }
