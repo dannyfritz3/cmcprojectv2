@@ -78,17 +78,7 @@ public class SearchController {
 		distance+=Math.abs(u.getExpenses() - c.getExpenses())/(maxMin[1][8] - maxMin[0][8]);
 		distance+=Math.abs(u.getPercentFinancialAid() - c.getPercentFinancialAid())/(maxMin[1][9] - maxMin[0][9]);
 		//number of applicants
-<<<<<<< HEAD
-		distance+=Math.abs(u.getNumberOfApplicants() - c.getNumberOfApplicants())/(Integer.MAX_VALUE - 0);
-		distance+=Math.abs(u.getPercentAdmitted() - c.getPercentAdmitted())/(100-0);
-		distance+=Math.abs(u.getPercentEnrolled() - c.getPercentEnrolled())/(100-0);
-		distance+=Math.abs(u.getAcademicScale() - c.getSocialScale())/(5-1);
-		distance+=Math.abs(u.getSocialScale() - c.getSocialScale())/(5-1);
-		distance+=Math.abs(u.getQualityOfLifeScale() - c.getQualityOfLifeScale())/(5-1);
-		//if(!u.getEmphasis().equals(c.getEmphasis())){
-		//	distance+=1;
-		//}
-=======
+
 		distance+=Math.abs(u.getNumberOfApplicants() - c.getNumberOfApplicants())/(maxMin[1][1] - maxMin[0][1]);
 		distance+=Math.abs(u.getPercentAdmitted() - c.getPercentAdmitted())/(maxMin[1][10] - maxMin[0][10]);
 		distance+=Math.abs(u.getPercentEnrolled() - c.getPercentEnrolled())/(maxMin[1][11] - maxMin[0][11]);
@@ -98,7 +88,7 @@ public class SearchController {
 		if(!u.getEmphasis().equals(c.getEmphasis())){
 			distance+=1;
 		}
->>>>>>> branch 'master' of https://github.com/nullpm/cmcprojectv2.git
+
 		return distance;
 	}
 	
