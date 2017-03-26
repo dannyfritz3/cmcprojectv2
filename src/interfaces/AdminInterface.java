@@ -97,4 +97,8 @@ public class AdminInterface extends AccountInterface{
 	public Account viewUser(String username){
 		return AdminFuncController.viewUser(username);
 	}
+	
+	public ArrayList<Account> manageUsers(){
+		return AdminFuncController.manageUsers();
+	}
 }
