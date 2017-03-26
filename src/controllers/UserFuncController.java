@@ -102,7 +102,7 @@ public class UserFuncController {
 	 * @return a string representation of the users account details
 	 */
 	public String viewProfile(){
-		return "\nFirst Name: " + user.getFirstName() + "\nLast Name: " + user.getLastName() + "\nUsername: " + user.getUsername() + "\nPassword: " + user.getPassword() +  "\nType: " + user.getType();
+		return "First Name: " + user.getFirstName() + "\nLast Name: " + user.getLastName() + "\nUsername: " + user.getUsername() + "\nPassword: " + user.getPassword() +  "\nType: " + user.getType();
 	}
 	
 	/**
