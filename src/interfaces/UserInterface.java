@@ -79,8 +79,8 @@ public class UserInterface extends AccountInterface{
  	 * 
  	 * @param University a university object
  	 */
-	public void saveSchool(University uni){
-		this.ufc.saveSchool(uni);
+	public boolean saveSchool(University uni){
+		return this.ufc.saveSchool(uni);
 	}
 	/**
  	 * This method views the searches (??)
