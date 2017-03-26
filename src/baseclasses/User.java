@@ -44,12 +44,7 @@ public class User extends Account{
 	 * @return whether or not the university could be added
 	 */
 	public boolean addUniversities(University u) {
-		if(savedUniversities.contains(u)){
-			return false;
-		}
-		if(savedUniversities.get(0) == null){
-			savedUniversities.remove(null);
-		}
+
 		savedUniversities.add(u);
 		
 		return true;
