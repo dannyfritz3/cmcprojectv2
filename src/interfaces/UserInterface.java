@@ -109,7 +109,7 @@ public class UserInterface extends AccountInterface{
 	 * 
 	 * @returns all of the schools information
 	 */
-	public String viewSchoolWRec(University u)
+	public ArrayList<University> viewSchoolWRec(University u)
 	{
 		return this.ufc.viewSchoolWRec(u);
 	}

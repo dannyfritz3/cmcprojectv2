@@ -65,9 +65,8 @@ public class UserFuncController {
 	 * @return a string representation of university details and details of similar universities
 	 */
 	
-	public String viewSchoolWRec(University u){
-		ArrayList<University> unis = sc.findRelatedUniversities(u,5);
-		return unis.get(0).getInformation();
+	public ArrayList<University> viewSchoolWRec(University u){
+		return sc.findRelatedUniversities(u,6);
 	}
 	
 	/**
