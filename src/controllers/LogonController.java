@@ -30,6 +30,10 @@ public class LogonController{
     	if(!user.getPassword().equals(password)){
     		return null;
     	} else {
+    		if(user.getStatus() == 'N')
+    		{
+    			return null;
+    		}
     		user.login();
     		return user;
     	}
