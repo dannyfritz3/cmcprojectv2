@@ -5,9 +5,20 @@ To use the driver, simply open the functionalityDriver.java file located in "cmc
 
 The output will then walk through each use case and their functionality 
 in the order that they would be used if a user were to utilize the program.
-       .
-      ":"
-    ___:____     |"\/"|
-  ,'        `.    \  /
-  |  O        \___/  |
-~^~^~^~^~^~^~^~^~^~^~^~^~
+░░░░░░░░░░░░▄▐
+░░░░░░▄▄▄░░▄██▄
+░░░░░▐▀█▀▌░░░░▀█▄
+░░░░░▐█▄█▌░░░░░░▀█▄
+░░░░░░▀▄▀░░░▄▄▄▄▄▀▀
+░░░░▄▄▄██▀▀▀▀
+░░░█▀▄▄▄█░▀▀
+░░░▌░▄▄▄▐▌▀▀▀
+▄░▐░░░▄▄░█░▀▀ GET SPOOKT
+▀█▌░░░▄░▀█▀░▀
+░░░░░░░▄▄▐▌▄▄
+░░░░░░░▀███▀█░▄
+░░░░░░▐▌▀▄▀▄▀▐▄
+░░░░░░▐▀░░░░░░▐▌
+░░░░░░█░░░░░░░░█
+░░░░░▐▌░░░░░░░░░█
+░░░░░█░░░░░░░░░░▐▌﻿
