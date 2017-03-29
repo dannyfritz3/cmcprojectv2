@@ -7,37 +7,39 @@ public class UC13Driver{
 
 
 	public static void main(String[] args){
-			AdminInterface AI = new AdminInterface();
+			AdminInterface AI2 = new AdminInterface();
 			System.out.println("Testing UC13 Admin");
-			Account a = AI.viewUser("Matthew");
+			Account a = AI2.viewUser("Avgjohnnie");
+			a.setStatus('Y');
 			//display user info
 			System.out.println("First get of a user\n" + "Username: " + a.getUsername() + '\n' + "Firstname: " + a.getFirstName() + '\n' + "Lastname: " + a.getLastName() + '\n' + "Password: " + a.getPassword() + '\n' + "Type: " + a.getType() + '\n' + "Status: " + a.getStatus() + '\n');
 			//change user info
-			a.setFirstName("John");a.setPassword("123qwe");a.setLastName("Smith");a.setType('u');a.setStatus('N');
+			a.setFirstName("John");a.setPassword("TommiesSuck");a.setLastName("Smith");a.setType('u');a.setStatus('Y');
 			//update user info
-			AI.editProfile(a);
+			AI2.editProfile(a);
 			//get userinfo
-			a = AI.viewUser("Matthew");
+			a = AI2.viewUser("Matthew");
 			System.out.println("Edit of a user\n" + "Username: " + a.getUsername() + '\n' + "Firstname: " + a.getFirstName() + '\n' + "Lastname: " + a.getLastName() + '\n' + "Password: " + a.getPassword() + '\n' + "Type: " + a.getType() + '\n' + "Status: " + a.getStatus() + '\n');
 			//set userinfo back
 			a.setPassword("Rocks21");a.setLastName("Zent");a.setType('a');a.setStatus('Y');a.setFirstName("Matthew");
 			//display user info
-			AI.editProfile(a);
+			AI2.editProfile(a);
 			System.out.println("Second get of a user\n" + "Username: " + a.getUsername() + '\n' + "Firstname: " + a.getFirstName() + '\n' + "Lastname: " + a.getLastName() + '\n' + "Password: " + a.getPassword() + '\n' + "Type: " + a.getType() + '\n' + "Status: " + a.getStatus() + '\n');
 			
 			System.out.println("Testing UC13 User");
-			UserInterface UI = new UserInterface();
-			if(UI.login("Avgjohnnie", "TommiesSuck"))
+			UserInterface UI2 = new UserInterface();
+			if(UI2.login("Avgjohnnie", "TommiesSuck"))
 				System.out.println("Login successful\n");		
-			if(UI.getAccount().getLoggedIn())System.out.println(UI.getAccount().getUsername() + " is logged in");
-			System.out.println(UI.viewProfile());
-			Account acc = UI.getAccount();
+			//if(UI2.getAccount().getLoggedIn())System.out.println(UI2.getAccount().getUsername() + " is logged in");
+			System.out.println(UI2.viewProfile());
+			Account acc = UI2.getAccount();
 			acc.setLastName("Smith");
-			UI.editProfile(acc);
-			System.out.println(UI.viewProfile());
+			UI2.editProfile(acc);
+			System.out.println(UI2.viewProfile());
 			acc.setLastName("John");
-			UI.editProfile(acc);
-			System.out.println(UI.viewProfile());
+			acc.setStatus('Y');
+			UI2.editProfile(acc);
+			System.out.println(UI2.viewProfile());
 			
 			
 			

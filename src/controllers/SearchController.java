@@ -85,9 +85,9 @@ public class SearchController {
 		distance+=Math.abs(u.getAcademicScale() - c.getAcademicScale())/(maxMin[1][2] - maxMin[0][2]);
 		distance+=Math.abs(u.getSocialScale() - c.getSocialScale())/(maxMin[1][3] - maxMin[0][3]);
 		distance+=Math.abs(u.getQualityOfLifeScale() - c.getQualityOfLifeScale())/(maxMin[1][4] - maxMin[0][4]);
-		if(!u.getEmphasis().equals(c.getEmphasis())){
-			distance+=1;
-		}
+		//if(!u.getEmphasis().equals(c.getEmphasis())){
+			//distance+=1;
+		//}
 
 		return distance;
 	}
