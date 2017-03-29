@@ -69,9 +69,10 @@ public class AccountController{
    * 
    * @param Username of the user
    * @param Password of the user
+ * @throws Exception 
    * @returns true if the login is completed
    */
-  public static Account login(String username, String password){
+  public static Account login(String username, String password) throws Exception{
 	  return LogonController.login(username,password);
   }
   

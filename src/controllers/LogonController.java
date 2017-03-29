@@ -22,17 +22,17 @@ public class LogonController{
    * @param Password of the user
    * @returns true if the login is completed
    */
-  public static Account login(String username, String password){
+  public static Account login(String username, String password) throws Exception{
     Account user = DBController.getAccount(username);
     if(user == null){
-    	return null;
+    	throw new Exception("This account does not exsist");
     } else {
     	if(!user.getPassword().equals(password)){
-    		return null;
+    		throw new Exception("Password does not match this user");
     	} else {
     		if(user.getStatus() == 'N')
     		{
-    			return null;
+    			throw new Exception("This account is deactivated");
     		}
     		user.login();
     		return user;

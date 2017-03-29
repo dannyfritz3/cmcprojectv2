@@ -299,8 +299,8 @@ public class DBController{
    * @param name of the user
    * @return true if successfully removed
    */
-  public static boolean removeUser(String name){
-	  return lib.user_deleteUser(name) != -1;
+  public static boolean removeUser(String username){
+	  return lib.user_deleteUser(username) != -1;
   }  
  
 }

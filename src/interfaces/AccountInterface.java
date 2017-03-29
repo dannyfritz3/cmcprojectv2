@@ -40,18 +40,18 @@ public abstract class AccountInterface{
  	* @param password the password of the account logging in
 	*/ 
 	public boolean login(String username, String password){
-		Account temp = AccountController.login(username, password);
-		if(temp == null)
-		{
-			System.err.println("Either your userame or password did not match or the user does not exist");
+		Account temp;
+		try {
+			temp = AccountController.login(username, password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return false;
-		}
-		else
-		{
-			//AccountController.login(username, password);
-			account = temp;
-			return true;
-		}
+		}		
+		//AccountController.login(username, password);
+		account = temp;
+		return true;
+		
 	}
 	
 	public Account getAccount(){
