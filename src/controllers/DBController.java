@@ -302,5 +302,14 @@ public class DBController{
   public static boolean removeUser(String username){
 	  return lib.user_deleteUser(username) != -1;
   }  
+  
+  /**
+   * Deletes a school
+   * @param name of school to be deleted
+   * @return if the school was deleted
+   */
+  public static boolean deleteSchool(String name){
+	  return lib.university_deleteUniversity(name) != -1;
+  }
  
 }

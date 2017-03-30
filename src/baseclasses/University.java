@@ -541,4 +541,20 @@ public class University
     
     return comparisons;
   }
+  
+  @Override
+  public boolean equals(Object o){
+	  
+	    if (this == o){
+	        return true;
+	    }
+	    if (o == null){
+	        return false;
+	    }
+	    if (getClass() != o.getClass()){
+	        return false;
+	    }
+	    return this.getName().equals(((University) o).getName());
+	    	
+  }
 }
