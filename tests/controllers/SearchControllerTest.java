@@ -200,36 +200,205 @@ public class SearchControllerTest {
 	
 	@Test
 	public void testSearchMathPassLower() {
-		search.search(null, null, null, null, -1, -1, -1, -1, 249, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, 249, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
 		assertTrue(search.getSearchedUniversities().contains(test));
 	}
 	
 	@Test
 	public void testSearchMathPassUpper() {
-		search.search(null, null, null, null, -1, -1, -1, -1, -1, 250, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, 250, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
 		assertTrue(search.getSearchedUniversities().contains(test));
 	}
 	@Test
 	public void testSearchMathPassMid() {
-		search.search(null, null, null, null, -1, -1, -1, -1, 249, 251, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, 249, 251, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
 		assertTrue(search.getSearchedUniversities().contains(test));
 	}
 	
 	@Test
 	public void testSearchMathFailLower() {
-		search.search(null, null, null, null, -1, -1, -1, -1, 251, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, 251, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
 		assertFalse(search.getSearchedUniversities().contains(test));
 	}
 	
 	@Test
 	public void testSearchMathFailUpper() {
-		search.search(null, null, null, null, -1, -1, -1, -1, -1, 240, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, 240, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
 		assertFalse(search.getSearchedUniversities().contains(test));
 	}
 	@Test
 	public void testSearchMathFailMid() {
-		search.search(null, null, null, null, -1, -1, -1, -1, 200, 249, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, 200, 249, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchExpensePassLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, 10000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchExpensePassUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, 10001, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchExpensePassMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, 9999, 15000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchExpenseFailLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, 10001, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchExpenseFailUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, 9000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchExpenseFailMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, 100, 9999, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
 		assertFalse(search.getSearchedUniversities().contains(test));
 	}
 
+	@Test
+	public void testSearchFinancialAidPassLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 79, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchFinancialAidPassUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 80, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchFinancialAidPassMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 80, 81, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchFinancialAidFailLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 81, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchFinancialAidFailUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 79, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchFinancialAidFailMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 60, 70, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchApplicantsPassLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2499, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchApplicantsPassUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2500, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchApplicantsPassMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2500, 2501, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchApplicantsFailLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2501, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchApplicantsFailUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2499, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchApplicantsFailMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 200, 2000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchAdmittedPassLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 60, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchAdmittedPassUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 61, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchAdmittedPassMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 59, 60, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchAdmittedFailLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 61, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchAdmittedFailUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 59, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchAdmittedFailMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 70, 78, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchEnrolledPassLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 90, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchEnrolledPassUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 91, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchEnrolledPassMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 89, 90, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchEnrolledFailLower() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 91, -1, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	
+	@Test
+	public void testSearchEnrolledFailUpper() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 89, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
+	@Test
+	public void testSearchEnrolledFailMid() {
+		search.search(null, null, null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 60, -1, -1, -1, -1, -1, -1, null);
+		assertFalse(search.getSearchedUniversities().contains(test));
+	}
 }

@@ -156,8 +156,10 @@ public class SearchController {
 															if(percentEnrolled == -1 && percentEnrolled2 == -1 || percentEnrolled == -1 && u.getPercentEnrolled() <= percentEnrolled2 || percentEnrolled2 == -1 && u.getPercentEnrolled() >= percentEnrolled || u.getPercentEnrolled() >= percentEnrolled && u.getPercentEnrolled() <= percentEnrolled2){
 																if(academicScale == -1 && academicScale2 == -1 || academicScale == -1 && u.getAcademicScale() <= academicScale2 || academicScale2 == -1 && u.getAcademicScale() >= academicScale || u.getAcademicScale() >= academicScale && u.getAcademicScale() <= academicScale2){
 																	if(socialScale == -1 && socialScale2 == -1 || socialScale == -1 && u.getSocialScale() <= socialScale2 || socialScale2 == -1 && u.getSocialScale() >= socialScale || u.getSocialScale() >= socialScale && u.getSocialScale() <= socialScale2){
-																		if(emphasis == null || u.getEmphasis().contains(emphasis)){
-																			searchedUniversities.add(u);
+																		if(qualityOfLifeScale == -1 && qualityOfLifeScale2 == -1 || qualityOfLifeScale == -1 && u.getQualityOfLifeScale() <= qualityOfLifeScale2 || qualityOfLifeScale2 == -1 && u.getQualityOfLifeScale() >= qualityOfLifeScale || u.getQualityOfLifeScale() >= qualityOfLifeScale && u.getQualityOfLifeScale() <= qualityOfLifeScale2){
+																			if(emphasis == null || u.getEmphasis().contains(emphasis)){
+																				searchedUniversities.add(u);
+																			}
 																		}
 																	}
 																}
