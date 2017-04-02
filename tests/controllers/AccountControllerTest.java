@@ -42,8 +42,11 @@ public class AccountControllerTest {
 		DBController.removeUser("test1");
 		DBController.removeUser("test2");
 	}
-	
-
+	@Test
+	public void testEditUserInfo(){
+		AccountController.editUserInfo(test, null, null, "Test", null, 'x', 'x');
+		assertTrue(DBController.getAccount("Test").equals(test));
+	}
 	@Test
 	public void testEditUserInfoFirstName(){
 		AccountController.editUserInfo(test, "John", null, "Test", null, 'x','x');
@@ -91,7 +94,7 @@ public class AccountControllerTest {
 
 	@Test
 	public void testAddAccountFail() {
-		assertTrue(DBController.addAccount(test1));
+		assertTrue(!DBController.addAccount(test1));
 	}
 	
 
