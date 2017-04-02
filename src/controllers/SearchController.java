@@ -27,6 +27,9 @@ public class SearchController {
 	 * @return an array of size n holding the most closely related universities
 	 */
 	public ArrayList<University> findRelatedUniversities(University university, int n){
+		if(n < 0){
+			throw new IllegalArgumentException("n cannot be negative");
+		}
 		ArrayList<University> Us = DBController.getUniversities();
 		double[][] maxMin = DBController.getMaxMinValues();
 		ArrayList<Tuple<University,Double>> distances = new ArrayList<Tuple<University,Double>>();//always in sorted order
