@@ -22,12 +22,12 @@ public class SearchControllerTest {
 	@BeforeClass
 	public static void setup(){
 		DBController.getMaxMinValues();
-		test = new University("TEST", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, null);
-		test1 = new University("TEST1", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 1, 2, 2, null);
-		test2 = new University("TEST2", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 50000, 80, 2500, 60, 90, 2, 2, 2, null);
-		test3 = new University("TEST3", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 10, 2500, 60, 90, 2, 2, 2, null);
-		test4 = new University("TEST4", "MINNESOTA", "SUBURBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, null);
-		test5 = new University("TEST5", "MINNESOTA", "URBAN", "PRIVATE", 5001, 51, 251, 251, 10000, 80, 2500, 60, 90, 2, 2, 2, null);
+		test = new University("TEST", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, new ArrayList<String>());
+		test1 = new University("TEST1", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 1, 2, 2, new ArrayList<String>());
+		test2 = new University("TEST2", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 50000, 80, 2500, 60, 90, 2, 2, 2, new ArrayList<String>());
+		test3 = new University("TEST3", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 10, 2500, 60, 90, 2, 2, 2, new ArrayList<String>());
+		test4 = new University("TEST4", "MINNESOTA", "SUBURBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, new ArrayList<String>());
+		test5 = new University("TEST5", "MINNESOTA", "URBAN", "PRIVATE", 5001, 51, 251, 251, 10000, 80, 2500, 60, 90, 2, 2, 2, new ArrayList<String>());
 
 		DBController.addUniversity(test);
 		DBController.addUniversity(test1);
