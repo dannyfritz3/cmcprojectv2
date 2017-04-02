@@ -194,7 +194,15 @@ public class DBController{
 	  } else if(u.getPercentEnrolled()>maxMinValues[1][11]){
 		  maxMinValues[1][11] = u.getPercentEnrolled();
 	  }
-	  return lib.university_addUniversity(u.getName(), u.getState(), u.getLocation(), u.getControl(), u.getNumberOfStudents(), u.getPercentFemale(), u.getSATVerbal(), u.getSATMath(), u.getExpenses(), u.getPercentFinancialAid(), u.getNumberOfApplicants(), u.getPercentAdmitted(), u.getPercentEnrolled(), u.getAcademicScale(), u.getSocialScale(), u.getQualityOfLifeScale()) != -1;
+	  
+	  
+	  boolean added = lib.university_addUniversity(u.getName(), u.getState(), u.getLocation(), u.getControl(), u.getNumberOfStudents(), u.getPercentFemale(), u.getSATVerbal(), u.getSATMath(), u.getExpenses(), u.getPercentFinancialAid(), u.getNumberOfApplicants(), u.getPercentAdmitted(), u.getPercentEnrolled(), u.getAcademicScale(), u.getSocialScale(), u.getQualityOfLifeScale()) != -1;
+	  if(added){
+		  for(String emph : u.getEmphasis()){
+			  lib.university_addUniversityEmphasis(u.getName(), emph);
+		  }
+	  }
+	  return added;
   }
   /**
    * This is a method that edits a university's information in the database
@@ -203,7 +211,27 @@ public class DBController{
    * @returns true if university is updated successfully
    */
   public static boolean editUniversity(University university){
-	  return lib.university_editUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
+	  boolean edited =  lib.university_editUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
+	  if(edited){
+		  String[][] emphs = lib.university_getEmphases();
+		  ArrayList<String> e = new ArrayList<String>();
+		  for(String[] emph : emphs){
+			  if(emph[0] == university.getName()){
+				  if(university.getEmphasis().contains(emph[1])){
+					  e.add(emph[1]);
+				  } else {
+					  lib.university_removeUniversityEmphasis(university.getName(), emph[1]);
+				  }
+			  }
+		  }
+		  for(String emph : university.getEmphasis()){
+			  if(!e.contains(emph)){
+				  lib.university_addUniversityEmphasis(university.getName(), emph);
+			  }
+		  }
+	  }
+  
+	  return edited;
   }
 
   /**

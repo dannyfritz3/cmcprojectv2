@@ -83,7 +83,6 @@ public class DBControllerTest {
 	@Test
 	public void testAddAccount() {
 		assertEquals(true, DBController.addAccount(user2));
-		assertEquals(user2.equals(DBController.getAccount("user2")), true);
 	}
 
 	@Test

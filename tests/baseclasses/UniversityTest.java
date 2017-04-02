@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import java.util.*;
 
 public class UniversityTest {
 
@@ -16,13 +17,16 @@ public class UniversityTest {
 	private University uni7;
 	private University uni8;
 	private University uni9;
-	
+	private ArrayList<String> emphasis1 = new ArrayList<String>();
+	private ArrayList<String> emphasis2 = new ArrayList<String>();
 	@Before
 	public void setup()
 	{
+		this.emphasis1.add("MATH");
+		this.emphasis2.add("EDUCATION");
 		this.uni1 = new University("SAINT JOHNS");
-		this.uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, "MATH");
-		this.uni3 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 2, 4, "MATH");
+		this.uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, emphasis1);
+		this.uni3 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 2, 4, emphasis2);
 	}
 	
 	@Test
@@ -32,31 +36,31 @@ public class UniversityTest {
 
 	@Test(expected=IllegalArgumentException.class)
 	public void testUniversitySecondConstrucotrForIAEAS1() {
-		this.uni4 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 0, 2, 4, "MATH");
+		this.uni4 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 0, 2, 4, emphasis1);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testUniversitySecondConstrucotrForIAEAS2() {
-		this.uni7 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 6, 2, 4, "MATH");
+		this.uni7 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 6, 2, 4, emphasis1);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testUniversitySecondConstrucotrForIAESS1() {
-		this.uni5 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 0, 4, "MATH");
+		this.uni5 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 0, 4, emphasis1);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testUniversitySecondConstrucotrForIAESS2() {
-		this.uni8 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 6, 4, "MATH");
+		this.uni8 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 6, 4, emphasis1);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testUniversitySecondConstrucotrForIAEQOL1() {
-		this.uni6 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 2, 0, "MATH");
+		this.uni6 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 2, 0, emphasis1);
 	}
 	@Test(expected=IllegalArgumentException.class)
 	public void testUniversitySecondConstrucotrForIAEQOL2() {
-		this.uni9 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 2, 6, "MATH");
+		this.uni9 = new University("CONCORDIA", "MINNESOTA", "RURAL", "PRIVATE", 5000, 0.46, 0.75, 0.70, 25000.00, 0.55, 1000, 0.80, 0.50, 3, 2, 6, emphasis1);
 	}
 
 	@Test
@@ -142,7 +146,7 @@ public class UniversityTest {
 
 	@Test
 	public void testGetEmphasis() {
-		assertTrue(uni2.getEmphasis().equals("MATH"));
+		assertTrue(uni2.getEmphasis().contains("MATH"));
 	}
 
 	@Test
@@ -247,13 +251,8 @@ public class UniversityTest {
 	}
 
 	@Test
-	public void testSetEmphasis() {
-		this.uni2.setEmphasis("LITERATURE");
-		assertTrue(uni2.getEmphasis().equals("LITERATURE"));
-	}
-
-	@Test
-	public void testCompareto() {
-		assertTrue(uni2.compareto(this.uni3) == 8);
+	public void testAddEmphasis() {
+		this.uni2.addEmphasis("LITERATURE");
+		assertTrue(uni2.getEmphasis().contains("LITERATURE"));
 	}
 }
