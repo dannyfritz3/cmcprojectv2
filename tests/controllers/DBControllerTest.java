@@ -15,8 +15,9 @@ public class DBControllerTest {
 	@BeforeClass
 	public static void setup(){
 		DBController.getMaxMinValues();
-		columbiaClone = new University("COLUMBIA", "NEW YORK", "URBAN", "PRIVATE", 10000, 30.0, 625.0, 650, 35196.0, 60.0, 5500, 30.0, 50.0, 1, 3, 5, null);
-		columbiaClone2 = new University("COLUMBIA", "NEW YORK2", "URBAN", "PRIVATE", 10000, 30.0, 625.0, 650, 35196.0, 60.0, 5500, 30.0, 50.0, 1, 3, 5, null);
+		columbiaClone = DBController.getUniversity("COLUMBIA");
+		columbiaClone2 = DBController.getUniversity("COLUMBIA");
+		columbiaClone2.setLocation("SOMEWHERENICE");
 		columbiaTwo = new University("COLUMBIA2", "NEW YORK", "URBAN", "PRIVATE", 10000, 30.0, 625.0, 650, 35196.0, 60.0, 5500, 30.0, 50.0, 1, 3, 5, null);
 		user1 = new Account("user1", "John", "Doe2", "user", 'u', 'Y');
 		DBController.saveSchool("user1", "COLUMBIA");
@@ -31,12 +32,16 @@ public class DBControllerTest {
 	public static void teardown(){
 		DBController.removeUser("user1");
 		DBController.removeUser("user2");
-		DBController.removeUser("user3");
 		DBController.removeSchool("user3", "COLUMBIA");
+		DBController.removeUser("user3");
 	}
 	@Test
 	public void testGetUniversity() {
 		assertEquals(columbiaClone, DBController.getUniversity("COLUMBIA"));
+	}
+	@Test
+	public void testEmphasis(){
+		assertFalse(DBController.getUniversity("COLUMBIA").getEmphasis().isEmpty());
 	}
 	@Test
 	public void testGetUniversityFails() {
@@ -107,4 +112,5 @@ public class DBControllerTest {
 	public void testSaveSchoolFails() {
 		assertFalse(DBController.saveSchool("user3", "COLUMBI434A"));
 	}
+	
 }

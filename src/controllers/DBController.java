@@ -110,7 +110,7 @@ public class DBController{
    */
   public static University getUniversity(String name){
 	  String[][] unis = lib.university_getUniversities();
-	  String[][] emphs = lib.university_getEmphases();
+	  String[][] emphs = lib.university_getNamesWithEmphases();
 	  ArrayList<String> emph = new ArrayList<String>();
 	  for(String[] info : emphs){
 		  if(info[0].equals(name)){
@@ -213,7 +213,7 @@ public class DBController{
   public static boolean editUniversity(University university){
 	  boolean edited =  lib.university_editUniversity(university.getName() , university.getState(), university.getLocation(), university.getControl(), university.getNumberOfStudents(), university.getPercentFemale(), university.getSATVerbal(), university.getSATMath(), university.getExpenses(), university.getPercentFinancialAid(), university.getNumberOfApplicants(), university.getPercentAdmitted(), university.getPercentEnrolled(), university.getAcademicScale(), university.getSocialScale(), university.getQualityOfLifeScale()) != -1;
 	  if(edited){
-		  String[][] emphs = lib.university_getEmphases();
+		  String[][] emphs = lib.university_getNamesWithEmphases();
 		  ArrayList<String> e = new ArrayList<String>();
 		  for(String[] emph : emphs){
 			  if(emph[0] == university.getName()){
@@ -241,7 +241,7 @@ public class DBController{
    */
   public static ArrayList<University> getUniversities(){
 	  ArrayList<University> retlist = new ArrayList<University>();
-	  String[][]emphs = lib.university_getEmphases();
+	  String[][]emphs = lib.university_getNamesWithEmphases();
 	  String[][] unis = lib.university_getUniversities();
 	  for(String[] info : unis){
 		  ArrayList<String> emph = new ArrayList<String>();
