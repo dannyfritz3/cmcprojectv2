@@ -148,12 +148,7 @@ public class UniversityTest {
 	public void testGetEmphasis() {
 		assertTrue(uni2.getEmphasis().contains("MATH"));
 	}
-
-	@Test
-	public void testGetInformation() {
-		assertTrue(uni2.getInformation().equals("Name: SAINT BENS\nState: MINNESOTA\nLocation: RURAL\nControl: PRIVATE\nNumber of Students: 3000\nPercent Female: 1.0\nSAT Verbal: 0.7\nSAT Math: 0.7\nExpenses: 40000.0\nPercent FinancialAid: 0.6\nNumber of Applicants: 1000\nPercent Enrolled: 0.5\nAcademic Scale: 4\nSocial Scale: 4\nQuality of Life Scale: 3\nEmphasis: MATH"));
-	}
-
+	
 	@Test
 	public void testSetName() {
 		this.uni1.setName("SAINT JOHN'S");
