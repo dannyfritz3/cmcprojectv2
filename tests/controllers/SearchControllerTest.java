@@ -74,6 +74,11 @@ public class SearchControllerTest {
 		assertTrue(search.findRelatedUniversities(test, 5).size() == 5);
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testFindNRelatedUniversitiesNeg() throws IllegalArgumentException {
+		search.findRelatedUniversities(test, -1);
+	}
+	
 	
 
 //	@Test
