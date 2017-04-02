@@ -83,7 +83,7 @@ public class AdminInterface extends AccountInterface{
  	* @param emphases up to five areas of study (all strings) in which the school excells
  	* @returns an array of universities that meet the criteria
  	*/
-	public boolean addUniversity(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expense, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale,int qualityOfLifeScale, String emphasis){
+	public boolean addUniversity(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expense, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale,int qualityOfLifeScale, ArrayList<String> emphasis){
 		return AdminFuncController.addUniversity(name,state,location,control, numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,qualityOfLifeScale,emphasis);
 	}
 	

@@ -462,6 +462,16 @@ public class University
     this.emphasis.add(s);
     
   }
+  /**
+   * A method that removes an emphasis of the University
+   * 
+   * @param the emphasis of the University to be removed
+   */
+  public void removeEmphasis(String s)
+  {
+    this.emphasis.remove(s);
+    
+  }
   
   /**
    * A method that compares one University to another
