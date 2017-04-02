@@ -194,9 +194,6 @@ public class Account
 	    if (o == null){
 	        return false;
 	    }
-	    if (getClass() != o.getClass()){
-	        return false;
-	    }
 	    return this.getUsername().equals(((Account) o).getUsername());
 	    	
   }
