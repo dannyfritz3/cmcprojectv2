@@ -101,7 +101,7 @@ public class User extends Account{
 		    if (o == null){
 		        return false;
 		    }
-		    if (getClass() != o.getClass()){
+		    if (Account.class != o.getClass()){
 		        return false;
 		    }
 		    return this.getUsername().equals(((Account) o).getUsername());
