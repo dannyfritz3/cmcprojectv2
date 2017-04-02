@@ -28,16 +28,19 @@ public class AccountController{
    * @param status the new account status, null if to be unchanged
    */
   public static void editUserInfo(Account account, String firstname, String lastname,String username, String password, char type, char status){
+	  if(account.getUsername().equals(username)){
 	  if(firstname!=null)
 		  account.setFirstName(firstname);
 	  if(lastname!=null)
 		  account.setLastName(lastname);
 	  if(password!=null)
 		  account.setPassword(password);
-	  account.setType(type);
-	  account.setStatus(status);
+	  if(type!='x')
+		  account.setType(type);
+	  if(status!='x')
+		  account.setStatus(status);
 	  
-	  DBController.updateUser(account);
+	  DBController.updateUser(account);}
   }
   
   /**
