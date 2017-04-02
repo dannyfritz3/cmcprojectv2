@@ -110,9 +110,16 @@ public class DBController{
    */
   public static University getUniversity(String name){
 	  String[][] unis = lib.university_getUniversities();
+	  String[][] emphs = lib.university_getEmphases();
+	  ArrayList<String> emph = new ArrayList<String>();
+	  for(String[] info : emphs){
+		  if(info[0].equals(name)){
+			    emph.add(info[1]);
+		  }
+	  }
 	  for(String[] info : unis){
 		  if(info[0].equals(name)){
-			  return new University(info[0], info[1], info[2], info[3], Integer.parseInt(info[4]), Double.parseDouble(info[5]), Double.parseDouble(info[6]), Double.parseDouble(info[7]), Double.parseDouble(info[8]), Double.parseDouble(info[9]), Integer.parseInt(info[10]), Double.parseDouble(info[11]), Double.parseDouble(info[12]),Integer.parseInt(info[13]),Integer.parseInt(info[14]),Integer.parseInt(info[15]), null);
+			  return new University(info[0], info[1], info[2], info[3], Integer.parseInt(info[4]), Double.parseDouble(info[5]), Double.parseDouble(info[6]), Double.parseDouble(info[7]), Double.parseDouble(info[8]), Double.parseDouble(info[9]), Integer.parseInt(info[10]), Double.parseDouble(info[11]), Double.parseDouble(info[12]),Integer.parseInt(info[13]),Integer.parseInt(info[14]),Integer.parseInt(info[15]), emph);
 		  }
 		  
 	  }
@@ -206,9 +213,16 @@ public class DBController{
    */
   public static ArrayList<University> getUniversities(){
 	  ArrayList<University> retlist = new ArrayList<University>();
+	  String[][]emphs = lib.university_getEmphases();
 	  String[][] unis = lib.university_getUniversities();
 	  for(String[] info : unis){
-			  retlist.add(new University(info[0], info[1], info[2], info[3], Integer.parseInt(info[4]), Double.parseDouble(info[5]), Double.parseDouble(info[6]), Double.parseDouble(info[7]), Double.parseDouble(info[8]), Double.parseDouble(info[9]), Integer.parseInt(info[10]), Double.parseDouble(info[11]), Double.parseDouble(info[12]),Integer.parseInt(info[13]),Integer.parseInt(info[14]),Integer.parseInt(info[15]), null));
+		  ArrayList<String> emph = new ArrayList<String>();
+		  for(String[] em : emphs){
+			  if(em[0].equals(info[0])){
+				    emph.add(em[1]);
+			  }
+		  }
+			  retlist.add(new University(info[0], info[1], info[2], info[3], Integer.parseInt(info[4]), Double.parseDouble(info[5]), Double.parseDouble(info[6]), Double.parseDouble(info[7]), Double.parseDouble(info[8]), Double.parseDouble(info[9]), Integer.parseInt(info[10]), Double.parseDouble(info[11]), Double.parseDouble(info[12]),Integer.parseInt(info[13]),Integer.parseInt(info[14]),Integer.parseInt(info[15]), emph));
 		  }
 	  return retlist;
   }

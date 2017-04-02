@@ -4,6 +4,8 @@
 
 package baseclasses;
 
+import java.util.ArrayList;
+
 /**
  * A class that defines the attributes and functionalities of a university
  * 
@@ -16,7 +18,7 @@ public class University
 	 * name of the university, state of the university, location of the university, emphasis of study at university,
 	 * control over university (public, private)
 	 */
-  private String name, state, location, emphasis, control;
+  private String name, state, location, control;
   /**
    * number of students attending a university, number of applicants at a unviersity, academic scale of a university (1-5),
    * social scale at a university (1-5), quality of life scale at a university (1-5)
@@ -30,6 +32,7 @@ public class University
   private double percentFemale, satVerbal, satMath, expenses, percentFinancialAid, percentAdmitted,
   	percentEnrolled;
   
+  private ArrayList<String> emphasis;
   /**
    * A constructor that creates a university object with the minimum requirements being just the name
    * 
@@ -68,7 +71,7 @@ public class University
 		  			double percentFemale, double satVerbal, double satMath,
                     double expenses, double percentFinancialAid, int numberOfApplicants,
                     double percentAdmitted, double percentEnrolled, int academicScale,
-                    int socialScale, int qualityOfLifeScale, String emphasis) throws IllegalArgumentException
+                    int socialScale, int qualityOfLifeScale, ArrayList<String> emphasis) throws IllegalArgumentException
   {
 	  if((academicScale < 1 && academicScale != -1) || academicScale > 5)
 	  {
@@ -269,7 +272,7 @@ public class University
    * 
    * @returns the emphasis from the University
    */
-  public String getEmphasis()
+  public ArrayList<String> getEmphasis()
   {
     return this.emphasis;
   }
@@ -285,7 +288,7 @@ public class University
       + "\nNumber of Students: " + numberOfStudents + "\nPercent Female: " + percentFemale
       + "\nSAT Verbal: " + satVerbal + "\nSAT Math: " + satMath + "\nExpenses: " + expenses
       + "\nPercent FinancialAid: " + percentFinancialAid + "\nNumber of Applicants: " + numberOfApplicants
-      + "\nPercent Enrolled: " + percentEnrolled + "\nAcademic Scale: " + academicScale + "\nSocial Scale: " + socialScale
+      + "\nPercent Enrolled: " + percentEnrolled + "\n Percent Admitted" + percentAdmitted + "\nAcademic Scale: " + academicScale + "\nSocial Scale: " + socialScale
       + "\nQuality of Life Scale: " + qualityOfLifeScale + "\nEmphasis: " + emphasis;
   }
   
@@ -454,9 +457,10 @@ public class University
    * 
    * @param the emphasis of the University
    */
-  public void setEmphasis(String s)
+  public void addEmphasis(String s)
   {
-    this.emphasis = s;
+    this.emphasis.add(s);
+    
   }
   
   /**

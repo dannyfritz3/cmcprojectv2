@@ -2,118 +2,110 @@ package controllers;
 
 import static org.junit.Assert.*;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class DBControllerTest {
+import baseclasses.Account;
+import baseclasses.University;
 
+public class DBControllerTest {
+	static University columbiaClone, columbiaTwo, columbiaClone2;
+	static Account user1, user2, user3;
+	@BeforeClass
+	public static void setup(){
+		DBController.getMaxMinValues();
+		columbiaClone = new University("COLUMBIA", "NEW YORK", "URBAN", "PRIVATE", 10000, 30.0, 625.0, 650, 35196.0, 60.0, 5500, 30.0, 50.0, 1, 3, 5, null);
+		columbiaClone2 = new University("COLUMBIA", "NEW YORK2", "URBAN", "PRIVATE", 10000, 30.0, 625.0, 650, 35196.0, 60.0, 5500, 30.0, 50.0, 1, 3, 5, null);
+		columbiaTwo = new University("COLUMBIA2", "NEW YORK", "URBAN", "PRIVATE", 10000, 30.0, 625.0, 650, 35196.0, 60.0, 5500, 30.0, 50.0, 1, 3, 5, null);
+		user1 = new Account("user1", "John", "Doe2", "user", 'u', 'Y');
+		DBController.saveSchool("user1", "COLUMBIA");
+		user2 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
+		user3 = new Account("user3", "John", "Doe", "user", 'u', 'Y');
+		DBController.addAccount(new Account("user1", "John", "Doe", "user", 'u', 'Y'));
+
+		DBController.addAccount(user3);
+	}
+	
+	@AfterClass
+	public static void teardown(){
+		DBController.removeUser("user1");
+		DBController.removeUser("user2");
+		DBController.removeUser("user3");
+		DBController.removeSchool("user3", "COLUMBIA");
+	}
 	@Test
 	public void testGetUniversity() {
-		fail("Not yet implemented");
+		assertEquals(columbiaClone, DBController.getUniversity("COLUMBIA"));
+	}
+	@Test
+	public void testGetUniversityFails() {
+		assertEquals(DBController.getUniversity(""), null);
+		assertEquals(DBController.getUniversity("notaschool"), null);
 	}
 
 	@Test
 	public void testAddUniversity() {
-		fail("Not yet implemented");
+		DBController.addUniversity(columbiaTwo);
+		assertTrue(DBController.getUniversities().contains(columbiaTwo));
+	}
+	
+	@Test
+	public void testAddUniversityFailsWhenUniversityIsAlreadyThere() {
+		assertFalse(DBController.addUniversity(columbiaClone));
+
 	}
 
 	@Test
 	public void testEditUniversity() {
-		fail("Not yet implemented");
+		DBController.editUniversity(columbiaClone2);
+		assertEquals(columbiaClone2, DBController.getUniversity("COLUMBIA"));
+		DBController.editUniversity(columbiaClone);
+		assertEquals(columbiaClone, DBController.getUniversity("COLUMBIA"));
 	}
 
-	@Test
+	//@Test
 	public void testGetUniversities() {
-		fail("Not yet implemented");
+		assertFalse(DBController.getUniversities().isEmpty());
 	}
 
 	@Test
 	public void testUpdateUser() {
-		fail("Not yet implemented");
+		DBController.updateUser(user1);
+		assertEquals(user1.equals(DBController.getAccount("user1")), true);
 	}
 
 	@Test
 	public void testGetAccounts() {
-		fail("Not yet implemented");
+		assertFalse(DBController.getUniversities().isEmpty());
 	}
 
 	@Test
 	public void testAddAccount() {
-		fail("Not yet implemented");
+		assertEquals(true, DBController.addAccount(user2));
+		assertEquals(user2.equals(DBController.getAccount("user2")), true);
 	}
 
 	@Test
 	public void testGetAccount() {
-		fail("Not yet implemented");
+		assertEquals(user3.equals(DBController.getAccount("user3")), true);
+	}
+	@Test
+	public void testGetAccountFails() {
+		assertEquals(DBController.getAccount("userikul3"), null);
 	}
 
 	@Test
 	public void testRemoveSchool() {
-		fail("Not yet implemented");
+		assertEquals(true, DBController.removeSchool("user1", "COLUMBIA"));
 	}
 
 	@Test
 	public void testSaveSchool() {
-		fail("Not yet implemented");
+		assertTrue(DBController.saveSchool("user3", "COLUMBIA"));
 	}
-
 	@Test
-	public void testObject() {
-		fail("Not yet implemented");
+	public void testSaveSchoolFails() {
+		assertFalse(DBController.saveSchool("user3", "COLUMBI434A"));
 	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-
 }
