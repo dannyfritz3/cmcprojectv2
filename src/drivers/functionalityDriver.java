@@ -11,6 +11,14 @@ public class functionalityDriver {
 	public static Thread t = new Thread();
 	
 	public static void main(String[] args){
+		ArrayList<String> emphasis1 = new ArrayList<String>();
+		ArrayList<String> emphasis2 = new ArrayList<String>();
+		emphasis1.add("MATH");
+		emphasis1.add("LITERATURE");
+		emphasis2.add("EDUCATION");
+		University uni1 = new University("SAINT JOHNS");
+		University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, emphasis1);
+		System.out.println(uni2.getInformation());
 		//System.out.println("Adding User: ");
 		AdminInterface AI = new AdminInterface();
 		System.out.println("Testing UC11:Add User");

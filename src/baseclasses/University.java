@@ -46,7 +46,8 @@ public class University
   /**
    * A constructor that creates a University object with all of the requirements
    * 
-   * @param name of the university
+   * @param name of the univer"Name: SAINT BENS\nState: MINNESOTA\nLocation: RURAL\nControl: PRIVATE\nNumber of Students: 3000\nPercent Female: 1.0\nSAT Verbal: 0.7\nSAT Math: 0.7\nExpenses: 40000.0\nPercent FinancialAid: 0.6\nNumber of Applicants: 1000\nPercent Enrolled: 0.5\nAcademic Scale: 4\nSocial Scale: 4\nQuality of Life Scale: 3\nEmphasis: MATH"));
+	}sity
    * @param state in which university is located
    * @param type of location university is located (urban, rural, suburban, etc.)
    * @param subjects that are emphasized at the university
@@ -284,12 +285,23 @@ public class University
    */
   public String getInformation()
   {
-    return "Name: " + name + "\nState: " + state + "\nLocation: " + location + "\nControl: " + control
+    String msg = "Name: " + name + "\nState: " + state + "\nLocation: " + location + "\nControl: " + control
       + "\nNumber of Students: " + numberOfStudents + "\nPercent Female: " + percentFemale
       + "\nSAT Verbal: " + satVerbal + "\nSAT Math: " + satMath + "\nExpenses: " + expenses
       + "\nPercent FinancialAid: " + percentFinancialAid + "\nNumber of Applicants: " + numberOfApplicants
-      + "\nPercent Enrolled: " + percentEnrolled + "\n Percent Admitted" + percentAdmitted + "\nAcademic Scale: " + academicScale + "\nSocial Scale: " + socialScale
-      + "\nQuality of Life Scale: " + qualityOfLifeScale + "\nEmphasis: " + emphasis;
+      + "\nPercent Enrolled: " + percentEnrolled + "\nPercent Admitted" + percentAdmitted + "\nAcademic Scale: " + academicScale + "\nSocial Scale: " + socialScale
+      + "\nQuality of Life Scale: " + qualityOfLifeScale + "\nEmphasis: ";
+    
+    for(int i = 0; i < emphasis.size(); i++)
+    {
+    	if(i == emphasis.size() - 1)
+    	{
+    		msg = msg + emphasis.get(i);
+    	}
+    	msg = msg + emphasis.get(i) + ", ";
+    }
+    
+    return msg;
   }
   
   /**
@@ -460,7 +472,6 @@ public class University
   public void addEmphasis(String s)
   {
     this.emphasis.add(s);
-    
   }
   /**
    * A method that removes an emphasis of the University
@@ -472,90 +483,7 @@ public class University
     this.emphasis.remove(s);
     
   }
-  
-  /**
-   * A method that compares one University to another
-   * 
-   * @param a University to compare
-   * @returns an integer representing the number of comparisons
-   */
-  public int compareto(Object o)
-  {
-	University uni = (University) o;
-    int comparisons = 0;
-    
-    if(this.name.equals(uni.getName()))
-    {
-    	comparisons += 1;
-    }
-    if(this.state.equals(uni.getState()))
-    {
-    	comparisons += 1;
-    }
-    if(this.location.equals(uni.getLocation()))
-    {
-    	comparisons += 1;
-    }
-    if(this.control.equals(uni.getControl()))
-    {
-    	comparisons += 1;
-    }
-    if(this.numberOfStudents == uni.getNumberOfStudents())
-    {
-    	comparisons += 1;
-    }
-    if(this.percentFemale == uni.getPercentFemale())
-    {
-    	comparisons += 1;
-    }
-    if(this.satVerbal == uni.getSATVerbal())
-    {
-    	comparisons += 1;
-    }
-    if(this.satMath == uni.getSATMath())
-    {
-    	comparisons += 1;
-    }
-    if(this.expenses == uni.getExpenses())
-    {
-    	comparisons += 1;
-    }
-    if(this.percentFinancialAid == uni.getPercentFinancialAid())
-    {
-    	comparisons += 1;
-    }
-    if(this.numberOfApplicants == uni.getNumberOfApplicants())
-    {
-    	comparisons += 1;
-    }
-    if(this.percentAdmitted == uni.getPercentAdmitted())
-    {
-    	comparisons += 1;
-    }
-    if(this.percentEnrolled == uni.getPercentEnrolled())
-    {
-    	comparisons += 1;
-    }
-    if(this.academicScale == uni.getAcademicScale())
-    {
-    	comparisons += 1;
-    }
-    if(this.socialScale == uni.getSocialScale())
-    {
-    	comparisons += 1;
-    }
-    if(this.qualityOfLifeScale == uni.getQualityOfLifeScale())
-    {
-    	comparisons += 1;
-    }
-    if(this.emphasis == uni.getEmphasis())
-    {
-    	comparisons += 1;
-    }
-    
-    return comparisons;
-  }
-  
+
   @Override
   public boolean equals(Object o){
 	  
