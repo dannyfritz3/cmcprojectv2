@@ -31,12 +31,7 @@ public class UserFuncControllerTest {
 		this.ufc.removeSchool(this.uni1);
 		assertFalse(this.ufc.getSavedSchools().contains(uni1));
 	}
-
-	@Test
-	public void testViewSchoolWRec() {
-		fail("Not yet implemented");
-	}
-
+	
 	@Test
 	public void testSaveSchool() {
 		this.ufc.saveSchool(uni3);
