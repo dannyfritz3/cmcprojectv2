@@ -133,7 +133,7 @@ public class functionalityDriver {
 		
 		System.out.println("\nTesting UC15:Add University");
 		System.out.println("Adding adding COLLEGE OF SAINT BENEDICT");
-		AI.addUniversity("COLLEGE OF SAINT BENEDICT", "Minnesota", "SMALL-CITY", "PRIVATE", 2000, 100.0, 600.0, 600.0, 52000.00, 80, 3000, 70, 25, 4, 2, 1, null);
+		AI.addUniversity("COLLEGE OF SAINT BENEDICT", "Minnesota", "SMALL-CITY", "PRIVATE", 2000, 100.0, 600.0, 600.0, 52000.00, 80, 3000, 70, 25, 4, 2, 1, new ArrayList<String>());
 		for(University uni : AI.viewAllSchools()){
 			System.out.println("\t" + uni.getName());
 		}
