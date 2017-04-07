@@ -30,7 +30,7 @@ public class completeFuncionalTest {
 	public ExpectedException deactivatedFail = ExpectedException.none();
 	
 	UserInterface ui = new UserInterface();
-	AdminInterface ai = new AdminInterface();
+	static AdminInterface ai = new AdminInterface();
 	DBController db = new DBController();
 	SearchController sc = new SearchController();
 	static Account user2 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
@@ -39,7 +39,8 @@ public class completeFuncionalTest {
 	static University uni1 = new University("SAINT KENS", "SOUTH MANKOTA", "SUBURBAN", "PUBLIC", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static User user4 = new User("user3", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
-	
+	static Account user5 = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
+	static Account userAct = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
 	
 	@BeforeClass
 	public static void setup(){
@@ -59,6 +60,8 @@ public class completeFuncionalTest {
 		DBController.deleteSchool(uni1.getName());
 		DBController.deleteSchool(uni2.getName());
 		DBController.removeSchool("user2", "SAINT KENS");
+		ai.editProfile(userAct);
+		
 	}
 	
 	@Before
@@ -148,5 +151,12 @@ public class completeFuncionalTest {
 	public void testUC5SearchSchools()
 	{
 		ArrayList<University> searchedSchools = ui.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+	}
+	
+	@Test
+	public void testUC12DeactivateAccount()
+	{
+		ai.deactivate(user5);
+		assertTrue(user5.getStatus() == 'N');
 	}
 }
