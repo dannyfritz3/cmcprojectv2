@@ -11,9 +11,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import baseclasses.Account;
-import baseclasses.University;
+import baseclasses.*;
 import controllers.DBController;
+import controllers.SearchController;
 import interfaces.AdminInterface;
 import interfaces.UserInterface;
 
@@ -31,12 +31,14 @@ public class completeFuncionalTest {
 	
 	UserInterface ui = new UserInterface();
 	AdminInterface ai = new AdminInterface();
+	DBController db = new DBController();
+	SearchController sc = new SearchController();
 	static Account user2 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
 	static Account user1 = new Account("user1", "John", "Doe", "user", 'u', 'Y');
 	static Account user3 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
 	static University uni1 = new University("SAINT KENS", "SOUTH MANKOTA", "SUBURBAN", "PUBLIC", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
-
+	static User user4 = new User("user3", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
 	
 	
 	@BeforeClass
@@ -123,4 +125,28 @@ public class completeFuncionalTest {
 		assertTrue(accounts.contains(user2) && accounts.contains(user1));
 	}
 
+	
+	/**
+	 * Danny's Tests: UC3, UC4, UC5, and UC12
+	 */
+	
+	@Test
+	public void testUC3RemoveSavedSchool()
+	{
+		user4.addUniversities(uni1);
+		user4.removeSchool(uni1);
+		assertFalse(user4.getSavedUniversities().contains(uni1));
+	}
+	
+	@Test
+	public void testUC4ViewSchool()
+	{
+		assertTrue(user4.viewSchool(uni1).equals(uni1.getInformation()));
+	}
+	
+	@Test
+	public void testUC5SearchSchools()
+	{
+		ArrayList<University> searchedSchools = ui.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+	}
 }
