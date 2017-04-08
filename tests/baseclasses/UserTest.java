@@ -40,15 +40,4 @@ public class UserTest {
 		this.user1.removeSchool(uni3);
 		assertFalse(this.savedSchools.contains(uni3));
 	}
-
-	@Test
-	public void testViewSchool() {
-		assertTrue(user1.viewSchool(uni1).equals("Name: UNIVERSITY ONE\nState: null\nLocation: null\nControl: null\nNumber of Students: 0\nPercent Female: 0.0\nSAT Verbal: 0.0\nSAT Math: 0.0\nExpenses: 0.0\nPercent FinancialAid: 0.0\nNumber of Applicants: 0\nPercent Enrolled: 0.0\nAcademic Scale: 0\nSocial Scale: 0\nQuality of Life Scale: 0\nEmphasis: null"));
-	}
-
-	@Test
-	public void testViewSchoolWRec() {
-		System.out.println(this.user1.viewSchoolWRec(uni1));
-	}
-
 }

@@ -39,15 +39,10 @@ public abstract class AccountInterface{
  	* @param username the username of the account logging in
  	* @param password the password of the account logging in
 	*/ 
-	public boolean login(String username, String password){
+	public boolean login(String username, String password) throws Exception{
 		Account temp;
-		try {
-			temp = AccountController.login(username, password);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}		
+		temp = AccountController.login(username, password);
+			
 		//AccountController.login(username, password);
 		account = temp;
 		return true;

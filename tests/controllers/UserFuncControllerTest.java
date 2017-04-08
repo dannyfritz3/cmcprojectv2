@@ -54,4 +54,8 @@ public class UserFuncControllerTest {
 		this.ufc.editProfile(newUser);
 		assertTrue(this.user.getPassword().equals("password1"));
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/nullpm/cmcprojectv2.git
