@@ -55,6 +55,8 @@ public class AdminFuncControllerTest {
 		DBController.removeUser("test");
 		DBController.removeUser("test1");
 		DBController.removeUser("test2");
+		DBController.removeUser("ethan1");
+		DBController.removeUser("ferry");
 
 	}
 	@Test
@@ -97,7 +99,7 @@ public class AdminFuncControllerTest {
 	
 	@Test
 	public void testAddUserPass() {
-		assertTrue(AdminFuncController.addUser("Test2","Ethan","Ferry","123qwe",'u','Y'));
+		assertTrue(AdminFuncController.addUser("Ethan","Ferry","Test2","123qwe",'u','Y'));
 	}
 	@Test
 	public void testAddUserFail() {
