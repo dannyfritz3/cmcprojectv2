@@ -52,16 +52,18 @@ public class completeFuncionalTest {
 		DBController.addUniversity(uni1);
 		DBController.addUniversity(uni2);
 		DBController.saveSchool("user2", "SAINT KENS");
+		DBController.addAccount(user5);
 	}
 	
 	@AfterClass
 	public static void teardown(){
 		DBController.removeUser("user3");
-		DBController.removeUser("user2");
 		DBController.removeUser("user1");
+		DBController.removeUser("admin1");
 		DBController.deleteSchool(uni1.getName());
 		DBController.deleteSchool(uni2.getName());
 		DBController.removeSchool("user2", "SAINT KENS");
+		DBController.removeUser("user2");
 		ai.editProfile(userAct);
 		
 	}
@@ -159,7 +161,7 @@ public class completeFuncionalTest {
 	public void testUC12DeactivateAccount()
 	{
 		ai.deactivate(user5);
-		assertTrue(user5.getStatus() == 'N');
+		assertTrue(DBController.getAccount("admin1").getStatus() == 'N');
 	}
 	
 	@Test
@@ -211,5 +213,28 @@ public class completeFuncionalTest {
 		assertEquals(a.getType(),'u');
 		assertEquals(a.getStatus(),'N');
 		
+	}
+	
+	public void testUC15AddUniversity(){
+		assertTrue(ai.addUniversity("COLLEGE OF SAINT BENEDICT", "Minnesota", "SMALL-CITY", "PRIVATE", 2000, 100.0, 600.0, 600.0, 52000.00, 80, 3000, 70, 25, 4, 2, 1, new ArrayList<String>()));
+		DBController.deleteSchool("COLLEGE OF SAINT BENEDICT");
+	}
+	
+	public void testUC16EditUniversity(){
+		University uni = DBController.getUniversity("COLUMBIA");
+		uni.setAcademicScale(1);
+		ai.editUniversity(uni);
+		assertEquals(uni.getAcademicScale(), 1);
+		uni.setAcademicScale(5);
+		ai.editUniversity(uni);
+	}
+	
+	public void testUC17viewUser(){
+		Account a2 = ai.viewUser("Avgjohnnie");
+		assertEquals(a2.getUsername(), "Avgjohnnie");
+	}
+	
+	public void testUC18viewAllSchools(){
+		assertFalse(ai.viewAllSchools().isEmpty());
 	}
 }
