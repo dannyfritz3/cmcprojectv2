@@ -22,9 +22,9 @@ public class AdminFuncControllerTest {
 	@BeforeClass
 	public static void setup(){
 		DBController.getMaxMinValues();
-		test = new University("TEST", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, null);
-		test1 = new University("TEST1", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 1, 2, 2, null);
-		test2 = new University("TEST2", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 50000, 80, 2500, 60, 90, 2, 2, 2, null);
+		test = new University("TEST", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, new ArrayList<String>());
+		test1 = new University("TEST1", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 1, 2, 2, new ArrayList<String>());
+		test2 = new University("TEST2", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 50000, 80, 2500, 60, 90, 2, 2, 2, new ArrayList<String>());
 		atest = new Account("Test","Ethan","Ferry","123qwe",'u','Y');
 		atest1 = new Account("Test1","John","Smith","password",'a','Y');
 		atest2 = new Account("Test2","Matt","Zent","12345",'u','Y');
@@ -59,11 +59,11 @@ public class AdminFuncControllerTest {
 	}
 	@Test
 	public void testAddUniversityPass(){
-		assertTrue(AdminFuncController.addUniversity("TEST1", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 1, 2, 2, null));
+		assertTrue(AdminFuncController.addUniversity("TEST1", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 1, 2, 2, new ArrayList<String>()));
 	}
 	@Test
 	public void testAddUniversityFail() {
-		assertTrue(!AdminFuncController.addUniversity("TEST", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, null));
+		assertTrue(!AdminFuncController.addUniversity("TEST", "MINNESOTA", "URBAN", "PRIVATE", 5000, 50, 250, 250, 10000, 80, 2500, 60, 90, 2, 2, 2, new ArrayList<String>()));
 	}
 	@Test
 	public void testViewAllUniversitiesPass() {

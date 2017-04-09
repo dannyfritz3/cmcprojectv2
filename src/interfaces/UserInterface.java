@@ -59,7 +59,7 @@ public class UserInterface extends AccountInterface{
 		return this.sc.getSearchedUniversities();
 	}
 	
-	public boolean login(String username, String password){
+	public boolean login(String username, String password) throws Exception{
 		boolean ret = super.login(username, password);
 		ufc = new UserFuncController((User)this.account);
 		return ret;

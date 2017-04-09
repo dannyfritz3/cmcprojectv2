@@ -55,7 +55,7 @@ public class AccountController{
    * @returns true if account added successfully, otherwise false
    */
   public static boolean addAccount(String firstname, String lastname, String username, String password, char type, char status){
-	  Account acc = new Account(firstname,lastname,username,password,type,status);
+	  Account acc = new Account(username,firstname,lastname,password,type,status);
 	  return DBController.addAccount(acc); 
   }
   /**

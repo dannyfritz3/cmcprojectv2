@@ -81,6 +81,15 @@ public class AdminFuncController{
 	  DBController.updateUser(acc);
   }
   
+  /**
+   * This method returns an account to be activated
+   * @param username the username of the account ot be activated
+   */
+  public static void activate(String username){
+	  Account acc = DBController.getAccount(username);
+	  acc.setStatus('Y');
+	  DBController.updateUser(acc);
+  }
   
    /**
    * This method adds an account to the system
@@ -105,5 +114,9 @@ public class AdminFuncController{
   public static ArrayList<Account> manageUsers(){
 	  ArrayList<Account> accounts= AccountController.getAccounts();
 	  return accounts;
+  }
+  
+  public static boolean deleteUser(Account a){
+	  return DBController.removeUser(a.getUsername());
   }
 }

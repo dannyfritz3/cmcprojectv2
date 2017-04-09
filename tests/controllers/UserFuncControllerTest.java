@@ -54,5 +54,4 @@ public class UserFuncControllerTest {
 		this.ufc.editProfile(newUser);
 		assertTrue(this.user.getPassword().equals("password1"));
 	}
-
 }

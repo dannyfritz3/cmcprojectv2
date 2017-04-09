@@ -29,7 +29,12 @@ public class functionalityDriver {
 		
 		UserInterface UI = new UserInterface();
 		System.out.println("\nTesting UC1(Alt1):Login ");
-		if(!AI.login("Matthew", "password"))System.out.println("Login Failed");
+		try {
+			if(!AI.login("Matthew", "password"))System.out.println("Login Failed");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try {
 			t.sleep(100);
 		} catch (InterruptedException e) {
@@ -38,7 +43,12 @@ public class functionalityDriver {
 		}
 		
 		System.out.println("\nTesting UC1:Login ");
-		if(AI.login("Matthew", "Rocks21"))System.out.println("Login successful");		
+		try {
+			if(AI.login("Matthew", "Rocks21"))System.out.println("Login successful");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		if(AI.getAccount().getLoggedIn())System.out.println(AI.getAccount().getUsername() + " is logged in");
 		
 		System.out.println("\nTesting UC14:Logout ");
@@ -46,7 +56,12 @@ public class functionalityDriver {
 		if(!AI.getAccount().getLoggedIn())System.out.println(AI.getAccount().getUsername() + " is logged out");
 		
 		System.out.println("\nUsing Account: " + AI.viewUser("Avgjohnnie").getUsername());
-		UI.login("Avgjohnnie", "TommiesSuck");
+		try {
+			UI.login("Avgjohnnie", "TommiesSuck");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("\nTesting UC8:Save University ");
 		if(UI.saveSchool(DBController.getUniversity("COLUMBIA")))System.out.println("COLUMBIA added");
 		System.out.println("\nTesting UC2:View Saved Schools ");
@@ -116,8 +131,13 @@ public class functionalityDriver {
 		
 		System.out.println("Testing UC13:Edit User info(User)");
 		UserInterface UI2 = new UserInterface();
-		if(UI2.login("Avgjohnnie", "TommiesSuck"))
-			System.out.println("Login successful\n");		
+		try {
+			if(UI2.login("Avgjohnnie", "TommiesSuck"))
+				System.out.println("Login successful\n");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		if(UI2.getAccount().getLoggedIn())System.out.println(UI2.getAccount().getUsername() + " is logged in");
 		System.out.println("\nFirst get of user");
 		System.out.println(UI2.viewProfile());
@@ -133,7 +153,7 @@ public class functionalityDriver {
 		
 		System.out.println("\nTesting UC15:Add University");
 		System.out.println("Adding adding COLLEGE OF SAINT BENEDICT");
-		AI.addUniversity("COLLEGE OF SAINT BENEDICT", "Minnesota", "SMALL-CITY", "PRIVATE", 2000, 100.0, 600.0, 600.0, 52000.00, 80, 3000, 70, 25, 4, 2, 1, null);
+		AI.addUniversity("COLLEGE OF SAINT BENEDICT", "Minnesota", "SMALL-CITY", "PRIVATE", 2000, 100.0, 600.0, 600.0, 52000.00, 80, 3000, 70, 25, 4, 2, 1, new ArrayList<String>());
 		for(University uni : AI.viewAllSchools()){
 			System.out.println("\t" + uni.getName());
 		}

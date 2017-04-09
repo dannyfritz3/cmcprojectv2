@@ -185,6 +185,7 @@ public class Account
     this.status = c;
   }
   
+
   @Override
   public boolean equals(Object o){
 	  
