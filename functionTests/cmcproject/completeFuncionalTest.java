@@ -74,7 +74,7 @@ public class completeFuncionalTest {
 	
 	@Test
 	public void testUC1Login() throws Exception {
-		assertTrue(ui.login("Avgjohnnie", "TommiesSuck"));
+		assertTrue(ui.login("user2", "user"));
 	}
 	
 	@Test
@@ -88,7 +88,7 @@ public class completeFuncionalTest {
 	public void testUC1LoginAlt2Password() throws Exception{
 		passFail.expect(Exception.class);
 		passFail.expectMessage("Password does not match this user");
-		ui.login("Avgjohnnie", "password");		
+		ui.login("user2", "password");		
 	}
 	
 	@Test
@@ -211,11 +211,11 @@ public class completeFuncionalTest {
 	public void testUC13EditUserInfoU() throws Exception
 	{	
 		ui.login("user2", "user");
-		User a = new User("user2", "Jane", "Smith", "steve", 'a', 'N',new ArrayList<University>());
+		User a = new User("user2", "Jane", "Smith", "user", 'a', 'N',new ArrayList<University>());
 		ui.editProfile(a);
 		assertEquals(user2.getFirstName(),"Jane");
 		assertEquals(a.getLastName(),"Smith");
-		assertEquals(a.getPassword(),"steve");
+		assertEquals(a.getPassword(),"user");
 		assertEquals(a.getType(),'a');
 		assertEquals(a.getStatus(),'N');
 		//set it back
