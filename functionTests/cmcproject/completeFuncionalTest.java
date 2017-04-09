@@ -162,12 +162,14 @@ public class completeFuncionalTest {
 		assertTrue(user5.getStatus() == 'N');
 	}
 	
-	/*@Test
+	@Test
 	public void testUC6Results()
 	{
-		
+		ArrayList<University> searchedSchools = ui.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		University u = DBController.getUniversity("UNIVERSITY OF MINNESOTA");
+		assertTrue(searchedSchools.contains(u));
 	}
-	
+	/*
 	@Test
 	public void testUC7ViewSchoolsWithRecommendation()
 	{
@@ -209,7 +211,7 @@ public class completeFuncionalTest {
 		ui.login("user2", "user");
 		User a = new User("user2", "Jane", "Smith", "steve", 'a', 'N',new ArrayList<University>());
 		ui.editProfile(a);
-		//assertEquals(user2.getFirstName(),"Jane");
+		assertEquals(user2.getFirstName(),"Jane");
 		assertEquals(a.getLastName(),"Smith");
 		assertEquals(a.getPassword(),"steve");
 		assertEquals(a.getType(),'a');
