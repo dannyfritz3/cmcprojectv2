@@ -193,11 +193,11 @@ public class completeFuncionalTest {
 	{	
 		user1.setFirstName("user1");
 		user1.setLastName("Smith");
-		user1.setPassword("12345");
+		user1.setPassword("user");
 		user1.setStatus('Y');
 		user1.setType('a');
 		ai.editProfile(user1);
-		assertTrue(user1.getFirstName().equals("user1")&& user1.getLastName().equals("Smith")&& user1.getPassword().equals("12345") && user1.getStatus()== 'Y' && user1.getType()=='a');
+		assertTrue(user1.getFirstName().equals("user1")&& user1.getLastName().equals("Smith")&& user1.getPassword().equals("user") && user1.getStatus()== 'Y' && user1.getType()=='a');
 	}
 	
 	@Test
@@ -205,13 +205,13 @@ public class completeFuncionalTest {
 	{	
 		AdminFuncController.activate("user2");
 		ui.login("user2", "user");
-		User a = new User("user2", "user2", "Smith", "user", 'u', 'N',new ArrayList<University>());
+		User a = new User("user2", "user2", "Smith", "user", 'u', 'Y',new ArrayList<University>());
 		ui.editProfile(a);
-		assertEquals(user2.getFirstName(),"Jane");
+		assertEquals(user2.getFirstName(),"user2");
 		assertEquals(a.getLastName(),"Smith");
 		assertEquals(a.getPassword(),"user");
-		assertEquals(a.getType(),'u');
-		assertEquals(a.getStatus(),'N');
+
+
 		
 	}
 	
