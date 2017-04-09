@@ -37,7 +37,7 @@ public class completeFuncionalTest {
 	SearchController sc = new SearchController();
 	static Account user2 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
 	static Account user1 = new Account("user1", "John", "Doe", "user", 'u', 'Y');
-	static Account user3 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
+	static Account user3 = new Account("user3", "John", "Doe", "user", 'u', 'Y');
 	static University uni1 = new University("SAINT KENS", "SOUTH MANKOTA", "SUBURBAN", "PUBLIC", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static User user4 = new User("user3", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
