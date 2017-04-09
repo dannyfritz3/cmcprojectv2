@@ -116,7 +116,7 @@ public class UserFuncController {
 		this.user.setFirstName(a.getFirstName());
 		this.user.setLastName(a.getLastName());
 		this.user.setPassword(a.getPassword());
+		return DBController.updateUser(a);
 		
-		return true;
 	}
 }

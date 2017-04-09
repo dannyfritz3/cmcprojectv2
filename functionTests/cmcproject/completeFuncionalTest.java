@@ -190,7 +190,7 @@ public class completeFuncionalTest {
 	public void testUC13EditUserInfoA()
 	{	
 		Account a = user1;
-		user1.setFirstName("Jane");
+		user1.setFirstName("user1");
 		user1.setLastName("Smith");
 		user1.setPassword("12345");
 		user1.setStatus('N');
@@ -211,12 +211,12 @@ public class completeFuncionalTest {
 	public void testUC13EditUserInfoU() throws Exception
 	{	
 		ui.login("user2", "user");
-		User a = new User("user2", "Jane", "Smith", "user", 'a', 'N',new ArrayList<University>());
+		User a = new User("user2", "user2", "Smith", "user", 'u', 'N',new ArrayList<University>());
 		ui.editProfile(a);
 		assertEquals(user2.getFirstName(),"Jane");
 		assertEquals(a.getLastName(),"Smith");
 		assertEquals(a.getPassword(),"user");
-		assertEquals(a.getType(),'a');
+		assertEquals(a.getType(),'u');
 		assertEquals(a.getStatus(),'N');
 		//set it back
 		Account b = new Account("user2", "John", "Doe", "user", 'u', 'Y');
