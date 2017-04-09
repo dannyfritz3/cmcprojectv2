@@ -169,12 +169,14 @@ public class completeFuncionalTest {
 		University u = DBController.getUniversity("UNIVERSITY OF MINNESOTA");
 		assertTrue(searchedSchools.contains(u));
 	}
-	/*
+	
 	@Test
 	public void testUC7ViewSchoolsWithRecommendation()
 	{
-		
-	}*/
+		ArrayList<University> u = ui.viewSchoolWRec(DBController.getUniversity("UNIVERSITY OF MINNESOTA"));
+		University uni = DBController.getUniversity("UNIVERSITY OF WASHINGTON");
+		assertTrue(u.contains(uni));
+	}
 	
 	@Test
 	public void testUC9ViewProfile() throws Exception
