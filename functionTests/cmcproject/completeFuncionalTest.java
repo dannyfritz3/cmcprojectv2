@@ -42,7 +42,7 @@ public class completeFuncionalTest {
 	static University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static User user4 = new User("user3", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
 	static Account user5 = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
-	static Account userAct = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
+	static Account user6 = new Account("user6", "John", "Doe", "user", 'u', 'Y');
 	
 	@BeforeClass
 	public static void setup(){
@@ -53,6 +53,7 @@ public class completeFuncionalTest {
 		DBController.addUniversity(uni2);
 		DBController.saveSchool("user2", "SAINT KENS");
 		DBController.addAccount(user5);
+		DBController.addAccount(user6);
 	}
 	
 	@AfterClass
@@ -64,7 +65,7 @@ public class completeFuncionalTest {
 		DBController.deleteSchool(uni2.getName());
 		DBController.removeSchool("user2", "SAINT KENS");
 		DBController.removeUser("user2");
-		ai.editProfile(userAct);
+		DBController.removeUser("user6");
 		
 	}
 	
@@ -184,9 +185,9 @@ public class completeFuncionalTest {
 	@Test
 	public void testUC9ViewProfile() throws Exception
 	{
-		AdminFuncController.activate("user2");
-		ui.login("user2","user");
-		assertTrue(ui.viewProfile().equals("First Name: John\nLast Name: Doe\nUsername: user2\nPassword: user\nType: u"));
+		ui.login("user6","user");
+		System.out.println(ui.viewProfile());
+		assertTrue(ui.viewProfile().equals("First Name: John\nLast Name: Doe\nUsername: user6\nPassword: user\nType: u"));
 	}
 	
 	@Test
