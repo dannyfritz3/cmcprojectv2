@@ -189,27 +189,19 @@ public class completeFuncionalTest {
 	@Test
 	public void testUC13EditUserInfoA()
 	{	
-		Account a = user1;
 		user1.setFirstName("user1");
 		user1.setLastName("Smith");
 		user1.setPassword("12345");
-		user1.setStatus('N');
+		user1.setStatus('Y');
 		user1.setType('a');
 		ai.editProfile(user1);
-		assertEquals(user1.getFirstName(),"Jane");
-		assertEquals(user1.getLastName(),"Smith");
-		assertEquals(user1.getPassword(),"12345");
-		assertEquals(user1.getStatus(),'N');
-		assertEquals(user1.getType(),'a');
-		//set it back to what it was before the change
-		user1 = a;
-		ai.editProfile(user1);
-		
+		assertTrue(user1.getFirstName().equals("user1")&& user1.getLastName().equals("Smith")&& user1.getPassword().equals("12345") && user1.getStatus()== 'Y' && user1.getType()=='a');
 	}
 	
 	@Test
 	public void testUC13EditUserInfoU() throws Exception
 	{	
+		AdminFuncController.activate("user2");
 		ui.login("user2", "user");
 		User a = new User("user2", "user2", "Smith", "user", 'u', 'N',new ArrayList<University>());
 		ui.editProfile(a);
@@ -218,10 +210,6 @@ public class completeFuncionalTest {
 		assertEquals(a.getPassword(),"user");
 		assertEquals(a.getType(),'u');
 		assertEquals(a.getStatus(),'N');
-		//set it back
-		Account b = new Account("user2", "John", "Doe", "user", 'u', 'Y');
-		user2 = b;
-		ai.editProfile(user2);
 		
 	}
 }
