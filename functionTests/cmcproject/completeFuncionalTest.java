@@ -155,6 +155,7 @@ public class completeFuncionalTest {
 	public void testUC5SearchSchools()
 	{
 		ArrayList<University> searchedSchools = ui.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(searchedSchools!=null);
 	}
 	
 	@Test
@@ -207,12 +208,8 @@ public class completeFuncionalTest {
 		ui.login("user2", "user");
 		User a = new User("user2", "user2", "Smith", "user", 'u', 'Y',new ArrayList<University>());
 		ui.editProfile(a);
-		assertEquals(user2.getFirstName(),"user2");
-		assertEquals(a.getLastName(),"Smith");
-		assertEquals(a.getPassword(),"user");
-
-
-		
+		user2 = DBController.getAccount("user2");
+		assertTrue(user2.getFirstName().equals("user2") && user2.getLastName().equals("Smith")&& user2.getPassword().equals("user"));
 	}
 	
 	public void testUC15AddUniversity(){
