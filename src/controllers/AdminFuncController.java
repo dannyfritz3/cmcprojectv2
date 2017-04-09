@@ -106,4 +106,8 @@ public class AdminFuncController{
 	  ArrayList<Account> accounts= AccountController.getAccounts();
 	  return accounts;
   }
+  
+  public static boolean deleteUser(Account a){
+	  return DBController.removeUser(a.getUsername());
+  }
 }

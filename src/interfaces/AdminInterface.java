@@ -101,4 +101,7 @@ public class AdminInterface extends AccountInterface{
 	public ArrayList<Account> manageUsers(){
 		return AdminFuncController.manageUsers();
 	}
+	public boolean deleteUser(Account a){
+		return AdminFuncController.deleteUser(a);
+	}
 }
