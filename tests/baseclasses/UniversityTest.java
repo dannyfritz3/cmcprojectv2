@@ -250,4 +250,9 @@ public class UniversityTest {
 		this.uni2.addEmphasis("LITERATURE");
 		assertTrue(uni2.getEmphasis().contains("LITERATURE"));
 	}
+	@Test
+	public void testEquals()
+	{
+		assertFalse(this.uni1.equals(uni2));
+	}
 }

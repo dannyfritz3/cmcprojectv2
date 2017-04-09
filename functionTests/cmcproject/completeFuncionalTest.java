@@ -11,9 +11,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import baseclasses.Account;
-import baseclasses.University;
+import baseclasses.*;
+import controllers.AdminFuncController;
 import controllers.DBController;
+import controllers.SearchController;
+import controllers.UserFuncController;
 import interfaces.AdminInterface;
 import interfaces.UserInterface;
 
@@ -30,14 +32,17 @@ public class completeFuncionalTest {
 	public ExpectedException deactivatedFail = ExpectedException.none();
 	
 	UserInterface ui = new UserInterface();
-	AdminInterface ai = new AdminInterface();
+	static AdminInterface ai = new AdminInterface();
+	DBController db = new DBController();
+	SearchController sc = new SearchController();
 	static Account user2 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
 	static Account user1 = new Account("user1", "John", "Doe", "user", 'u', 'Y');
 	static Account user3 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
 	static University uni1 = new University("SAINT KENS", "SOUTH MANKOTA", "SUBURBAN", "PUBLIC", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
-
-	
+	static User user4 = new User("user3", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
+	static Account user5 = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
+	static Account userAct = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
 	
 	@BeforeClass
 	public static void setup(){
@@ -57,6 +62,8 @@ public class completeFuncionalTest {
 		DBController.deleteSchool(uni1.getName());
 		DBController.deleteSchool(uni2.getName());
 		DBController.removeSchool("user2", "SAINT KENS");
+		ai.editProfile(userAct);
+		
 	}
 	
 	@Before
@@ -123,4 +130,98 @@ public class completeFuncionalTest {
 		assertTrue(accounts.contains(user2) && accounts.contains(user1));
 	}
 
+	
+	/**
+	 * Danny's Tests: UC3, UC4, UC5, and UC12
+	 */
+	
+	@Test
+	public void testUC3RemoveSavedSchool()
+	{
+		user4.addUniversities(uni1);
+		user4.removeSchool(uni1);
+		assertFalse(user4.getSavedUniversities().contains(uni1));
+	}
+	
+	@Test
+	public void testUC4ViewSchool()
+	{
+		assertTrue(user4.viewSchool(uni1).equals(uni1.getInformation()));
+	}
+	
+	@Test
+	public void testUC5SearchSchools()
+	{
+		ArrayList<University> searchedSchools = ui.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+	}
+	
+	@Test
+	public void testUC12DeactivateAccount()
+	{
+		ai.deactivate(user5);
+		assertTrue(user5.getStatus() == 'N');
+	}
+	
+	@Test
+	public void testUC6Results()
+	{
+		ArrayList<University> searchedSchools = ui.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		University u = DBController.getUniversity("UNIVERSITY OF MINNESOTA");
+		assertTrue(searchedSchools.contains(u));
+	}
+	
+	@Test
+	public void testUC7ViewSchoolsWithRecommendation()
+	{
+		ArrayList<University> u = ui.viewSchoolWRec(DBController.getUniversity("UNIVERSITY OF MINNESOTA"));
+		University uni = DBController.getUniversity("UNIVERSITY OF WASHINGTON");
+		assertTrue(u.contains(uni));
+	}
+	
+	@Test
+	public void testUC9ViewProfile() throws Exception
+	{
+		AdminFuncController.activate("user2");
+		ui.login("user2","user");
+		assertTrue(ui.viewProfile().equals("First Name: John\nLast Name: Doe\nUsername: user2\nPassword: user\nType: u"));
+	}
+	
+	@Test
+	public void testUC13EditUserInfoA()
+	{	
+		Account a = user1;
+		user1.setFirstName("Jane");
+		user1.setLastName("Smith");
+		user1.setPassword("12345");
+		user1.setStatus('N');
+		user1.setType('a');
+		ai.editProfile(user1);
+		assertEquals(user1.getFirstName(),"Jane");
+		assertEquals(user1.getLastName(),"Smith");
+		assertEquals(user1.getPassword(),"12345");
+		assertEquals(user1.getStatus(),'N');
+		assertEquals(user1.getType(),'a');
+		//set it back to what it was before the change
+		user1 = a;
+		ai.editProfile(user1);
+		
+	}
+	
+	@Test
+	public void testUC13EditUserInfoU() throws Exception
+	{	
+		ui.login("user2", "user");
+		User a = new User("user2", "Jane", "Smith", "steve", 'a', 'N',new ArrayList<University>());
+		ui.editProfile(a);
+		assertEquals(user2.getFirstName(),"Jane");
+		assertEquals(a.getLastName(),"Smith");
+		assertEquals(a.getPassword(),"steve");
+		assertEquals(a.getType(),'a');
+		assertEquals(a.getStatus(),'N');
+		//set it back
+		Account b = new Account("user2", "John", "Doe", "user", 'u', 'Y');
+		user2 = b;
+		ai.editProfile(user2);
+		
+	}
 }
