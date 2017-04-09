@@ -12,8 +12,10 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import baseclasses.*;
+import controllers.AdminFuncController;
 import controllers.DBController;
 import controllers.SearchController;
+import controllers.UserFuncController;
 import interfaces.AdminInterface;
 import interfaces.UserInterface;
 
@@ -158,5 +160,64 @@ public class completeFuncionalTest {
 	{
 		ai.deactivate(user5);
 		assertTrue(user5.getStatus() == 'N');
+	}
+	
+	/*@Test
+	public void testUC6Results()
+	{
+		
+	}
+	
+	@Test
+	public void testUC7ViewSchoolsWithRecommendation()
+	{
+		
+	}*/
+	
+	@Test
+	public void testUC9ViewProfile() throws Exception
+	{
+		AdminFuncController.activate("user2");
+		ui.login("user2","user");
+		assertTrue(ui.viewProfile().equals("First Name: John\nLast Name: Doe\nUsername: user2\nPassword: user\nType: u"));
+	}
+	
+	@Test
+	public void testUC13EditUserInfoA()
+	{	
+		Account a = user1;
+		user1.setFirstName("Jane");
+		user1.setLastName("Smith");
+		user1.setPassword("12345");
+		user1.setStatus('N');
+		user1.setType('a');
+		ai.editProfile(user1);
+		assertEquals(user1.getFirstName(),"Jane");
+		assertEquals(user1.getLastName(),"Smith");
+		assertEquals(user1.getPassword(),"12345");
+		assertEquals(user1.getStatus(),'N');
+		assertEquals(user1.getType(),'a');
+		//set it back to what it was before the change
+		user1 = a;
+		ai.editProfile(user1);
+		
+	}
+	
+	@Test
+	public void testUC13EditUserInfoU() throws Exception
+	{	
+		ui.login("user2", "user");
+		User a = new User("user2", "Jane", "Smith", "steve", 'a', 'N',new ArrayList<University>());
+		ui.editProfile(a);
+		//assertEquals(user2.getFirstName(),"Jane");
+		assertEquals(a.getLastName(),"Smith");
+		assertEquals(a.getPassword(),"steve");
+		assertEquals(a.getType(),'a');
+		assertEquals(a.getStatus(),'N');
+		//set it back
+		Account b = new Account("user2", "John", "Doe", "user", 'u', 'Y');
+		user2 = b;
+		ai.editProfile(user2);
+		
 	}
 }
