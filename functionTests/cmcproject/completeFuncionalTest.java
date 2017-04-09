@@ -52,16 +52,18 @@ public class completeFuncionalTest {
 		DBController.addUniversity(uni1);
 		DBController.addUniversity(uni2);
 		DBController.saveSchool("user2", "SAINT KENS");
+		DBController.addAccount(user5);
 	}
 	
 	@AfterClass
 	public static void teardown(){
 		DBController.removeUser("user3");
-		DBController.removeUser("user2");
 		DBController.removeUser("user1");
+		DBController.removeUser("admin1");
 		DBController.deleteSchool(uni1.getName());
 		DBController.deleteSchool(uni2.getName());
 		DBController.removeSchool("user2", "SAINT KENS");
+		DBController.removeUser("user2");
 		ai.editProfile(userAct);
 		
 	}
@@ -159,7 +161,7 @@ public class completeFuncionalTest {
 	public void testUC12DeactivateAccount()
 	{
 		ai.deactivate(user5);
-		assertTrue(user5.getStatus() == 'N');
+		assertTrue(DBController.getAccount("admin1").getStatus() == 'N');
 	}
 	
 	@Test
