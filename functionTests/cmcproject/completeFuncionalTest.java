@@ -40,7 +40,7 @@ public class completeFuncionalTest {
 	static Account user3 = new Account("user3", "John", "Doe", "user", 'u', 'Y');
 	static University uni1 = new University("SAINT KENS", "SOUTH MANKOTA", "SUBURBAN", "PUBLIC", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
-	static User user4 = new User("user3", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
+	//static User user4 = new User("user4", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
 	static Account user5 = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
 	static Account user6 = new Account("user6", "John", "Doe", "user", 'u', 'Y');
 	
@@ -134,22 +134,27 @@ public class completeFuncionalTest {
 	}
 
 	
-	/**
+	/*
 	 * Danny's Tests: UC3, UC4, UC5, and UC12
 	 */
 	
 	@Test
-	public void testUC3RemoveSavedSchool()
+	public void testUC3RemoveSavedSchool() throws Exception
 	{
-		user4.addUniversities(uni1);
-		user4.removeSchool(uni1);
-		assertFalse(user4.getSavedUniversities().contains(uni1));
+		//user4.addUniversities(uni1);
+		//user4.removeSchool(uni1);
+		//assertFalse(user4.getSavedUniversities().contains(uni1));
+		ui.login("user2", "user");
+		assertTrue(ui.removeSchool(uni2));
+		
 	}
 	
 	@Test
 	public void testUC4ViewSchool()
 	{
-		assertTrue(user4.viewSchool(uni1).equals(uni1.getInformation()));
+		assertTrue(ui.viewSchool(uni1).equals("Name: SAINT KENS\nState: SOUTH MANKOTA\nLocation: SUBURBAN\nControl: PUBLIC\nNumber of Students: 3000\nPercent Female: 1.0\nSAT Verbal: 0.7\nSAT Math: 0.7\nExpenses: 40000.0\nPercent FinancialAid: 0.6\nNumber of Applicants: 1000\nPercent Enrolled: 0.5\nPercent Admitted0.8\nAcademic Scale: 4\nSocial Scale: 4\nQuality of Life Scale: 3\nEmphasis: "));
+		
+		
 	}
 	
 	@Test
