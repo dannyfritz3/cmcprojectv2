@@ -94,7 +94,8 @@ public class completeFuncionalTest {
 	@Test
 	public void testUC1LoginAlt3Deactivated() throws Exception{
 		deactivatedFail.expect(Exception.class);
-		deactivatedFail.expectMessage("This account is deactivated");	
+		deactivatedFail.expectMessage("This account is deactivated");
+		
 		ui.login("user1", "user");
 		
 	}
@@ -158,8 +159,12 @@ public class completeFuncionalTest {
 	@Test
 	public void testUC12DeactivateAccount()
 	{
-		ai.deactivate(user5);
-		assertTrue(user5.getStatus() == 'N');
+		ai.deactivate(user1);
+		user1 = ai.viewUser("user1");
+		assertTrue(user1.getStatus() == 'N');
+		user1 = new Account("user1", "John", "Doe", "user", 'u', 'Y');
+		ai.editProfile(user1);
+
 	}
 	
 	@Test
@@ -192,13 +197,13 @@ public class completeFuncionalTest {
 		Account a = user1;
 		user1.setFirstName("user1");
 		user1.setLastName("Smith");
-		user1.setPassword("12345");
+		user1.setPassword("user");
 		user1.setStatus('N');
 		user1.setType('a');
 		ai.editProfile(user1);
-		assertEquals(user1.getFirstName(),"Jane");
+		assertEquals(user1.getFirstName(),"user1");
 		assertEquals(user1.getLastName(),"Smith");
-		assertEquals(user1.getPassword(),"12345");
+		assertEquals(user1.getPassword(),"user");
 		assertEquals(user1.getStatus(),'N');
 		assertEquals(user1.getType(),'a');
 		//set it back to what it was before the change
@@ -213,7 +218,8 @@ public class completeFuncionalTest {
 		ui.login("user2", "user");
 		User a = new User("user2", "user2", "Smith", "user", 'u', 'N',new ArrayList<University>());
 		ui.editProfile(a);
-		assertEquals(user2.getFirstName(),"Jane");
+		user2 = ai.viewUser("user2");
+		assertEquals(user2.getFirstName(),"user2");
 		assertEquals(a.getLastName(),"Smith");
 		assertEquals(a.getPassword(),"user");
 		assertEquals(a.getType(),'u');
