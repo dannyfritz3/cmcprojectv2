@@ -224,4 +224,27 @@ public class completeFuncionalTest {
 		ai.editProfile(user2);
 		
 	}
+	
+	public void testUC15AddUniversity(){
+		assertTrue(ai.addUniversity("COLLEGE OF SAINT BENEDICT", "Minnesota", "SMALL-CITY", "PRIVATE", 2000, 100.0, 600.0, 600.0, 52000.00, 80, 3000, 70, 25, 4, 2, 1, new ArrayList<String>()));
+		DBController.deleteSchool("COLLEGE OF SAINT BENEDICT");
+	}
+	
+	public void testUC16EditUniversity(){
+		University uni = DBController.getUniversity("COLUMBIA");
+		uni.setAcademicScale(1);
+		ai.editUniversity(uni);
+		assertEquals(uni.getAcademicScale(), 1);
+		uni.setAcademicScale(5);
+		ai.editUniversity(uni);
+	}
+	
+	public void testUC17viewUser(){
+		Account a2 = ai.viewUser("Avgjohnnie");
+		assertEquals(a2.getUsername(), "Avgjohnnie");
+	}
+	
+	public void testUC18viewAllSchools(){
+		assertFalse(ai.viewAllSchools().isEmpty());
+	}
 }
