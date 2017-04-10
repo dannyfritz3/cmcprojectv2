@@ -57,8 +57,7 @@ public class User extends Account{
 	public boolean removeSchool(University u){
 		for(University u2 : savedUniversities){
 			if(u2.getName().equals(u.getName())){
-				savedUniversities.remove(u2);
-				return true;
+				 return savedUniversities.remove(u2);
 			}
 		}
 		return false;
