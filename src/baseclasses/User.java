@@ -84,7 +84,7 @@ public class User extends Account{
 		SearchController search = new SearchController();
 		ArrayList<University> recs = search.findRelatedUniversities(u, 5);
 		for(int i = 0;i < 5;i++){
-			ret = ret + "/n" + recs.get(i).getInformation();
+			ret = ret + "\n" + recs.get(i).getInformation();
 		}
 		return ret;
 	}
