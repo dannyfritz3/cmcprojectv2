@@ -45,9 +45,7 @@ public class User extends Account{
 	 */
 	public boolean addUniversities(University u) {
 
-		savedUniversities.add(u);
-		
-		return true;
+		return savedUniversities.add(u);
 	}
 	
 	/**
