@@ -37,12 +37,12 @@ public class completeFuncionalTest {
 	SearchController sc = new SearchController();
 	static Account user2 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
 	static Account user1 = new Account("user1", "John", "Doe", "user", 'u', 'Y');
-	static Account user3 = new Account("user2", "John", "Doe", "user", 'u', 'Y');
+	static Account user3 = new Account("user3", "John", "Doe", "user", 'u', 'Y');
 	static University uni1 = new University("SAINT KENS", "SOUTH MANKOTA", "SUBURBAN", "PUBLIC", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
 	static University uni2 = new University("SAINT BENS", "MINNESOTA", "RURAL", "PRIVATE", 3000, 1.00, 0.70, 0.70, 40000.00, 0.60, 1000, 0.80, 0.50, 4, 4, 3, new ArrayList<String>());
-	static User user4 = new User("user3", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
+	//static User user4 = new User("user4", "Danny", "Fritz", "password", 'u', 'Y', new ArrayList<University>());
 	static Account user5 = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
-	static Account userAct = new Account("admin1", "Admin", "Ad", "password", 'a', 'Y');
+	static Account user6 = new Account("user6", "John", "Doe", "user", 'u', 'Y');
 	
 	@BeforeClass
 	public static void setup(){
@@ -52,17 +52,20 @@ public class completeFuncionalTest {
 		DBController.addUniversity(uni1);
 		DBController.addUniversity(uni2);
 		DBController.saveSchool("user2", "SAINT KENS");
+		DBController.addAccount(user5);
+		DBController.addAccount(user6);
 	}
 	
 	@AfterClass
 	public static void teardown(){
 		DBController.removeUser("user3");
-		DBController.removeUser("user2");
 		DBController.removeUser("user1");
+		DBController.removeUser("admin1");
 		DBController.deleteSchool(uni1.getName());
 		DBController.deleteSchool(uni2.getName());
 		DBController.removeSchool("user2", "SAINT KENS");
-		ai.editProfile(userAct);
+		DBController.removeUser("user2");
+		DBController.removeUser("user6");
 		
 	}
 	
@@ -94,8 +97,7 @@ public class completeFuncionalTest {
 	@Test
 	public void testUC1LoginAlt3Deactivated() throws Exception{
 		deactivatedFail.expect(Exception.class);
-		deactivatedFail.expectMessage("This account is deactivated");
-		
+		deactivatedFail.expectMessage("This account is deactivated");	
 		ui.login("user1", "user");
 		
 	}
@@ -132,39 +134,41 @@ public class completeFuncionalTest {
 	}
 
 	
-	/**
+	/*
 	 * Danny's Tests: UC3, UC4, UC5, and UC12
 	 */
 	
 	@Test
-	public void testUC3RemoveSavedSchool()
+	public void testUC3RemoveSavedSchool() throws Exception
 	{
-		user4.addUniversities(uni1);
-		user4.removeSchool(uni1);
-		assertFalse(user4.getSavedUniversities().contains(uni1));
+		//user4.addUniversities(uni1);
+		//user4.removeSchool(uni1);
+		//assertFalse(user4.getSavedUniversities().contains(uni1));
+		ui.login("user2", "user");
+		assertTrue(ui.removeSchool(uni2));
+		
 	}
 	
 	@Test
 	public void testUC4ViewSchool()
 	{
-		assertTrue(user4.viewSchool(uni1).equals(uni1.getInformation()));
+		assertTrue(ui.viewSchool(uni1).equals("Name: SAINT KENS\nState: SOUTH MANKOTA\nLocation: SUBURBAN\nControl: PUBLIC\nNumber of Students: 3000\nPercent Female: 1.0\nSAT Verbal: 0.7\nSAT Math: 0.7\nExpenses: 40000.0\nPercent FinancialAid: 0.6\nNumber of Applicants: 1000\nPercent Enrolled: 0.5\nPercent Admitted0.8\nAcademic Scale: 4\nSocial Scale: 4\nQuality of Life Scale: 3\nEmphasis: "));
+		
+		
 	}
 	
 	@Test
 	public void testUC5SearchSchools()
 	{
 		ArrayList<University> searchedSchools = ui.searchSchools(null, "MINNESOTA", null, null, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, null);
+		assertTrue(searchedSchools!=null);
 	}
 	
 	@Test
 	public void testUC12DeactivateAccount()
 	{
-		ai.deactivate(user1);
-		user1 = ai.viewUser("user1");
-		assertTrue(user1.getStatus() == 'N');
-		user1 = new Account("user1", "John", "Doe", "user", 'u', 'Y');
-		ai.editProfile(user1);
-
+		ai.deactivate(user5);
+		assertTrue(DBController.getAccount("admin1").getStatus() == 'N');
 	}
 	
 	@Test
@@ -186,49 +190,32 @@ public class completeFuncionalTest {
 	@Test
 	public void testUC9ViewProfile() throws Exception
 	{
-		AdminFuncController.activate("user2");
-		ui.login("user2","user");
-		assertTrue(ui.viewProfile().equals("First Name: John\nLast Name: Doe\nUsername: user2\nPassword: user\nType: u"));
+		ui.login("user6","user");
+		System.out.println(ui.viewProfile());
+		assertTrue(ui.viewProfile().equals("First Name: John\nLast Name: Doe\nUsername: user6\nPassword: user\nType: u"));
 	}
 	
 	@Test
 	public void testUC13EditUserInfoA()
 	{	
-		Account a = user1;
 		user1.setFirstName("user1");
 		user1.setLastName("Smith");
 		user1.setPassword("user");
-		user1.setStatus('N');
+		user1.setStatus('Y');
 		user1.setType('a');
 		ai.editProfile(user1);
-		assertEquals(user1.getFirstName(),"user1");
-		assertEquals(user1.getLastName(),"Smith");
-		assertEquals(user1.getPassword(),"user");
-		assertEquals(user1.getStatus(),'N');
-		assertEquals(user1.getType(),'a');
-		//set it back to what it was before the change
-		user1 = a;
-		ai.editProfile(user1);
-		
+		assertTrue(user1.getFirstName().equals("user1")&& user1.getLastName().equals("Smith")&& user1.getPassword().equals("user") && user1.getStatus()== 'Y' && user1.getType()=='a');
 	}
 	
 	@Test
 	public void testUC13EditUserInfoU() throws Exception
 	{	
+		AdminFuncController.activate("user2");
 		ui.login("user2", "user");
-		User a = new User("user2", "user2", "Smith", "user", 'u', 'N',new ArrayList<University>());
+		User a = new User("user2", "user2", "Smith", "user", 'u', 'Y',new ArrayList<University>());
 		ui.editProfile(a);
-		user2 = ai.viewUser("user2");
-		assertEquals(user2.getFirstName(),"user2");
-		assertEquals(a.getLastName(),"Smith");
-		assertEquals(a.getPassword(),"user");
-		assertEquals(a.getType(),'u');
-		assertEquals(a.getStatus(),'N');
-		//set it back
-		Account b = new Account("user2", "John", "Doe", "user", 'u', 'Y');
-		user2 = b;
-		ai.editProfile(user2);
-		
+		user2 = DBController.getAccount("user2");
+		assertTrue(user2.getFirstName().equals("user2") && user2.getLastName().equals("Smith")&& user2.getPassword().equals("user"));
 	}
 	
 	public void testUC15AddUniversity(){
