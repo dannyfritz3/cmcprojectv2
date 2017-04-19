@@ -45,9 +45,7 @@ public class User extends Account{
 	 */
 	public boolean addUniversities(University u) {
 
-		savedUniversities.add(u);
-		
-		return true;
+		return savedUniversities.add(u);
 	}
 	
 	/**
@@ -59,8 +57,7 @@ public class User extends Account{
 	public boolean removeSchool(University u){
 		for(University u2 : savedUniversities){
 			if(u2.getName().equals(u.getName())){
-				savedUniversities.remove(u2);
-				return true;
+				 return savedUniversities.remove(u2);
 			}
 		}
 		return false;
@@ -87,7 +84,7 @@ public class User extends Account{
 		SearchController search = new SearchController();
 		ArrayList<University> recs = search.findRelatedUniversities(u, 5);
 		for(int i = 0;i < 5;i++){
-			ret = ret + "/n" + recs.get(i).getInformation();
+			ret = ret + "\n" + recs.get(i).getInformation();
 		}
 		return ret;
 	}
