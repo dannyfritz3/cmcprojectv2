@@ -147,7 +147,7 @@ public class SearchController {
 	 * @param emphasis of the university
 	 * @return the condition attached to whether or not any matches were found to the search
 	 */
-	public boolean search(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expense, double expense2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, String emphasis){
+	public boolean search(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expense, double expense2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, ArrayList<String> emphasis){
 		searchedUniversities = new ArrayList<University>();
 		ArrayList<University> Us = DBController.getUniversities();
 		for(int i = 0;i < Us.size();i++){
@@ -168,8 +168,14 @@ public class SearchController {
 																if(academicScale == -1 && academicScale2 == -1 || academicScale == -1 && u.getAcademicScale() <= academicScale2 || academicScale2 == -1 && u.getAcademicScale() >= academicScale || u.getAcademicScale() >= academicScale && u.getAcademicScale() <= academicScale2){
 																	if(socialScale == -1 && socialScale2 == -1 || socialScale == -1 && u.getSocialScale() <= socialScale2 || socialScale2 == -1 && u.getSocialScale() >= socialScale || u.getSocialScale() >= socialScale && u.getSocialScale() <= socialScale2){
 																		if(qualityOfLifeScale == -1 && qualityOfLifeScale2 == -1 || qualityOfLifeScale == -1 && u.getQualityOfLifeScale() <= qualityOfLifeScale2 || qualityOfLifeScale2 == -1 && u.getQualityOfLifeScale() >= qualityOfLifeScale || u.getQualityOfLifeScale() >= qualityOfLifeScale && u.getQualityOfLifeScale() <= qualityOfLifeScale2){
-																			if(emphasis == null || u.getEmphasis().contains(emphasis)){
-																				searchedUniversities.add(u);
+																			if(emphasis == null){
+																				for(String emph : emphasis){
+																					if(u.getEmphasis().contains(emph)){
+																						searchedUniversities.add(u);
+																						break;
+																					}
+																				}
+																					
 																			}
 																		}
 																	}
