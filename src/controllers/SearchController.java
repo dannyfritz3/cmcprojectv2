@@ -168,14 +168,15 @@ public class SearchController {
 																if(academicScale == -1 && academicScale2 == -1 || academicScale == -1 && u.getAcademicScale() <= academicScale2 || academicScale2 == -1 && u.getAcademicScale() >= academicScale || u.getAcademicScale() >= academicScale && u.getAcademicScale() <= academicScale2){
 																	if(socialScale == -1 && socialScale2 == -1 || socialScale == -1 && u.getSocialScale() <= socialScale2 || socialScale2 == -1 && u.getSocialScale() >= socialScale || u.getSocialScale() >= socialScale && u.getSocialScale() <= socialScale2){
 																		if(qualityOfLifeScale == -1 && qualityOfLifeScale2 == -1 || qualityOfLifeScale == -1 && u.getQualityOfLifeScale() <= qualityOfLifeScale2 || qualityOfLifeScale2 == -1 && u.getQualityOfLifeScale() >= qualityOfLifeScale || u.getQualityOfLifeScale() >= qualityOfLifeScale && u.getQualityOfLifeScale() <= qualityOfLifeScale2){
-																			if(emphasis == null){
+																			if(emphasis.size() == 0){
+																				searchedUniversities.add(u);
+																			} else {
 																				for(String emph : emphasis){
 																					if(u.getEmphasis().contains(emph)){
 																						searchedUniversities.add(u);
 																						break;
 																					}
 																				}
-																					
 																			}
 																		}
 																	}
