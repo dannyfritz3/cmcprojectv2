@@ -37,6 +37,14 @@ public class AdminInterface extends AccountInterface{
 		AdminFuncController.deactivate(a.getUsername());
 	}
 	/**
+ 	* This is a method to activate an account
+ 	*
+ 	* @param the account that is being activated
+	*/
+	public void activate(Account a){
+		AdminFuncController.activate(a.getUsername());
+	}
+	/**
  	 * This is a method to add a user
  	 *
  	 * @param an account object of the user being added

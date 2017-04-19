@@ -110,6 +110,11 @@ public class UserInterface extends AccountInterface{
 	{
 		return ufc.viewSchool(uni);
 	}
+	
+	public University viewUniversity(String uniName)
+	{
+		return ufc.viewUniversity(uniName);
+	}
 	/**
 	 * A method that views the school and the recommended school's information
 	 * 
