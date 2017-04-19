@@ -55,6 +55,11 @@ public class UserFuncController {
 		String information = DBController.getUniversity(u.getName()).getInformation();
 		return information;
 	}
+	
+	public University viewUniversity(String uniName)
+	{
+		return DBController.getUniversity(uniName);
+	}
 	/**
 	 * This method talks to the User class and views the details of a university as well as the details of similar universities
 	 * 
