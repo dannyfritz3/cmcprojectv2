@@ -18,10 +18,10 @@ public class viewAllUserNames {
 		user1.setType('u');
 		ai.editProfile(user1);
 		DBController.removeSchool("user1", "HARVARD");
-		DBController.removeSchool("user2", "SAINT BENS");
+		DBController.saveSchool("user2", "SAINT BENS");
 		
 		DBController.removeUser("user2");
-
+		
 	ArrayList<Account> x = AccountController.getAccounts();
 	for(Account a : x){
 		System.out.println("Username: \t"+ a.getUsername()+ "\t\tFirstname: " + a.getFirstName());

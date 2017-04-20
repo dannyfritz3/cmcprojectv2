@@ -91,7 +91,7 @@ public class LogonControllerTest {
 		
 	}
 	
-	@Test
+	@Test(expected = Exception.class)
 	public void testLoginAdminNotExist() throws Exception{
 		notExistFail.expect(Exception.class);
 		notExistFail.expectMessage("This account does not exsist");

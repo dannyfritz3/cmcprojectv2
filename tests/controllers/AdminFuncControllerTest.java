@@ -69,7 +69,7 @@ public class AdminFuncControllerTest {
 	@Test
 	public void testViewAllUniversitiesPass() {
 		ArrayList<University>test = AdminFuncController.viewAllUniversities();
-		assertTrue(test!=null);
+		assertTrue(test.contains(DBController.getUniversity("UNIVERSITY OF MINNESOTA")));
 	}
 	@Test
 	public void testEditUniversityPass() {
@@ -93,6 +93,12 @@ public class AdminFuncControllerTest {
 	}
 	
 	@Test
+	public void testActivate() {
+		AdminFuncController.activate("Test1");
+		assertTrue(AdminFuncController.viewUser("Test1").getStatus()=='Y');
+	}
+	
+	@Test
 	public void testAddUserPass() {
 		assertTrue(AdminFuncController.addUser("Ethan","Ferry","ethan1","123qwe",'u','Y'));
 	}
@@ -105,7 +111,7 @@ public class AdminFuncControllerTest {
 	@Test
 	public void testManageUsers() {
 		ArrayList<Account>test = AdminFuncController.manageUsers();
-		assertTrue(test!=null);
+		assertTrue(test.contains(DBController.getAccount("Matthew")));
 	}
 
 }
