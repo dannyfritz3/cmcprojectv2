@@ -22,7 +22,9 @@ public class UserInterface extends AccountInterface{
 	/**
 	 * SearchController object so that we can work with the search function
 	 */
-	private SearchController sc = new SearchController();
+	
+	private ArrayList<SearchController> sc = new ArrayList<SearchController>();
+	//private SearchController sc = new SearchController();
 	
 	/**
  	* This is a method to view saved schools
@@ -55,8 +57,10 @@ public class UserInterface extends AccountInterface{
  	* @returns an array of universities that meet the criteria
  	*/
 	public ArrayList<University> searchSchools(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expenses, double expenses2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, ArrayList<String> emphasis){
-		this.sc.search(name, state, location, control, numberOfStudents, numberOfStudents2, percentFemale, percentFemale2, SATVerbal, SATVerbal2, SATMath, SATMath2, expenses, expenses2, percentFinancialAid, percentFinancialAid2, numberOfApplicants, numberOfApplicants2, percentAdmitted, percentAdmitted2, percentEnrolled, percentEnrolled2, academicScale, academicScale2, socialScale, socialScale2, qualityOfLifeScale, qualityOfLifeScale2, emphasis);
-		return this.sc.getSearchedUniversities();
+		SearchController temp = new SearchController();
+		temp.search(name, state, location, control, numberOfStudents, numberOfStudents2, percentFemale, percentFemale2, SATVerbal, SATVerbal2, SATMath, SATMath2, expenses, expenses2, percentFinancialAid, percentFinancialAid2, numberOfApplicants, numberOfApplicants2, percentAdmitted, percentAdmitted2, percentEnrolled, percentEnrolled2, academicScale, academicScale2, socialScale, socialScale2, qualityOfLifeScale, qualityOfLifeScale2, emphasis);
+		sc.add(temp);
+		return temp.getSearchedUniversities();
 	}
 	
 	public boolean login(String username, String password) throws Exception{
@@ -83,12 +87,21 @@ public class UserInterface extends AccountInterface{
 		return this.ufc.saveSchool(uni);
 	}
 	/**
- 	 * This method views the searches (??)
+ 	 * This method gets all previous searches
  	 *
- 	 * @returns an array of University objects
+ 	 * @returns an array of SearchController objects
  	 */ 
-	public ArrayList<University> viewSearches(){
-		return this.sc.getSearchedUniversities();
+	public ArrayList<SearchController> viewSearches(){
+		return this.sc;
+	}
+	
+	/**
+	 * This method gets the last search
+	 * 
+	 * @return an array of University objects
+	 */
+	public ArrayList<University> viewSearch(){
+		return this.sc.get(sc.size()-1).getSearchedUniversities();
 	}
 
 	/**

@@ -18,6 +18,7 @@ import baseclasses.University;
 public class SearchController {
 
 	private ArrayList<University> searchedUniversities;
+	private ArrayList<String> searchParams;
 	
 	/**
 	 * This method holds the algorithm for finding related universities to a given university
@@ -127,6 +128,16 @@ public class SearchController {
 	{
 		return this.searchedUniversities;
 	}
+	
+	/**
+	 * This method gets this search objects parameters used to search
+	 * 
+	 * @return an array list of strings containing all parameters
+	 */
+	public ArrayList<String> getParameters()
+	{
+		return this.searchParams;
+	}
 	/**
 	 * This method talks to the DBcontroller to search the database based on given conditions, it will put all searches in searchedUniversities
 	 * 
@@ -149,6 +160,8 @@ public class SearchController {
 	 */
 	public boolean search(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expense, double expense2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, ArrayList<String> emphasis){
 		searchedUniversities = new ArrayList<University>();
+		searchParams = new ArrayList<String>();
+		addParams(name, state, location, control, numberOfStudents, numberOfStudents2, percentFemale, percentFemale2, SATVerbal, SATVerbal2, SATMath, SATMath2, expense, expense2, percentFinancialAid, percentFinancialAid2, numberOfApplicants, numberOfApplicants2, percentAdmitted, percentAdmitted2, percentEnrolled, percentEnrolled2, academicScale, academicScale2, socialScale, socialScale2, qualityOfLifeScale, qualityOfLifeScale2, emphasis);
 		ArrayList<University> Us = DBController.getUniversities();
 		for(int i = 0;i < Us.size();i++){
 			University u = Us.get(i);
@@ -202,6 +215,72 @@ public class SearchController {
 			return true;
 		}
 	}
+	
+	/**
+	 * Helper class to save parameters used to search
+	 * 
+	 * @param name
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param numberOfStudents
+	 * @param numberOfStudents2
+	 * @param percentFemale
+	 * @param percentFemale2
+	 * @param SATVerbal
+	 * @param SATVerbal2
+	 * @param SATMath
+	 * @param SATMath2
+	 * @param expense
+	 * @param expense2
+	 * @param percentFinancialAid
+	 * @param percentFinancialAid2
+	 * @param numberOfApplicants
+	 * @param numberOfApplicants2
+	 * @param percentAdmitted
+	 * @param percentAdmitted2
+	 * @param percentEnrolled
+	 * @param percentEnrolled2
+	 * @param academicScale
+	 * @param academicScale2
+	 * @param socialScale
+	 * @param socialScale2
+	 * @param qualityOfLifeScale
+	 * @param qualityOfLifeScale2
+	 * @param emphasis
+	 */
+	private void addParams(String name, String state, String location, String control, int numberOfStudents, int numberOfStudents2, double percentFemale, double percentFemale2, double SATVerbal, double SATVerbal2, double SATMath, double SATMath2, double expense, double expense2, double percentFinancialAid, double percentFinancialAid2, int numberOfApplicants, int numberOfApplicants2, double percentAdmitted, double percentAdmitted2, double percentEnrolled, double percentEnrolled2, int academicScale, int academicScale2, int socialScale, int socialScale2, int qualityOfLifeScale, int qualityOfLifeScale2, ArrayList<String> emphasis){
+		searchParams.add(name);
+		searchParams.add(state);
+		searchParams.add(location);
+		searchParams.add(control);
+		searchParams.add(numberOfStudents+"");
+		searchParams.add(numberOfStudents2+"");
+		searchParams.add(SATVerbal+"");
+		searchParams.add(SATVerbal2+"");
+		searchParams.add(SATMath+"");
+		searchParams.add(SATMath2+"");
+		searchParams.add(expense+"");
+		searchParams.add(expense2+"");
+		searchParams.add(percentFinancialAid+"");
+		searchParams.add(percentFinancialAid2+"");
+		searchParams.add(numberOfApplicants+"");
+		searchParams.add(numberOfApplicants2+"");
+		searchParams.add(percentAdmitted+"");
+		searchParams.add(percentAdmitted2+"");
+		searchParams.add(percentEnrolled+"");
+		searchParams.add(percentEnrolled2+"");
+		searchParams.add(academicScale+"");
+		searchParams.add(academicScale2+"");
+		searchParams.add(socialScale+"");
+		searchParams.add(socialScale2+"");
+		searchParams.add(qualityOfLifeScale+"");
+		searchParams.add(qualityOfLifeScale2+"");
+		for(String emph : emphasis){
+			searchParams.add(emph);
+		}
+	}
+	
 	
 	/**
 	 * Tuple helper class
