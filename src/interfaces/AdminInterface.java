@@ -106,6 +106,11 @@ public class AdminInterface extends AccountInterface{
 		return AdminFuncController.viewUser(username);
 	}
 	
+	public University viewUniversity(String name)
+	{
+		return AdminFuncController.viewUniversity(name);
+	}
+	
 	public ArrayList<Account> manageUsers(){
 		return AdminFuncController.manageUsers();
 	}

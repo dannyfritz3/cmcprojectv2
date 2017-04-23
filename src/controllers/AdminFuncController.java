@@ -116,6 +116,10 @@ public class AdminFuncController{
 	  return accounts;
   }
   
+  public static University viewUniversity(String uniName) {
+	  return DBController.getUniversity(uniName);
+  }
+	
   public static boolean deleteUser(Account a){
 	  return DBController.removeUser(a.getUsername());
   }
