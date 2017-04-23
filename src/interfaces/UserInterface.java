@@ -96,6 +96,15 @@ public class UserInterface extends AccountInterface{
 	}
 	
 	/**
+	 * This method moves search i to the last search
+	 * 
+	 * @param i index of search to be moved
+	 */
+	public void reSearch(int i){
+		sc.add(sc.remove(i));
+	}
+	
+	/**
 	 * This method gets the last search
 	 * 
 	 * @return an array of University objects
