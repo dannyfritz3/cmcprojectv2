@@ -49,7 +49,7 @@ public class SearchController {
 			}
 		}
 		ArrayList<University> relatedUs = new ArrayList<University>();
-		for(int i = 0;i < n;i++){//could possibly cause problems with recommending the same university
+		for(int i = 1;i < n;i++){//could possibly cause problems with recommending the same university
 			relatedUs.add(distances.get(i).university);
 		}
 		return relatedUs;
