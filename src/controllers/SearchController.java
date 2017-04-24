@@ -134,9 +134,269 @@ public class SearchController {
 	 * 
 	 * @return an array list of strings containing all parameters
 	 */
-	public ArrayList<String> getParameters()
+	public String getParameters()
 	{
-		return this.searchParams;
+		String ret = "";
+		int cas = 0;
+		while(ret.length() < 60 && cas < 29){
+			switch(cas){
+			case 0:
+				if(searchParams.get(cas) != null){
+					ret = ret + "School Name: " + searchParams.get(cas);
+					ret = ret + ", ";
+				}
+				
+				cas++;
+				break;
+			case 1:
+				if(searchParams.get(cas) != null){
+					ret = ret + "State: " + searchParams.get(cas);
+					ret = ret + ", ";
+				}
+				
+				cas++;
+				break;
+			
+			case 2:
+				if(searchParams.get(cas) != null){
+					ret = ret + "Location: " + searchParams.get(cas);
+					ret = ret + ", ";
+				}
+				cas++;
+			break;
+			case 3:
+				if(searchParams.get(cas) != null){
+					ret = ret + "Control: " + searchParams.get(cas);
+					ret = ret + ", ";
+				}
+				cas++;
+			break;
+			case 4:
+				if(!searchParams.get(cas).equals("-1") || !searchParams.get(cas+1).equals("-1")){
+					ret = ret + "# of Students: "; 
+					if(searchParams.get(cas).equals("-1")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 6:
+				if(!searchParams.get(cas).equals("-1.0") || !searchParams.get(cas+1).equals("-1.0")){
+					ret = ret + "% Female: "; 
+					if(searchParams.get(cas).equals("-1.0")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1.0")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 8:
+				if(!searchParams.get(cas).equals("-1.0") || !searchParams.get(cas+1).equals("-1.0")){
+					ret = ret + "SAT Verbal: "; 
+					if(searchParams.get(cas).equals("-1.0")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1.0")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 10:
+				if(!searchParams.get(cas).equals("-1.0") || !searchParams.get(cas+1).equals("-1.0")){
+					ret = ret + "SAT Math: "; 
+					if(searchParams.get(cas).equals("-1.0")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1.0")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 12:
+				if(!searchParams.get(cas).equals("-1.0") || !searchParams.get(cas+1).equals("-1.0")){
+					ret = ret + "Expenses: "; 
+					if(searchParams.get(cas).equals("-1.0")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1.0")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 14:
+				if(!searchParams.get(cas).equals("-1.0") || !searchParams.get(cas+1).equals("-1.0")){
+					ret = ret + "% Financial Aid: "; 
+					if(searchParams.get(cas).equals("-1.0")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1.0")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 16:
+				if(!searchParams.get(cas).equals("-1") || !searchParams.get(cas+1).equals("-1")){
+					ret = ret + "# of Applicants : "; 
+					if(searchParams.get(cas).equals("-1")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 18:
+				if(!searchParams.get(cas).equals("-1.0") || !searchParams.get(cas+1).equals("-1.0")){
+					ret = ret + "% Admitted: "; 
+					if(searchParams.get(cas).equals("-1.0")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1.0")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 20:
+				if(!searchParams.get(cas).equals("-1.0") || !searchParams.get(cas+1).equals("-1.0")){
+					ret = ret + "% Enrolled: "; 
+					if(searchParams.get(cas).equals("-1.0")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1.0")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 22:
+				if(!searchParams.get(cas).equals("-1") || !searchParams.get(cas+1).equals("-1")){
+					ret = ret + "Academic Scale: "; 
+					if(searchParams.get(cas).equals("-1")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 24:
+				if(!searchParams.get(cas).equals("-1") || !searchParams.get(cas+1).equals("-1")){
+					ret = ret + "Social Scale: "; 
+					if(searchParams.get(cas).equals("-1")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 26:
+				if(!searchParams.get(cas).equals("-1") || !searchParams.get(cas+1).equals("-1")){
+					ret = ret + "Quality of Life Scale: "; 
+					if(searchParams.get(cas).equals("-1")){
+						ret = ret + "0";
+					} else {
+						ret = ret + searchParams.get(cas);
+					}
+					if(searchParams.get(cas+1).equals("-1")){
+						ret = ret + "<";
+					} else {
+						ret = ret + "-" + searchParams.get(cas+1);
+					}
+					ret = ret + ", ";
+				}
+				cas+=2;
+			break;
+			case 28:
+				int emphs = searchParams.size()-28;
+				if(emphs > 0){
+					ret = ret + "Emphasis: [";
+					for(int i = 0; i < emphs;i++){
+						ret = ret + searchParams.get(28 + i);
+						if(i != emphs-1){
+							ret = ret + ",";
+						}
+					}
+					ret = ret + "], ";
+				}
+				cas+=1;
+			break;
+			}
+		
+		}
+		if(ret.length() >= 2)ret = ret.substring(0,ret.length()-2);
+		if(ret.length()>60){
+			ret = ret.substring(0, 57) + "...";
+		}
+		return ret;
 	}
 	/**
 	 * This method talks to the DBcontroller to search the database based on given conditions, it will put all searches in searchedUniversities
@@ -256,6 +516,8 @@ public class SearchController {
 		searchParams.add(control);
 		searchParams.add(numberOfStudents+"");
 		searchParams.add(numberOfStudents2+"");
+		searchParams.add(percentFemale+"");
+		searchParams.add(percentFemale2+"");
 		searchParams.add(SATVerbal+"");
 		searchParams.add(SATVerbal2+"");
 		searchParams.add(SATMath+"");
@@ -279,6 +541,7 @@ public class SearchController {
 		for(String emph : emphasis){
 			searchParams.add(emph);
 		}
+		System.out.println();
 	}
 	
 	
