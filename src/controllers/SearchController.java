@@ -138,7 +138,7 @@ public class SearchController {
 	{
 		String ret = "";
 		int cas = 0;
-		while(ret.length() < 60 && cas < 29){
+		while(ret.length() < 100 && cas < 29){
 			switch(cas){
 			case 0:
 				if(searchParams.get(cas) != null){
@@ -393,8 +393,8 @@ public class SearchController {
 		
 		}
 		if(ret.length() >= 2)ret = ret.substring(0,ret.length()-2);
-		if(ret.length()>60){
-			ret = ret.substring(0, 57) + "...";
+		if(ret.length()>100){
+			ret = ret.substring(0, 97) + "...";
 		}
 		return ret;
 	}
