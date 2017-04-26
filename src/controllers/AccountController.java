@@ -27,7 +27,7 @@ public class AccountController{
    * @param type the new account type, null if to be unchanged
    * @param status the new account status, null if to be unchanged
    */
-  public static void editUserInfo(Account account, String firstname, String lastname,String username, String password, char type, char status){
+  public static void editUserInfo(Account account, String firstname, String lastname, String username, String password, char type, char status){
 	  if(account.getUsername().equals(username)){
 	  if(firstname!=null)
 		  account.setFirstName(firstname);
