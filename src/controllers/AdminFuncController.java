@@ -104,8 +104,11 @@ public class AdminFuncController{
    */
   public static boolean addUser(String firstname, String lastname, String username, String password, char type, char status){
 	  return AccountController.addAccount(firstname,lastname,username,password,type,status);
- 	}
+  }
   
+  public static void editAccount(Account a){
+	  DBController.updateUser(a);
+  }
   /**
    * This method returns a set of all accounts in the system
    * 

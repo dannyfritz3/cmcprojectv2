@@ -68,7 +68,7 @@ public class AdminInterface extends AccountInterface{
 	 * @param the account being edited
  	*/
 	public void editProfile(Account a){
-		AccountController.editUserInfo(a, a.getFirstName(), a.getLastName(), a.getUsername(),a.getPassword(), a.getType(), a.getStatus());
+		AdminFuncController.editAccount(a);
 	}
 	
 	/**
