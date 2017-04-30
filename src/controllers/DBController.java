@@ -351,6 +351,7 @@ public class DBController{
    * @return if the school was deleted
    */
   public static boolean deleteSchool(String name){
+	  System.out.println(lib.university_deleteUniversity("Taint Shomas"));
 	  return lib.university_deleteUniversity(name) != -1;
   }
  

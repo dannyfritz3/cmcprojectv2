@@ -126,7 +126,7 @@ public class AdminFuncController{
   public static boolean deleteUser(Account a){
 	  return DBController.removeUser(a.getUsername());
   }
-  public static boolean deleteUniversity(University u){
-	  return DBController.deleteSchool(u.getName());
+  public static boolean deleteUniversity(String u){
+	  return DBController.deleteSchool(u);
   }
 }

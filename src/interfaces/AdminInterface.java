@@ -92,7 +92,7 @@ public class AdminInterface extends AccountInterface{
  	* @returns an array of universities that meet the criteria
  	*/
 	public boolean addUniversity(String name, String state, String location, String control, int numberOfStudents, double percentFemale, double SATVerbal, double SATMath, double expense, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicScale, int socialScale,int qualityOfLifeScale, ArrayList<String> emphasis){
-		return AdminFuncController.addUniversity(name,state,location,control, numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,qualityOfLifeScale,emphasis);
+		return AdminFuncController.addUniversity(name.toUpperCase(),state.toUpperCase(),location.toUpperCase(),control.toUpperCase(), numberOfStudents,percentFemale,SATVerbal,SATMath,expense,percentFinancialAid, numberOfApplicants,percentAdmitted,percentEnrolled,academicScale,socialScale,qualityOfLifeScale,emphasis);
 	}
 	
 	/**
@@ -116,5 +116,10 @@ public class AdminInterface extends AccountInterface{
 	}
 	public boolean deleteUser(Account a){
 		return AdminFuncController.deleteUser(a);
+	}
+	
+	public boolean deleteUniversity(String u)
+	{
+		return AdminFuncController.deleteUniversity(u);
 	}
 }
